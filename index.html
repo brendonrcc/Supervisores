@@ -847,6 +847,264 @@ details[open]::details-content {
   pointer-events: none;
 }
 
+
+/* ---------- postagem da aula ---------- */
+
+.posting-card {
+  margin: 13px 0 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, .44);
+  border: 1px solid rgba(19, 143, 24, .17);
+  border-radius: 12px;
+}
+
+.posting-card-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 13px;
+  color: var(--white);
+  background: var(--accent);
+}
+
+.posting-card-header .ti {
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+
+.posting-card-heading {
+  min-width: 0;
+}
+
+.posting-card-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.posting-card-subtitle {
+  margin: 2px 0 0;
+  color: rgba(255, 255, 255, .76);
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.posting-card-body {
+  padding: 12px;
+}
+
+.posting-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.posting-field {
+  min-width: 0;
+}
+
+.posting-field.is-full {
+  grid-column: 1 / -1;
+}
+
+.posting-label,
+.posting-group-title {
+  display: block;
+  margin: 0 0 5px;
+  color: #4b5c4f;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.posting-input,
+.posting-select,
+.posting-textarea {
+  width: 100%;
+  min-height: 37px;
+  padding: 8px 10px;
+  color: var(--text-main);
+  background: var(--white);
+  border: 1px solid rgba(19, 143, 24, .17);
+  border-radius: 8px;
+  outline: none;
+  font-size: 10px;
+  font-weight: 500;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.posting-input:focus,
+.posting-select:focus,
+.posting-textarea:focus {
+  border-color: rgba(19, 143, 24, .52);
+  box-shadow: 0 0 0 3px rgba(19, 143, 24, .07);
+}
+
+.posting-input[readonly] {
+  color: #627065;
+  background: rgba(238, 242, 239, .72);
+}
+
+.posting-textarea {
+  min-height: 78px;
+  resize: vertical;
+}
+
+.posting-help {
+  margin: 4px 0 0;
+  color: #829085;
+  font-size: 8px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.posting-results {
+  display: grid;
+  gap: 7px;
+}
+
+.posting-result-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(130px, .58fr);
+  gap: 8px;
+  align-items: center;
+}
+
+.posting-result-student {
+  min-width: 0;
+  padding: 8px 10px;
+  color: #536257;
+  background: rgba(238, 242, 239, .78);
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.posting-empty-results {
+  padding: 9px 10px;
+  color: #839086;
+  background: rgba(238, 242, 239, .58);
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.posting-choice-list {
+  display: grid;
+  gap: 6px;
+}
+
+.posting-choice {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 7px 8px;
+  color: #56655a;
+  background: rgba(255, 255, 255, .55);
+  border: 1px solid rgba(19, 143, 24, .10);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.posting-choice input {
+  flex: 0 0 auto;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+}
+
+.posting-tutor-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.posting-tutor-options .posting-choice {
+  min-width: 90px;
+  justify-content: flex-start;
+}
+
+.posting-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.posting-submit {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  padding: 8px 13px;
+  color: var(--white);
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+  transition: transform .18s ease, filter .18s ease, opacity .18s ease;
+}
+
+.posting-submit:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.posting-submit:active {
+  transform: translateY(0);
+}
+
+.posting-submit:disabled {
+  cursor: wait;
+  opacity: .58;
+  transform: none;
+}
+
+.posting-status {
+  min-width: 0;
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.posting-status.is-error {
+  color: #9f4343;
+}
+
+@media (max-width: 650px) {
+  .posting-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .posting-field.is-full {
+    grid-column: auto;
+  }
+
+  .posting-result-row {
+    grid-template-columns: 1fr;
+  }
+
+  .posting-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .posting-submit {
+    width: 100%;
+  }
+}
+
 /* ---------- créditos ---------- */
 
 .footer {
@@ -1060,18 +1318,21 @@ details[open]::details-content {
       key: "SUP",
       title: "Aula de Supervisão",
       fullName: "Aula de Supervisão (SUP)",
+      postingName: "Aula de Supervisão",
       apiRange: "A:C"
     },
     SEG: {
       key: "SEG",
-      title: "Aula de Supervisão",
-      fullName: "Aula de Supervisão (SEG)",
+      title: "Aula de Segurança",
+      fullName: "Aula de Segurança (SEG)",
+      postingName: "Aula de Segurança",
       apiRange: "E:G"
     },
     PRO: {
       key: "PRO",
       title: "Aula para Promotor",
       fullName: "Aula para Promotor (PRO)",
+      postingName: "Aula de Promotor",
       apiRange: "I:K"
     }
   });
@@ -1092,6 +1353,7 @@ details[open]::details-content {
   const copiedLines = new Set();
   const mpMessages = new Map();
   const pendingPmRequests = new Map();
+  const SCRIPT_STARTED_AT = new Date();
 
   function readNativeForumContext() {
     const candidates = [];
@@ -1463,6 +1725,13 @@ details[open]::details-content {
           });
           break;
 
+        case "POSTAGEM":
+          addNode(current(), {
+            type: "posting",
+            row: sheetRow
+          });
+          break;
+
         default:
           console.warn(`Tag desconhecida na linha ${sheetRow}:`, tag);
       }
@@ -1600,6 +1869,500 @@ details[open]::details-content {
     `;
   }
 
+  function formatStartDateTime(date) {
+    return new Intl.DateTimeFormat("pt-BR", {
+      dateStyle: "short",
+      timeStyle: "short"
+    }).format(date);
+  }
+
+  function renderPostingCard(node) {
+    const id = `posting-${String(node.row).replace(/[^\w-]/g, "-")}`;
+    const confirmationName = `${id}-confirmation`;
+    const tutorName = `${id}-tutor`;
+
+    const confirmation = ACTIVE_COURSE.key === "SUP"
+      ? `
+        <div class="posting-field is-full posting-confirmation">
+          <p class="posting-group-title">Etapa de confirmação</p>
+          <div class="posting-choice-list">
+            <label class="posting-choice">
+              <input type="radio" name="${confirmationName}" value="Confirmo que verifiquei se o soldado criou a conta no RCCSystem.">
+              <span>Confirmo que verifiquei se o soldado criou a conta no RCCSystem.</span>
+            </label>
+
+            <label class="posting-choice">
+              <input type="radio" name="${confirmationName}" value="Soldado era mobile, confirmo que ensinei os procedimentos.">
+              <span>Soldado era mobile, confirmo que ensinei os procedimentos.</span>
+            </label>
+
+            <label class="posting-choice">
+              <input type="radio" name="${confirmationName}" value="O aluno caiu/saiu durante a aplicação da aula.">
+              <span>O aluno caiu/saiu durante a aplicação da aula.</span>
+            </label>
+          </div>
+        </div>
+      `
+      : "";
+
+    return `
+      <section class="posting-card" data-posting-card="${escapeHtml(id)}">
+        <header class="posting-card-header">
+          ${tablerIcon("clipboard-text")}
+          <div class="posting-card-heading">
+            <h3 class="posting-card-title">Postagem das Aulas</h3>
+            <p class="posting-card-subtitle">Preencha os dados da aplicação para registrar a aula na planilha.</p>
+          </div>
+        </header>
+
+        <div class="posting-card-body">
+          <div class="posting-grid">
+            <div class="posting-field">
+              <label class="posting-label" for="${id}-supervisor">Seu nickname</label>
+              <input
+                id="${id}-supervisor"
+                class="posting-input posting-supervisor"
+                type="text"
+                value="${escapeHtml(forumContext.username || "")}"
+                placeholder="Carregando usuário..."
+                readonly
+              >
+            </div>
+
+            <div class="posting-field">
+              <label class="posting-label" for="${id}-course">Aula aplicada</label>
+              <input
+                id="${id}-course"
+                class="posting-input posting-course"
+                type="text"
+                value="${escapeHtml(ACTIVE_COURSE.postingName || ACTIVE_COURSE.title)}"
+                readonly
+              >
+            </div>
+
+            <div class="posting-field is-full">
+              <label class="posting-label" for="${id}-students">Nickname(s) dos aluno(s)</label>
+              <input
+                id="${id}-students"
+                class="posting-input posting-students"
+                type="text"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Ex.: Aluno1 / Aluno2"
+              >
+              <p class="posting-help">Caso haja mais de um aluno, separe os nicknames utilizando /.</p>
+            </div>
+
+            <div class="posting-field">
+              <label class="posting-label" for="${id}-location">Local da aplicação</label>
+              <select id="${id}-location" class="posting-select posting-location">
+                <option value="">Selecione...</option>
+                <option>Sala de Aplicação 01</option>
+                <option>Sala de Aplicação 02</option>
+                <option>Sala de Aplicação 03</option>
+                <option>Sala de Aplicação 04</option>
+                <option>Batalhões</option>
+                <option>Corredores</option>
+                <option>Quarto Particular</option>
+                <option>Cabanas do Batalhão Auxiliar</option>
+              </select>
+            </div>
+
+            <div class="posting-field">
+              <label class="posting-label" for="${id}-started">Data e Hora de Início</label>
+              <input
+                id="${id}-started"
+                class="posting-input posting-started"
+                type="text"
+                value="${escapeHtml(formatStartDateTime(SCRIPT_STARTED_AT))}"
+                readonly
+              >
+            </div>
+
+            <div class="posting-field is-full">
+              <p class="posting-group-title">Resultado</p>
+              <div class="posting-results">
+                <div class="posting-empty-results">
+                  Informe o(s) nickname(s) acima para definir o resultado de cada aluno.
+                </div>
+              </div>
+            </div>
+
+            ${confirmation}
+
+            <div class="posting-field is-full">
+              <p class="posting-group-title">Sua aula foi acompanhada por algum(a) tutor(a)?</p>
+              <div class="posting-tutor-options">
+                <label class="posting-choice">
+                  <input type="radio" name="${tutorName}" value="Sim">
+                  <span>Sim</span>
+                </label>
+
+                <label class="posting-choice">
+                  <input type="radio" name="${tutorName}" value="Não">
+                  <span>Não</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="posting-field is-full">
+              <label class="posting-label" for="${id}-comments">Comentários</label>
+              <textarea
+                id="${id}-comments"
+                class="posting-textarea posting-comments"
+                placeholder="Insira comentários adicionais, se necessário."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="posting-actions">
+            <button class="posting-submit" type="button" data-submit-posting>
+              ${tablerIcon("send-2")}
+              <span>Enviar</span>
+            </button>
+
+            <div class="posting-status" role="status" aria-live="polite" hidden></div>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function getPostingStudents(card) {
+    const value = card.querySelector(".posting-students")?.value || "";
+
+    return value
+      .split("/")
+      .map(item => item.trim())
+      .filter(Boolean);
+  }
+
+  function syncPostingResults(card) {
+    const container = card.querySelector(".posting-results");
+    if (!container) return;
+
+    const currentValues = new Map();
+
+    container.querySelectorAll(".posting-result-select[data-student]").forEach(select => {
+      currentValues.set(select.dataset.student, select.value);
+    });
+
+    const students = getPostingStudents(card);
+
+    if (!students.length) {
+      container.innerHTML = `
+        <div class="posting-empty-results">
+          Informe o(s) nickname(s) acima para definir o resultado de cada aluno.
+        </div>
+      `;
+      sendHeight(true);
+      return;
+    }
+
+    container.innerHTML = students.map((student, index) => {
+      const current = currentValues.get(student) || "";
+
+      const option = value => `
+        <option value="${escapeHtml(value)}" ${current === value ? "selected" : ""}>
+          ${escapeHtml(value)}
+        </option>
+      `;
+
+      return `
+        <div class="posting-result-row">
+          <div class="posting-result-student">
+            ${escapeHtml(student)}
+          </div>
+
+          <select
+            class="posting-select posting-result-select"
+            data-student="${escapeHtml(student)}"
+            aria-label="Resultado de ${escapeHtml(student)}"
+          >
+            <option value="">Selecione o resultado...</option>
+            ${option("Aprovado")}
+            ${option("Reprovado")}
+            ${option("Caiu")}
+            ${option("-x-")}
+          </select>
+        </div>
+      `;
+    }).join("");
+
+    sendHeight(true);
+  }
+
+  function syncPostingIdentity() {
+    document.querySelectorAll(".posting-supervisor").forEach(input => {
+      input.value = forumContext.username || "";
+      input.placeholder = forumContext.loggedIn
+        ? "Usuário do fórum"
+        : "Usuário não identificado";
+    });
+  }
+
+  function setPostingStatus(card, message, isError = false) {
+    const status = card.querySelector(".posting-status");
+    if (!status) return;
+
+    status.textContent = message;
+    status.hidden = false;
+    status.classList.toggle("is-error", isError);
+    sendHeight(true);
+  }
+
+  function collectPostingData(card) {
+    const students = getPostingStudents(card);
+    const resultSelects = Array.from(
+      card.querySelectorAll(".posting-result-select[data-student]")
+    );
+
+    const results = resultSelects.map(select => ({
+      student: select.dataset.student || "",
+      result: select.value || ""
+    }));
+
+    const confirmation = ACTIVE_COURSE.key === "SUP"
+      ? card.querySelector('.posting-confirmation input[type="radio"]:checked')?.value || ""
+      : "";
+
+    const tutor = card.querySelector(
+      '.posting-tutor-options input[type="radio"]:checked'
+    )?.value || "";
+
+    return {
+      supervisor: forumContext.username || card.querySelector(".posting-supervisor")?.value || "",
+      course: ACTIVE_COURSE.postingName || ACTIVE_COURSE.title,
+      courseKey: ACTIVE_COURSE.key,
+      students,
+      location: card.querySelector(".posting-location")?.value || "",
+      startedAt: card.querySelector(".posting-started")?.value || "",
+      results,
+      confirmation,
+      tutor,
+      comments: String(card.querySelector(".posting-comments")?.value || "").trim()
+    };
+  }
+
+  function validatePostingData(data) {
+    if (!data.supervisor) return "Não foi possível identificar o seu nickname no fórum.";
+    if (!data.students.length) return "Informe ao menos um aluno.";
+    if (!data.location) return "Selecione o local da aplicação.";
+
+    const missingResult = data.results.find(item => !item.result);
+    if (missingResult) {
+      return `Selecione o resultado de ${missingResult.student}.`;
+    }
+
+    if (ACTIVE_COURSE.key === "SUP" && !data.confirmation) {
+      return "Selecione uma opção na Etapa de confirmação.";
+    }
+
+    if (!data.tutor) {
+      return "Informe se a aula foi acompanhada por tutor(a).";
+    }
+
+    return "";
+  }
+
+  function createPostingTransport(requestId, data) {
+    const frameName =
+      `sup-sheet-post-${requestId.replace(/[^\w-]/g, "-")}`;
+
+    const iframe = document.createElement("iframe");
+    iframe.name = frameName;
+    iframe.setAttribute("aria-hidden", "true");
+
+    Object.assign(iframe.style, {
+      position: "fixed",
+      width: "1px",
+      height: "1px",
+      left: "-9999px",
+      top: "0",
+      opacity: "0",
+      pointerEvents: "none",
+      border: "0"
+    });
+
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = SUP_API_URL;
+    form.target = frameName;
+    form.acceptCharset = "UTF-8";
+    form.style.display = "none";
+
+    const fields = {
+      action: "postLesson",
+      requestId,
+      supervisor: data.supervisor,
+      course: data.course,
+      courseKey: data.courseKey,
+      students: data.students.join(" / "),
+      location: data.location,
+      startedAt: data.startedAt,
+      results: JSON.stringify(data.results),
+      confirmation: data.confirmation,
+      tutor: data.tutor,
+      comments: data.comments
+    };
+
+    Object.entries(fields).forEach(([name, value]) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = String(value ?? "");
+      form.appendChild(input);
+    });
+
+    document.body.appendChild(iframe);
+    document.body.appendChild(form);
+
+    form.submit();
+    form.remove();
+
+    window.setTimeout(() => {
+      iframe.remove();
+    }, 20000);
+  }
+
+  function requestPostingStatus(requestId) {
+    return new Promise((resolve, reject) => {
+      const callbackName =
+        `__supPosting_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+      const script = document.createElement("script");
+      let settled = false;
+
+      const timeout = window.setTimeout(() => {
+        finish(new Error("Tempo limite ao consultar o registro da postagem."));
+      }, 6000);
+
+      const cleanup = () => {
+        window.clearTimeout(timeout);
+        script.remove();
+
+        try {
+          delete window[callbackName];
+        } catch (error) {
+          window[callbackName] = undefined;
+        }
+      };
+
+      const finish = (error, payload) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        error ? reject(error) : resolve(payload);
+      };
+
+      window[callbackName] = payload => {
+        if (!payload || payload.ok !== true) {
+          finish(
+            new Error(
+              payload?.error ||
+              "Não foi possível confirmar o registro na planilha."
+            )
+          );
+          return;
+        }
+
+        finish(null, payload);
+      };
+
+      script.onerror = () => {
+        finish(new Error("Não foi possível consultar a API da planilha."));
+      };
+
+      const query = new URLSearchParams({
+        action: "postingStatus",
+        requestId,
+        callback: callbackName,
+        _: Date.now().toString()
+      });
+
+      script.src = `${SUP_API_URL}?${query.toString()}`;
+      document.head.appendChild(script);
+    });
+  }
+
+  const wait = milliseconds =>
+    new Promise(resolve => window.setTimeout(resolve, milliseconds));
+
+  async function waitForPostingConfirmation(requestId) {
+    const deadline = Date.now() + 15000;
+    let lastError = null;
+
+    while (Date.now() < deadline) {
+      await wait(700);
+
+      try {
+        const status = await requestPostingStatus(requestId);
+
+        if (status.pending) {
+          continue;
+        }
+
+        return status;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    throw lastError || new Error(
+      "A planilha não confirmou a postagem dentro do tempo esperado."
+    );
+  }
+
+  async function submitPosting(button) {
+    const card = button.closest("[data-posting-card]");
+    if (!card) return;
+
+    const nativeContext = readNativeForumContext();
+    if (nativeContext) {
+      handleForumContext(nativeContext);
+    }
+
+    const data = collectPostingData(card);
+    const error = validatePostingData(data);
+
+    if (error) {
+      setPostingStatus(card, error, true);
+      return;
+    }
+
+    const requestId =
+      `posting-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+
+    button.disabled = true;
+    setPostingStatus(card, "Registrando a aula na planilha...");
+
+    try {
+      createPostingTransport(requestId, data);
+
+      const result = await waitForPostingConfirmation(requestId);
+
+      if (!result.saved) {
+        throw new Error(
+          result.error ||
+          "A planilha não confirmou o salvamento da postagem."
+        );
+      }
+
+      setPostingStatus(
+        card,
+        result.message || "Postagem registrada na planilha com sucesso."
+      );
+    } catch (error) {
+      setPostingStatus(
+        card,
+        error?.message || "Não foi possível registrar a postagem na planilha.",
+        true
+      );
+    } finally {
+      button.disabled = false;
+    }
+  }
+
   function renderButtonGroup(nodes) {
     const buttons = nodes.map(node => {
       const url = safeUrl(node.url);
@@ -1701,6 +2464,10 @@ details[open]::details-content {
 
         case "mp":
           html += renderMp(node);
+          break;
+
+        case "posting":
+          html += renderPostingCard(node);
           break;
       }
     }
@@ -1854,6 +2621,7 @@ details[open]::details-content {
     };
 
     window.__SUP_FORUM_USER__ = Object.freeze({ ...forumContext });
+    syncPostingIdentity();
 
     if (forumContextResolver) {
       forumContextResolver();
@@ -2169,6 +2937,8 @@ details[open]::details-content {
       lessonContent.innerHTML = rendered;
       applyCopyState();
       bindDetails();
+      syncPostingIdentity();
+      document.querySelectorAll("[data-posting-card]").forEach(syncPostingResults);
       sendHeight(true);
     } catch (error) {
       console.error(error);
@@ -2191,7 +2961,21 @@ details[open]::details-content {
     if (mpButton) {
       event.preventDefault();
       sendPrivateMessage(mpButton);
+      return;
     }
+
+    const postingButton = event.target.closest("[data-submit-posting]");
+    if (postingButton) {
+      event.preventDefault();
+      submitPosting(postingButton);
+    }
+  });
+
+  document.addEventListener("input", event => {
+    if (!event.target.matches(".posting-students")) return;
+
+    const card = event.target.closest("[data-posting-card]");
+    if (card) syncPostingResults(card);
   });
 
   const iframeContentRoot = document.querySelector(".page-wrap");
