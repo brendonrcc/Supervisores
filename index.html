@@ -1,0 +1,2283 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Aulas da Companhia dos Supervisores</title>
+<meta id="pageDescription" name="description" content="Página de aplicação das aulas da Companhia dos Supervisores.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin>
+<link rel="preconnect" href="https://docs.google.com/">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.45.0/dist/tabler-icons.min.css" rel="stylesheet">
+
+<style>
+:root {
+  --frame-border: #159c0c;
+  --frame-bg: #006a06;
+  --accent: #109c08;
+  --accent-hover: #0f9408;
+  --content-border: #ffffff;
+  --content-bg: #eef2ef;
+  --spoiler-bg: #e4e9e5;
+  --text-main: #161616;
+  --text-muted: #73915f;
+  --heading: #138f18;
+  --answer: #54675a;
+  --white: #ffffff;
+  --danger: #8d3636;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  width: 100%;
+  background: transparent;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea,
+summary,
+option {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text-main);
+  background: transparent;
+  font-size: 13px;
+}
+
+button,
+input,
+select,
+textarea,
+summary {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.ti {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.page-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2px;
+}
+
+.shell {
+  width: 100%;
+  max-width: 980px;
+  overflow: hidden;
+  background: var(--frame-bg);
+  border: 6px solid var(--frame-border);
+  border-radius: 25px;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: -20px;
+  padding: 0 28px;
+  background: var(--frame-bg);
+}
+
+.hero-logo {
+  width: 128px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateY(37px);
+}
+
+.hero-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(15px);
+}
+
+.hero-kicker {
+  margin: 0 0 2px;
+  color: #70be68;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin: 0;
+  color: #f1f1f1;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+}
+
+.panel-wrap {
+  position: relative;
+  z-index: 2;
+  margin-top: -2px;
+  padding: 0 14px 7px;
+}
+
+.panel {
+  min-height: 120px;
+  padding: 15px;
+  overflow: hidden;
+  background: var(--content-bg);
+  border: 3px solid var(--content-border);
+  border-radius: 15px;
+}
+
+.lesson-content {
+  width: 100%;
+}
+
+.load-state {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 18px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.load-state .ti {
+  font-size: 18px;
+}
+
+.load-state.is-loading .ti {
+  animation: spin .9s linear infinite;
+}
+
+.load-state.is-error {
+  flex-direction: column;
+  color: var(--danger);
+}
+
+.retry-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  color: var(--white);
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.retry-button:hover {
+  filter: brightness(1.05);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- linhas copiáveis ---------- */
+
+.copy-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 8px;
+  min-height: 27px;
+  margin: 0 -4px;
+  padding: 1px 4px;
+  border-radius: 6px;
+  transition: opacity .2s ease;
+}
+
+.copy-line + .copy-line {
+  margin-top: 0;
+}
+
+.copy-line.is-done {
+  opacity: .5;
+}
+
+.copy-line.is-static {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.copy-line.is-static.sos-topic {
+  grid-template-columns: 11px minmax(0, 1fr);
+  column-gap: 5px;
+  align-items: start;
+  padding-left: 4px;
+}
+
+.copy-line.is-static.sos-topic::before {
+  content: "•";
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  margin-top: 0;
+  color: var(--heading);
+  font-weight: 800;
+  line-height: 1.48;
+  text-align: center;
+}
+
+.copy-line.is-static.sos-topic .copy-line-text {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.bbcode-link {
+  color: var(--heading);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+
+.bbcode-quote {
+  display: block;
+  margin: 5px 0;
+  padding: 7px 9px;
+  color: #4d5f51;
+  background: rgba(255, 255, 255, .46);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 7px 7px 0;
+}
+
+.bbcode-code {
+  display: inline;
+  padding: 1px 4px;
+  background: rgba(0, 0, 0, .06);
+  border-radius: 4px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .94em;
+}
+
+.script-legend {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(19, 143, 24, .18);
+}
+
+.script-legend-title {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 7px;
+  margin: 0 0 8px;
+  color: var(--heading);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.script-legend-title .ti {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.script-legend-title > span:last-child {
+  display: block;
+  line-height: 18px;
+}
+
+.script-legend-list {
+  display: grid;
+  gap: 6px;
+}
+
+.script-legend-item {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 8px;
+  color: #526457;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.script-legend-item .ti {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  color: var(--heading);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.script-legend-item > span:last-child {
+  display: block;
+  min-width: 0;
+  padding-top: 1px;
+}
+
+.script-legend-bullet {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  color: var(--heading);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.copy-line-text {
+  min-width: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  line-height: 1.48;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.copy-line.is-title {
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.copy-line.is-title:first-child {
+  margin-top: 0;
+}
+
+.copy-line.is-title .copy-line-text {
+  color: var(--heading);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+
+.copy-line.is-question {
+  margin-top: 6px;
+}
+
+.copy-line-button {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--heading);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  opacity: .78;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.copy-line-button:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.copy-line-button:active {
+  transform: translateY(0) scale(.94);
+}
+
+.copy-line-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--heading) 28%, transparent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.copy-line-button .ti {
+  width: 17px;
+  height: 17px;
+  font-size: 17px;
+}
+
+.copy-line.is-done .copy-line-button {
+  opacity: 1;
+}
+
+/* ---------- avisos / respostas ---------- */
+
+.alert-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 2px 5px 10px 8px;
+  color: rgba(19, 143, 24, .62);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.alert-line-icon {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: rgba(19, 143, 24, .72);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.alert-line-icon .ti {
+  font-size: 14px;
+}
+
+.alert-line-text {
+  min-width: 0;
+}
+
+.answer-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 2px 5px 10px 8px;
+  color: var(--answer);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.answer-line .ti {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ---------- tags auxiliares ---------- */
+
+.lesson-space {
+  width: 100%;
+  height: 12px;
+}
+
+.static-text-line {
+  margin: 2px 0;
+  color: var(--text-main);
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.section-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px 0 9px;
+  color: var(--heading);
+  text-align: center;
+}
+
+.section-bar::before,
+.section-bar::after {
+  content: "";
+  height: 1px;
+  flex: 1 1 auto;
+  background: rgba(19, 143, 24, .22);
+}
+
+.section-bar-label {
+  flex: 0 1 auto;
+  max-width: 72%;
+  padding: 5px 10px;
+  color: var(--heading);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- spoilers ---------- */
+
+details {
+  interpolate-size: allow-keywords;
+  overflow: hidden;
+  margin: 7px 0;
+  color: var(--white);
+  background: var(--accent);
+  border-radius: 10px;
+  transition:
+    background-color .25s ease,
+    transform .2s ease,
+    filter .2s ease;
+}
+
+details:first-child {
+  margin-top: 0;
+}
+
+details:hover {
+  background: var(--accent-hover);
+}
+
+details:has(summary:active) {
+  transform: scale(.998);
+}
+
+summary {
+  position: relative;
+  min-height: 39px;
+  display: flex;
+  align-items: center;
+  padding: 9px 44px 9px 15px;
+  cursor: pointer;
+  list-style: none;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  user-select: none;
+  transition: background-color .2s ease;
+}
+
+summary:hover {
+  background: rgba(255, 255, 255, .055);
+}
+
+summary:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, .36);
+  outline-offset: -3px;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary-leading-icon {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 9px;
+}
+
+.summary-leading-icon .ti {
+  width: 19px;
+  height: 19px;
+  font-size: 19px;
+}
+
+.summary-label {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.summary-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  transition: transform .34s cubic-bezier(.22, 1, .36, 1);
+}
+
+.summary-icon .ti {
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+}
+
+details[open] .summary-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+details::details-content {
+  block-size: 0;
+  overflow-y: clip;
+  opacity: 0;
+  transform: translateY(-7px);
+  transition:
+    block-size .36s cubic-bezier(.22, 1, .36, 1),
+    content-visibility .36s allow-discrete,
+    opacity .22s ease,
+    transform .31s cubic-bezier(.22, 1, .36, 1);
+}
+
+details[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@starting-style {
+  details[open]::details-content {
+    block-size: 0;
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+}
+
+.spoiler-content {
+  margin: 0 5px 5px;
+  padding: 10px 12px;
+  color: var(--text-main);
+  background: var(--spoiler-bg);
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.orientation-spoiler summary {
+  text-transform: uppercase;
+}
+
+.spoiler-content details {
+  margin-inline: 0;
+}
+
+.spoiler-content .copy-line.is-title .copy-line-text,
+.spoiler-content .copy-line-button {
+  color: var(--accent);
+}
+
+/* ---------- MP ---------- */
+
+.mp-block {
+  margin: 9px 0;
+  padding: 11px;
+  background: color-mix(in srgb, var(--content-bg) 62%, white);
+  border: 1px solid color-mix(in srgb, var(--accent) 16%, transparent);
+  border-radius: 10px;
+}
+
+.spoiler-content .mp-block {
+  background: rgba(255, 255, 255, .34);
+}
+
+.mp-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.mp-heading .ti {
+  font-size: 16px;
+}
+
+.mp-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 7px;
+  align-items: center;
+}
+
+.mp-input-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.mp-input-wrap > .ti {
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.mp-recipient-input {
+  width: 100%;
+  min-height: 37px;
+  padding: 7px 11px 7px 35px;
+  color: var(--text-main);
+  background: var(--white);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+  border-radius: 8px;
+  outline: none;
+  font-size: 11px;
+}
+
+.mp-recipient-input:focus {
+  border-color: color-mix(in srgb, var(--accent) 48%, transparent);
+}
+
+.mp-send-button {
+  min-height: 37px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  padding: 7px 12px;
+  color: var(--white);
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.mp-send-button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.mp-send-button:active {
+  transform: translateY(0);
+}
+
+.mp-status {
+  margin-top: 7px;
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.mp-status.is-error {
+  color: var(--danger);
+}
+
+/* ---------- botões vindos da planilha ---------- */
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 7px;
+  margin: 9px 0;
+}
+
+.sheet-action {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px 12px;
+  color: var(--white);
+  background: var(--accent);
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.sheet-action:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.sheet-action .ti {
+  flex: 0 0 auto;
+  font-size: 16px;
+}
+
+.sheet-action.is-disabled {
+  cursor: default;
+  opacity: .5;
+  pointer-events: none;
+}
+
+/* ---------- créditos ---------- */
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 14px 7px;
+  color: rgba(255, 255, 255, .86);
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.footer strong {
+  font-weight: 700;
+}
+
+@media (max-width: 650px) {
+  .shell {
+    border-width: 5px;
+  }
+
+  .hero {
+    min-height: 73px;
+    gap: 13px;
+    padding-inline: 18px;
+  }
+
+  .hero-logo {
+    width: 104px;
+    transform: translateY(30px);
+  }
+
+  .hero-copy {
+    transform: translateY(11px);
+  }
+
+  .hero-kicker {
+    font-size: 10px;
+  }
+
+  .hero-title {
+    font-size: 20px;
+  }
+
+  .panel-wrap {
+    padding-inline: 10px;
+  }
+
+  .copy-line.is-title .copy-line-text {
+    font-size: 14px;
+  }
+
+  summary {
+    font-size: 11px;
+  }
+
+  .mp-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .mp-send-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  body {
+    font-size: 12px;
+  }
+
+  .shell {
+    border-width: 4px;
+  }
+
+  .hero {
+    min-height: 61px;
+    gap: 10px;
+    padding-inline: 12px;
+  }
+
+  .hero-logo {
+    width: 82px;
+    transform: translateY(24px);
+  }
+
+  .hero-copy {
+    transform: translateY(10px);
+  }
+
+  .hero-kicker {
+    font-size: 8px;
+    line-height: 1.2;
+  }
+
+  .hero-title {
+    font-size: 16px;
+    line-height: 1.08;
+  }
+
+  .panel-wrap {
+    padding: 0 7px 7px;
+  }
+
+  .panel {
+    padding: 11px;
+  }
+
+  .copy-line {
+    grid-template-columns: minmax(0, 1fr) 22px;
+    gap: 7px;
+    margin-inline: -3px;
+    padding-inline: 3px;
+  }
+
+  .copy-line-button {
+    width: 22px;
+    height: 22px;
+  }
+
+  .copy-line.is-title .copy-line-text {
+    font-size: 13px;
+  }
+
+  summary {
+    min-height: 42px;
+    padding-left: 12px;
+    padding-right: 38px;
+    font-size: 10px;
+  }
+
+  .summary-leading-icon {
+    margin-right: 7px;
+  }
+
+  .summary-icon {
+    right: 11px;
+  }
+
+  .alert-line,
+  .answer-line {
+    font-size: 9px;
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="page-wrap">
+  <section class="shell" id="courseShell" aria-label="Companhia dos Supervisores - Aula de Supervisão">
+    <header class="hero">
+      <img
+        class="hero-logo"
+        src="https://i.imgur.com/hypMYYf.png"
+        alt="Símbolo da Companhia dos Supervisores"
+        width="206"
+        height="108"
+        decoding="async"
+      >
+
+      <div class="hero-copy">
+        <p class="hero-kicker">Companhia dos Supervisores</p>
+        <h1 class="hero-title" id="heroTitle">Aula de Supervisão</h1>
+      </div>
+    </header>
+
+    <div class="panel-wrap">
+      <section class="panel">
+        <div id="lessonContent" class="lesson-content" aria-live="polite">
+          <div class="load-state is-loading">
+            <i class="ti ti-loader-2" aria-hidden="true"></i>
+            <span>Carregando conteúdo da aula...</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      Desenvolvido por <strong>.Brendon</strong>
+    </footer>
+  </section>
+</main>
+
+<script>
+(() => {
+  "use strict";
+
+  const SUP_API_URL = "https://script.google.com/macros/s/AKfycbyJcYhraH71hPC9VeTjdZiEryVy8aGLdd9VCrPQm9K8lkcsJxLwhsluSYo1ej7k3uDzUA/exec";
+  const SHEET_ID = "134gZZbaQB7tn6a1-AgX6Y0JdcgHWilMLT7tmzmd-u0M";
+  const SHEET_GID = "0";
+  const FORUM_ORIGIN = "https://www.policiarcc.com";
+
+  const COURSES = Object.freeze({
+    SUP: {
+      key: "SUP",
+      title: "Aula de Supervisão",
+      fullName: "Aula de Supervisão (SUP)",
+      apiRange: "A:C"
+    },
+    SEG: {
+      key: "SEG",
+      title: "Aula de Supervisão",
+      fullName: "Aula de Supervisão (SEG)",
+      apiRange: "E:G"
+    },
+    PRO: {
+      key: "PRO",
+      title: "Aula para Promotor",
+      fullName: "Aula para Promotor (PRO)",
+      apiRange: "I:K"
+    }
+  });
+
+  const requestedCourse = (() => {
+    const params = new URLSearchParams(window.location.search);
+    const value = String(params.get("course") || params.get("aula") || "SUP")
+      .trim()
+      .toUpperCase();
+
+    return COURSES[value] ? value : "SUP";
+  })();
+
+  const ACTIVE_COURSE = COURSES[requestedCourse];
+  const PM_SUBJECT = ACTIVE_COURSE.fullName;
+
+  const lessonContent = document.getElementById("lessonContent");
+  const copiedLines = new Set();
+  const mpMessages = new Map();
+  const pendingPmRequests = new Map();
+
+  function readNativeForumContext() {
+    const candidates = [];
+
+    try {
+      if (window._userdata) candidates.push(window._userdata);
+    } catch (error) {}
+
+    try {
+      if (
+        window.parent &&
+        window.parent !== window &&
+        window.parent.location.origin === window.location.origin &&
+        window.parent._userdata
+      ) {
+        candidates.unshift(window.parent._userdata);
+      }
+    } catch (error) {}
+
+    const data = candidates.find(Boolean);
+    if (!data) return null;
+
+    return {
+      username: String(data.username || "").trim(),
+      userId: Number(data.user_id) || 0,
+      loggedIn:
+        Number(data.session_logged_in) === 1 ||
+        data.session_logged_in === true
+    };
+  }
+
+  let forumContext = readNativeForumContext() || {
+    username: "",
+    userId: 0,
+    loggedIn: false
+  };
+
+  let forumContextResolver = null;
+
+  const START_TAGS = Object.freeze({
+    SOS1: {
+      close: "SOS2",
+      title: "ORIENTAÇÕES AO SUPERVISOR",
+      icon: "user-question",
+      className: "orientation-spoiler"
+    },
+    S1: {
+      close: "S2",
+      title: null,
+      icon: "layout-list",
+      className: "generic-spoiler"
+    },
+    SMP: {
+      close: "SMP2",
+      title: "Modelo via Mensagem Privada (MP) - Utilize caso a opção do slide esteja fora do ar",
+      icon: "send-2",
+      className: "model-spoiler"
+    },
+    SS1: {
+      close: "SS2",
+      title: "Modelo via Slides",
+      icon: "presentation",
+      className: "model-spoiler"
+    },
+    SH1: {
+      close: "SH2",
+      title: "Modelo via Habbo",
+      icon: "message-circle",
+      className: "model-spoiler"
+    }
+  });
+
+  const CLOSE_TAGS = new Set(["SOS2", "S2", "SMP2", "SS2", "SH2"]);
+
+  const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+
+  const normalizeTag = value => String(value ?? "")
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase();
+
+  const safeUrl = value => {
+    const raw = String(value ?? "").trim();
+    if (!raw) return "";
+    if (/^(https?:\/\/|\/|#)/i.test(raw)) return raw;
+    return "";
+  };
+
+  function applyForumVariables(value) {
+    const username = forumContext.username || "{USERNAME}";
+    const userId = forumContext.userId ? String(forumContext.userId) : "{USER_ID}";
+
+    return String(value ?? "")
+      .replace(/\{USERNAME\}/gi, username)
+      .replace(/\{USER_ID\}/gi, userId);
+  }
+
+  function renderBbcode(value) {
+    let html = escapeHtml(applyForumVariables(value));
+
+    // URLs com texto: [url=https://exemplo.com]texto[/url]
+    html = html.replace(
+      /\[url=(https?:\/\/[^\]\s]+)\]([\s\S]*?)\[\/url\]/gi,
+      (_, url, label) => {
+        const href = safeUrl(url.replace(/&amp;/g, "&"));
+        return href
+          ? `<a class="bbcode-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`
+          : label;
+      }
+    );
+
+    // URLs simples: [url]https://exemplo.com[/url]
+    html = html.replace(
+      /\[url\](https?:\/\/[^\[]+)\[\/url\]/gi,
+      (_, url) => {
+        const href = safeUrl(url.replace(/&amp;/g, "&"));
+        return href
+          ? `<a class="bbcode-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(href)}</a>`
+          : escapeHtml(url);
+      }
+    );
+
+    const replacements = [
+      [/\[b\]([\s\S]*?)\[\/b\]/gi, "<strong>$1</strong>"],
+      [/\[i\]([\s\S]*?)\[\/i\]/gi, "<em>$1</em>"],
+      [/\[u\]([\s\S]*?)\[\/u\]/gi, "<u>$1</u>"],
+      [/\[s\]([\s\S]*?)\[\/s\]/gi, "<s>$1</s>"],
+      [/\[strike\]([\s\S]*?)\[\/strike\]/gi, "<s>$1</s>"],
+      [/\[center\]([\s\S]*?)\[\/center\]/gi, '<span style="display:block;text-align:center">$1</span>'],
+      [/\[left\]([\s\S]*?)\[\/left\]/gi, '<span style="display:block;text-align:left">$1</span>'],
+      [/\[right\]([\s\S]*?)\[\/right\]/gi, '<span style="display:block;text-align:right">$1</span>'],
+      [/\[quote\]([\s\S]*?)\[\/quote\]/gi, '<span class="bbcode-quote">$1</span>'],
+      [/\[code\]([\s\S]*?)\[\/code\]/gi, '<code class="bbcode-code">$1</code>']
+    ];
+
+    // Repete para permitir combinações simples, como [b][i]texto[/i][/b].
+    for (let pass = 0; pass < 3; pass += 1) {
+      replacements.forEach(([pattern, output]) => {
+        html = html.replace(pattern, output);
+      });
+    }
+
+    // Cores: aceita somente nomes simples e hexadecimal.
+    html = html.replace(
+      /\[color=(#[0-9a-f]{3,8}|[a-z]+)\]([\s\S]*?)\[\/color\]/gi,
+      '<span style="color:$1">$2</span>'
+    );
+
+    // Tamanho limitado para evitar valores extremos.
+    html = html.replace(
+      /\[size=(\d{1,2})\]([\s\S]*?)\[\/size\]/gi,
+      (_, size, content) => {
+        const px = Math.min(32, Math.max(8, Number(size)));
+        return `<span style="font-size:${px}px">${content}</span>`;
+      }
+    );
+
+    // Quebras explícitas e quebras reais vindas da célula.
+    html = html
+      .replace(/\[br\]/gi, "<br>")
+      .replace(/\r?\n/g, "<br>");
+
+    return html;
+  }
+
+  const cellText = (row, index) => {
+    const cell = row?.c?.[index];
+    if (!cell) return "";
+    const value = cell.v ?? cell.f ?? "";
+    return String(value).trim();
+  };
+
+  const tablerIcon = name => `<i class="ti ti-${name}" aria-hidden="true"></i>`;
+
+  function requestLessonApi() {
+    return new Promise((resolve, reject) => {
+      const callbackName = `__supApi_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+      const script = document.createElement("script");
+      let settled = false;
+
+      const timeout = window.setTimeout(() => {
+        finish(new Error("Tempo limite ao consultar a API da aula."));
+      }, 10000);
+
+      const cleanup = () => {
+        window.clearTimeout(timeout);
+        script.remove();
+        try {
+          delete window[callbackName];
+        } catch (error) {
+          window[callbackName] = undefined;
+        }
+      };
+
+      const finish = (error, payload) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        error ? reject(error) : resolve(payload);
+      };
+
+      window[callbackName] = payload => {
+        if (!payload || payload.ok !== true || !Array.isArray(payload.rows)) {
+          finish(new Error(payload?.error || "A API não retornou dados válidos."));
+          return;
+        }
+
+        if (payload.course && String(payload.course).toUpperCase() !== ACTIVE_COURSE.key) {
+          finish(new Error("A API retornou uma aula diferente da solicitada."));
+          return;
+        }
+
+        finish(null, payload);
+      };
+
+      script.onerror = () => finish(new Error("Não foi possível acessar a API da aula."));
+
+      const query = new URLSearchParams({
+        action: "lesson",
+        course: ACTIVE_COURSE.key,
+        callback: callbackName,
+        _: Date.now().toString()
+      });
+
+      script.src = `${SUP_API_URL}?${query.toString()}`;
+      document.head.appendChild(script);
+    });
+  }
+
+  function apiRowsToSheetRows(rows) {
+    return rows.map(item => ({
+      c: [
+        { v: item.tag ?? "" },
+        { v: item.b ?? "" },
+        { v: item.c ?? "" }
+      ]
+    }));
+  }
+
+  function addNode(container, node) {
+    container.children.push(node);
+  }
+
+  function closeMatchingSpoiler(stack, closeTag) {
+    for (let index = stack.length - 1; index > 0; index -= 1) {
+      if (stack[index].closeTag === closeTag) {
+        stack.splice(index);
+        return;
+      }
+    }
+  }
+
+  function rowsToTree(rows) {
+    const root = { type: "root", children: [] };
+    const stack = [root];
+
+    rows.forEach((row, index) => {
+      const sheetRow = index + 1;
+      const tag = normalizeTag(cellText(row, 0));
+      const columnB = cellText(row, 1);
+      const columnC = cellText(row, 2);
+
+      if (!tag) return;
+
+      const current = () => stack[stack.length - 1];
+
+      if (START_TAGS[tag]) {
+        const config = START_TAGS[tag];
+        const title = tag === "S1"
+          ? (columnB || "Spoiler")
+          : config.title;
+
+        const spoiler = {
+          type: "spoiler",
+          tag,
+          closeTag: config.close,
+          title,
+          icon: config.icon,
+          className: config.className,
+          row: sheetRow,
+          children: []
+        };
+
+        addNode(current(), spoiler);
+        stack.push(spoiler);
+
+        /*
+         * S1 usa a coluna B como título e, quando a coluna C estiver
+         * preenchida, o texto de C entra como primeira linha copiável.
+         */
+        if (tag === "S1" && columnC) {
+          addNode(spoiler, {
+            type: "text",
+            text: columnC,
+            row: `${sheetRow}-c`
+          });
+        }
+
+        return;
+      }
+
+      if (CLOSE_TAGS.has(tag)) {
+        /*
+         * Para S2, um eventual texto em C é inserido no fim do spoiler
+         * antes do fechamento.
+         */
+        if (tag === "S2" && columnC) {
+          addNode(current(), {
+            type: "text",
+            text: columnC,
+            row: `${sheetRow}-c`
+          });
+        }
+
+        closeMatchingSpoiler(stack, tag);
+        return;
+      }
+
+      switch (tag) {
+        case "TITULO":
+          if (columnB) addNode(current(), { type: "title", text: columnB, row: sheetRow });
+          break;
+
+        case "TEXTO":
+          if (columnB) addNode(current(), { type: "text", text: columnB, row: sheetRow });
+          break;
+
+        case "TEXTO2":
+          if (columnB) addNode(current(), { type: "text2", text: columnB, row: sheetRow });
+          break;
+
+        case "ESPACO":
+          addNode(current(), { type: "space", row: sheetRow });
+          break;
+
+        case "BARRA":
+          if (columnB) addNode(current(), { type: "bar", text: columnB, row: sheetRow });
+          break;
+
+        case "ALERTA":
+          if (columnB) addNode(current(), { type: "alert", text: columnB, row: sheetRow });
+          break;
+
+        case "PERGUNTA":
+          if (columnB) addNode(current(), { type: "question", text: columnB, row: sheetRow });
+          break;
+
+        case "RESPOSTA":
+          if (columnB) addNode(current(), { type: "answer", text: columnB, row: sheetRow });
+          break;
+
+        case "MP":
+          if (columnB) addNode(current(), { type: "mp", message: columnB, row: sheetRow });
+          break;
+
+        case "BOTAO":
+          if (columnB) addNode(current(), {
+            type: "button",
+            label: columnB,
+            url: columnC,
+            row: sheetRow
+          });
+          break;
+
+        default:
+          console.warn(`Tag desconhecida na linha ${sheetRow}:`, tag);
+      }
+    });
+
+    return root.children;
+  }
+
+  function renderCopyLine(node, extraClass = "") {
+    const id = `sheet-${String(node.row).replace(/[^\w-]/g, "-")}`;
+    return `
+      <div class="copy-line ${extraClass}" data-copy-id="${escapeHtml(id)}">
+        <p class="copy-line-text">${renderBbcode(node.text)}</p>
+        <button class="copy-line-button" type="button" data-copy-line aria-label="Copiar esta linha" title="Copiar esta linha">
+          ${tablerIcon("copy")}
+        </button>
+      </div>
+    `;
+  }
+
+  function renderStaticLine(node, extraClass = "", isSosTopic = false) {
+    return `
+      <div class="copy-line is-static ${extraClass} ${isSosTopic ? "sos-topic" : ""}">
+        <p class="copy-line-text">${renderBbcode(node.text)}</p>
+      </div>
+    `;
+  }
+
+  function renderScriptLegend() {
+    return `
+      <section class="script-legend" aria-label="Legenda do script">
+        <p class="script-legend-title">
+          ${tablerIcon("info-circle")}
+          <span>Legenda do script</span>
+        </p>
+
+        <div class="script-legend-list">
+          <div class="script-legend-item">
+            ${tablerIcon("copy")}
+            <span>Trecho copiável: clique no ícone para copiar exatamente o texto da linha.</span>
+          </div>
+
+          <div class="script-legend-item">
+            <span class="script-legend-bullet" aria-hidden="true">•</span>
+            <span>Orientação ao supervisor: informação interna de apoio à aplicação e não copiável.</span>
+          </div>
+
+          <div class="script-legend-item">
+            ${tablerIcon("help-circle")}
+            <span>Pergunta: trecho que deve ser apresentado ao aluno.</span>
+          </div>
+
+          <div class="script-legend-item">
+            ${tablerIcon("corner-down-right")}
+            <span>Resposta: referência esperada para conferência do supervisor e não copiável.</span>
+          </div>
+
+          <div class="script-legend-item">
+            ${tablerIcon("info-circle")}
+            <span>Alerta: instrução importante ao supervisor durante a aplicação.</span>
+          </div>
+
+          <div class="script-legend-item">
+            ${tablerIcon("align-left")}
+            <span>Texto sem ícone de cópia: informação apenas para leitura.</span>
+          </div>
+
+          <div class="script-legend-item">
+            ${tablerIcon("separator")}
+            <span>Barra: separa e identifica uma nova parte do script.</span>
+          </div>
+
+          <div class="script-legend-item">
+            ${tablerIcon("message-share")}
+            <span>Mensagem privada: use o campo de nickname para enviar o BBCode indicado.</span>
+          </div>
+
+          <div class="script-legend-item">
+            ${tablerIcon("external-link")}
+            <span>Botão: abre o recurso, página ou material relacionado àquela etapa da aula.</span>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderSpoiler(node, inheritedNoCopy = false) {
+    const noCopy = inheritedNoCopy || node.tag === "SOS1";
+    const content = renderNodes(node.children, noCopy);
+    const legend = node.tag === "SOS1" ? renderScriptLegend() : "";
+    return `
+      <details class="${escapeHtml(node.className || "")}">
+        <summary>
+          <span class="summary-leading-icon" aria-hidden="true">${tablerIcon(node.icon || "layout-list")}</span>
+          <span class="summary-label">${renderBbcode(node.title)}</span>
+          <span class="summary-icon" aria-hidden="true">${tablerIcon("chevron-down")}</span>
+        </summary>
+        <div class="spoiler-content">${content || ""}${legend}</div>
+      </details>
+    `;
+  }
+
+  function renderMp(node) {
+    const id = `mp-${String(node.row).replace(/[^\w-]/g, "-")}`;
+    mpMessages.set(id, node.message);
+
+    return `
+      <section class="mp-block" data-mp-block="${escapeHtml(id)}">
+        <div class="mp-heading">
+          ${tablerIcon("message-share")}
+          <span>Mensagem privada</span>
+        </div>
+
+        <div class="mp-controls">
+          <div class="mp-input-wrap">
+            ${tablerIcon("users")}
+            <input
+              class="mp-recipient-input"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="Inserir nickname ou nicknames..."
+              aria-label="Nickname ou nicknames que receberão a mensagem privada"
+            >
+          </div>
+
+          <button class="mp-send-button" type="button" data-send-mp="${escapeHtml(id)}">
+            ${tablerIcon("send-2")}
+            <span>Enviar MP</span>
+          </button>
+        </div>
+
+        <div class="mp-status" role="status" aria-live="polite" hidden></div>
+      </section>
+    `;
+  }
+
+  function renderButtonGroup(nodes) {
+    const buttons = nodes.map(node => {
+      const url = safeUrl(node.url);
+
+      if (!url) {
+        return `
+          <span class="sheet-action is-disabled" aria-disabled="true">
+            ${tablerIcon("link-off")}
+            <span>${escapeHtml(node.label)}</span>
+          </span>
+        `;
+      }
+
+      return `
+        <a class="sheet-action" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
+          ${tablerIcon("external-link")}
+          <span>${escapeHtml(node.label)}</span>
+        </a>
+      `;
+    }).join("");
+
+    return `<div class="action-grid">${buttons}</div>`;
+  }
+
+  function renderNodes(nodes, noCopy = false) {
+    let html = "";
+
+    for (let index = 0; index < nodes.length; index += 1) {
+      const node = nodes[index];
+
+      if (node.type === "button") {
+        const grouped = [node];
+
+        while (nodes[index + 1]?.type === "button") {
+          grouped.push(nodes[index + 1]);
+          index += 1;
+        }
+
+        html += renderButtonGroup(grouped);
+        continue;
+      }
+
+      switch (node.type) {
+        case "title":
+          html += noCopy
+            ? renderStaticLine(node, "is-title")
+            : renderCopyLine(node, "is-title");
+          break;
+
+        case "text":
+          html += noCopy
+            ? renderStaticLine(node, "", true)
+            : renderCopyLine(node);
+          break;
+
+        case "question":
+          html += noCopy
+            ? renderStaticLine(node, "is-question")
+            : renderCopyLine(node, "is-question");
+          break;
+
+        case "alert":
+          html += `
+            <div class="alert-line">
+              <span class="alert-line-icon" aria-hidden="true">${tablerIcon("corner-down-right")}</span>
+              <span class="alert-line-text">${renderBbcode(node.text)}</span>
+            </div>
+          `;
+          break;
+
+        case "answer":
+          html += `
+            <div class="answer-line">
+              ${tablerIcon("corner-down-right")}
+              <span>${renderBbcode(node.text)}</span>
+            </div>
+          `;
+          break;
+
+        case "text2":
+          html += `<div class="static-text-line">${renderBbcode(node.text)}</div>`;
+          break;
+
+        case "space":
+          html += `<div class="lesson-space" aria-hidden="true"></div>`;
+          break;
+
+        case "bar":
+          html += `
+            <div class="section-bar" role="separator" aria-label="${escapeHtml(node.text)}">
+              <span class="section-bar-label">${renderBbcode(node.text)}</span>
+            </div>
+          `;
+          break;
+
+        case "spoiler":
+          html += renderSpoiler(node, noCopy);
+          break;
+
+        case "mp":
+          html += renderMp(node);
+          break;
+      }
+    }
+
+    return html;
+  }
+
+  function applyCopyState() {
+    document.querySelectorAll(".copy-line[data-copy-id]").forEach(line => {
+      const copied = copiedLines.has(line.dataset.copyId);
+      const icon = line.querySelector(".copy-line-button .ti");
+
+      line.classList.toggle("is-done", copied);
+
+      if (icon) {
+        icon.classList.toggle("ti-copy", !copied);
+        icon.classList.toggle("ti-check", copied);
+      }
+    });
+  }
+
+  function legacyCopy(text) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.setAttribute("aria-hidden", "true");
+
+    Object.assign(textarea.style, {
+      position: "fixed",
+      top: "0",
+      left: "-9999px",
+      width: "1px",
+      height: "1px",
+      opacity: "0",
+      pointerEvents: "none"
+    });
+
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+
+    let copied = false;
+
+    try {
+      copied = document.execCommand("copy");
+    } catch (error) {
+      copied = false;
+    }
+
+    textarea.remove();
+    return copied;
+  }
+
+  async function copyText(text) {
+    if (legacyCopy(text)) return true;
+
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+
+    return false;
+  }
+
+  async function copySingleLine(button) {
+    const line = button.closest(".copy-line[data-copy-id]");
+    const textNode = line?.querySelector(".copy-line-text");
+
+    if (!line || !textNode) return;
+
+    const text = String(textNode.textContent || "").trim();
+    if (!text) return;
+
+    const copied = await copyText(text);
+
+    if (!copied) {
+      button.title = "Não foi possível copiar";
+      window.setTimeout(() => {
+        button.title = "Copiar esta linha";
+      }, 1400);
+      return;
+    }
+
+    copiedLines.add(line.dataset.copyId);
+    applyCopyState();
+
+    button.title = "Linha copiada";
+    window.setTimeout(() => {
+      button.title = "Copiar esta linha";
+    }, 1300);
+  }
+
+  const parseRecipients = value => String(value || "")
+    .split(/[,\n;]+/)
+    .map(item => item.trim())
+    .filter(Boolean);
+
+  function setMpStatus(block, message, isError = false) {
+    const status = block.querySelector(".mp-status");
+    if (!status) return;
+
+    status.textContent = message;
+    status.hidden = false;
+    status.classList.toggle("is-error", isError);
+    sendHeight(true);
+  }
+
+  function requestForumContext(timeout = 1200) {
+    const nativeContext = readNativeForumContext();
+
+    if (nativeContext) {
+      handleForumContext(nativeContext);
+      return Promise.resolve(forumContext);
+    }
+
+    if (window.parent === window) {
+      return Promise.resolve(forumContext);
+    }
+
+    return new Promise(resolve => {
+      let settled = false;
+
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        forumContextResolver = null;
+        resolve(forumContext);
+      };
+
+      forumContextResolver = finish;
+
+      window.parent.postMessage(
+        { type: "sup-forum-context-request" },
+        iframeParentOrigin
+      );
+
+      window.setTimeout(finish, timeout);
+    });
+  }
+
+  function handleForumContext(data) {
+    forumContext = {
+      username: String(data.username || "").trim(),
+      userId: Number(data.userId) || 0,
+      loggedIn: Boolean(data.loggedIn)
+    };
+
+    window.__SUP_FORUM_USER__ = Object.freeze({ ...forumContext });
+
+    if (forumContextResolver) {
+      forumContextResolver();
+    }
+  }
+
+  function handlePmResult(data) {
+    const pending = pendingPmRequests.get(data.requestId);
+    if (!pending) return;
+
+    pendingPmRequests.delete(data.requestId);
+    window.clearTimeout(pending.timeout);
+
+    pending.button.disabled = false;
+
+    if (data.ok) {
+      setMpStatus(
+        pending.block,
+        data.message || `Mensagem enviada para ${pending.recipients.join(", ")}.`
+      );
+      return;
+    }
+
+    setMpStatus(
+      pending.block,
+      data.error || "Não foi possível enviar a mensagem privada.",
+      true
+    );
+  }
+
+  function canUseDirectForumAccess() {
+    try {
+      return (
+        window.location.origin === FORUM_ORIGIN ||
+        (
+          window.parent &&
+          window.parent !== window &&
+          window.parent.location.origin === window.location.origin
+        )
+      );
+    } catch (error) {
+      return window.location.origin === FORUM_ORIGIN;
+    }
+  }
+
+  function collectPmHiddenFields(htmlText) {
+    const params = new URLSearchParams();
+
+    try {
+      const doc = new DOMParser().parseFromString(htmlText, "text/html");
+      const form = Array.from(doc.querySelectorAll("form")).find(candidate => {
+        const action = candidate.getAttribute("action") || "";
+        return /privmsg/i.test(action) && candidate.querySelector('[name="message"]');
+      });
+
+      if (!form) return params;
+
+      form.querySelectorAll('input[type="hidden"][name]').forEach(input => {
+        const name = input.name;
+
+        if (
+          name === "username" ||
+          name === "username[]" ||
+          name === "subject" ||
+          name === "message" ||
+          name === "post" ||
+          name === "preview"
+        ) {
+          return;
+        }
+
+        params.append(name, input.value || "");
+      });
+    } catch (error) {}
+
+    return params;
+  }
+
+  async function sendPmDirectly(recipients, subject, message) {
+    let params = new URLSearchParams();
+
+    try {
+      const formResponse = await fetch("/privmsg?mode=post", {
+        method: "GET",
+        credentials: "same-origin",
+        cache: "no-store"
+      });
+
+      if (formResponse.ok) {
+        params = collectPmHiddenFields(await formResponse.text());
+      }
+    } catch (error) {}
+
+    params.set("folder", "inbox");
+    params.set("mode", "post");
+    params.set("post", "1");
+    params.set("subject", subject);
+    params.set("message", message);
+
+    params.delete("username");
+    params.delete("username[]");
+
+    recipients.forEach(nickname => {
+      params.append("username[]", nickname);
+    });
+
+    const response = await fetch("/privmsg", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        "X-Requested-With": "XMLHttpRequest"
+      },
+      body: params.toString()
+    });
+
+    if (!response.ok) {
+      throw new Error("O fórum recusou o envio da mensagem privada.");
+    }
+
+    const responseText = await response.text();
+
+    if (
+      /(?:você precisa estar conectado|you must be logged|not authorized|não está autorizado)/i
+        .test(responseText)
+    ) {
+      throw new Error("A sessão do fórum não autorizou o envio da mensagem.");
+    }
+  }
+
+  async function sendPrivateMessage(button) {
+    const id = button.dataset.sendMp;
+    const block = button.closest("[data-mp-block]");
+    const input = block?.querySelector(".mp-recipient-input");
+    const rawMessage = mpMessages.get(id) || "";
+    const recipients = parseRecipients(input?.value);
+
+    if (!block || !input) return;
+
+    if (!recipients.length) {
+      input.focus();
+      setMpStatus(block, "Informe ao menos um nickname.", true);
+      return;
+    }
+
+    if (!rawMessage) {
+      setMpStatus(block, "A mensagem desta linha está vazia na planilha.", true);
+      return;
+    }
+
+    const nativeContext = readNativeForumContext();
+    if (nativeContext) {
+      handleForumContext(nativeContext);
+    }
+
+    if (!forumContext.loggedIn) {
+      setMpStatus(
+        block,
+        forumContext.username
+          ? "É necessário estar logado no fórum para enviar a MP."
+          : "O site ainda não recebeu os dados do usuário do fórum.",
+        true
+      );
+      return;
+    }
+
+    const message = applyForumVariables(rawMessage);
+    const subject = applyForumVariables(PM_SUBJECT);
+    const requestId =
+      `pm-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+
+    button.disabled = true;
+    setMpStatus(block, "Enviando mensagem privada...");
+
+    if (canUseDirectForumAccess()) {
+      try {
+        await sendPmDirectly(recipients, subject, message);
+        setMpStatus(block, `Mensagem enviada para ${recipients.join(", ")}.`);
+      } catch (error) {
+        setMpStatus(
+          block,
+          error?.message || "Não foi possível enviar a mensagem privada.",
+          true
+        );
+      } finally {
+        button.disabled = false;
+      }
+
+      return;
+    }
+
+    if (window.parent === window) {
+      button.disabled = false;
+      setMpStatus(
+        block,
+        "Abra esta aula dentro do fórum para utilizar o envio de MP.",
+        true
+      );
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      const pending = pendingPmRequests.get(requestId);
+      if (!pending) return;
+
+      pendingPmRequests.delete(requestId);
+      pending.button.disabled = false;
+
+      setMpStatus(
+        pending.block,
+        "O fórum não respondeu ao pedido de envio da MP.",
+        true
+      );
+    }, 15000);
+
+    pendingPmRequests.set(requestId, {
+      block,
+      button,
+      recipients,
+      timeout
+    });
+
+    window.parent.postMessage(
+      {
+        type: "sup-send-pm",
+        requestId,
+        recipients,
+        subject,
+        message,
+        course: ACTIVE_COURSE.key,
+        sender: forumContext.username
+      },
+      iframeParentOrigin
+    );
+  }
+
+  function applyCourseIdentity() {
+    const heroTitle = document.getElementById("heroTitle");
+    const shell = document.getElementById("courseShell");
+    const description = document.getElementById("pageDescription");
+
+    document.title = `[${ACTIVE_COURSE.key}] ${ACTIVE_COURSE.title}`;
+
+    if (heroTitle) {
+      heroTitle.textContent = ACTIVE_COURSE.title;
+    }
+
+    if (shell) {
+      shell.setAttribute(
+        "aria-label",
+        `Companhia dos Supervisores - ${ACTIVE_COURSE.fullName}`
+      );
+    }
+
+    if (description) {
+      description.setAttribute(
+        "content",
+        `Página de aplicação da ${ACTIVE_COURSE.fullName} da Companhia dos Supervisores.`
+      );
+    }
+  }
+
+  function bindDetails() {
+    document.querySelectorAll("details").forEach(item => {
+      if (item.dataset.resizeBound === "true") return;
+      item.dataset.resizeBound = "true";
+
+      item.addEventListener("toggle", () => {
+        sendHeight();
+        window.setTimeout(() => sendHeight(true), 390);
+      });
+    });
+  }
+
+  function showLoadError(message) {
+    lessonContent.innerHTML = `
+      <div class="load-state is-error">
+        ${tablerIcon("alert-triangle")}
+        <span>${escapeHtml(message)}</span>
+        <button id="retryLoad" class="retry-button" type="button">
+          ${tablerIcon("refresh")}
+          <span>Tentar novamente</span>
+        </button>
+      </div>
+    `;
+
+    document.getElementById("retryLoad")?.addEventListener("click", loadLesson);
+    sendHeight(true);
+  }
+
+  async function loadLesson() {
+    copiedLines.clear();
+    mpMessages.clear();
+
+    lessonContent.innerHTML = `
+      <div class="load-state is-loading">
+        ${tablerIcon("loader-2")}
+        <span>Carregando conteúdo da aula...</span>
+      </div>
+    `;
+
+    sendHeight(true);
+
+    try {
+      const payload = await requestLessonApi();
+      const tree = rowsToTree(apiRowsToSheetRows(payload.rows));
+      const rendered = renderNodes(tree);
+
+      if (!rendered.trim()) {
+        throw new Error("A planilha não possui conteúdo válido nas colunas A:C.");
+      }
+
+      lessonContent.innerHTML = rendered;
+      applyCopyState();
+      bindDetails();
+      sendHeight(true);
+    } catch (error) {
+      console.error(error);
+      showLoadError(
+        error?.message ||
+        "Não foi possível carregar o conteúdo da aula pela API."
+      );
+    }
+  }
+
+  document.addEventListener("click", event => {
+    const copyButton = event.target.closest("[data-copy-line]");
+    if (copyButton) {
+      event.preventDefault();
+      copySingleLine(copyButton);
+      return;
+    }
+
+    const mpButton = event.target.closest("[data-send-mp]");
+    if (mpButton) {
+      event.preventDefault();
+      sendPrivateMessage(mpButton);
+    }
+  });
+
+  const iframeContentRoot = document.querySelector(".page-wrap");
+
+  const iframeParentOrigin = (() => {
+    try {
+      return document.referrer ? new URL(document.referrer).origin : "*";
+    } catch (error) {
+      return "*";
+    }
+  })();
+
+  let lastHeight = 0;
+  let resizeFrame = 0;
+
+  function sendHeight(force = false) {
+    cancelAnimationFrame(resizeFrame);
+
+    resizeFrame = requestAnimationFrame(() => {
+      const height = Math.ceil(Math.max(
+        iframeContentRoot?.scrollHeight || 0,
+        iframeContentRoot?.getBoundingClientRect().height || 0
+      ));
+
+      if (!force && height === lastHeight) return;
+      lastHeight = height;
+
+      if (window.parent !== window) {
+        window.parent.postMessage(
+          {
+            type: "forum-iframe-resize",
+            frameHeight: height,
+            height
+          },
+          iframeParentOrigin
+        );
+      }
+    });
+  }
+
+  window.addEventListener("load", () => sendHeight(true));
+  window.addEventListener("resize", () => sendHeight());
+
+  window.addEventListener("message", event => {
+    if (event.source !== window.parent) return;
+    if (iframeParentOrigin !== "*" && event.origin !== iframeParentOrigin) return;
+
+    const data = event.data || {};
+
+    if (data.type === "forum-iframe-measure") {
+      sendHeight(true);
+      return;
+    }
+
+    if (data.type === "sup-forum-context") {
+      handleForumContext(data);
+      return;
+    }
+
+    if (data.type === "sup-send-pm-result") {
+      handlePmResult(data);
+    }
+  });
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(() => sendHeight()).observe(iframeContentRoot || document.body);
+  }
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => sendHeight(true));
+  }
+
+  document.querySelectorAll("img").forEach(image => {
+    if (image.complete) return;
+    image.addEventListener("load", () => sendHeight(true), { once: true });
+  });
+
+  async function bootstrap() {
+    applyCourseIdentity();
+    await requestForumContext();
+    await loadLesson();
+    sendHeight(true);
+  }
+
+  bootstrap();
+})();
+</script>
+</body>
+</html>
