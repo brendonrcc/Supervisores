@@ -848,6 +848,84 @@ details[open]::details-content {
 }
 
 
+
+/* ---------- transição entre aula e formulário ---------- */
+
+.panel {
+  position: relative;
+}
+
+.lesson-content,
+.internal-page {
+  transform-origin: center top;
+}
+
+.page-transition-enter {
+  animation: pageTransitionEnter .42s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.page-transition-exit {
+  animation: pageTransitionExit .22s cubic-bezier(.4, 0, 1, 1) both;
+}
+
+@keyframes pageTransitionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.992);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageTransitionExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-7px) scale(.996);
+    filter: blur(1px);
+  }
+}
+
+.internal-page-toolbar,
+.posting-card {
+  animation: pageContentRise .48s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.posting-card {
+  animation-delay: .035s;
+}
+
+@keyframes pageContentRise {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-enter,
+  .page-transition-exit,
+  .internal-page-toolbar,
+  .posting-card {
+    animation: none !important;
+  }
+}
+
 /* ---------- navegação interna / botões especiais ---------- */
 
 .internal-page {
@@ -1509,7 +1587,7 @@ details[open]::details-content {
           </div>
         </div>
 
-        <section id="postingPage" class="internal-page" hidden aria-label="Postagem das Aulas">
+        <section id="postingPage" class="internal-page" hidden aria-label="Formulário de Postagem das Aulas">
           <div class="internal-page-toolbar">
             <button class="internal-back-button" type="button" data-close-posting-page>
               <i class="ti ti-arrow-left" aria-hidden="true"></i>
@@ -1986,13 +2064,6 @@ details[open]::details-content {
           });
           break;
 
-        case "POSTAGEM":
-          addNode(current(), {
-            type: "posting",
-            row: sheetRow
-          });
-          break;
-
         default:
           console.warn(`Tag desconhecida na linha ${sheetRow}:`, tag);
       }
@@ -2146,12 +2217,14 @@ details[open]::details-content {
     ].join("");
   }
 
-  function findPostingNode(nodes) {
+  function findFormButtonNode(nodes) {
     for (const node of nodes || []) {
-      if (node.type === "posting") return node;
+      if (node.type === "specialButton" && node.action === "form") {
+        return node;
+      }
 
       if (node.type === "spoiler" && Array.isArray(node.children)) {
-        const nested = findPostingNode(node.children);
+        const nested = findFormButtonNode(node.children);
         if (nested) return nested;
       }
     }
@@ -2907,9 +2980,6 @@ details[open]::details-content {
         case "mp":
           html += renderMp(node);
           break;
-
-        case "posting":
-          break;
       }
     }
 
@@ -3299,30 +3369,65 @@ details[open]::details-content {
     );
   }
 
+  function animatePageSwap(fromPage, toPage) {
+    if (!fromPage || !toPage || fromPage === toPage) return;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reducedMotion) {
+      fromPage.hidden = true;
+      toPage.hidden = false;
+      sendHeight(true);
+      return;
+    }
+
+    fromPage.classList.remove("page-transition-enter");
+    fromPage.classList.add("page-transition-exit");
+
+    window.setTimeout(() => {
+      fromPage.hidden = true;
+      fromPage.classList.remove("page-transition-exit");
+
+      toPage.hidden = false;
+      toPage.classList.remove("page-transition-exit");
+      void toPage.offsetWidth;
+      toPage.classList.add("page-transition-enter");
+
+      window.setTimeout(() => {
+        toPage.classList.remove("page-transition-enter");
+        sendHeight(true);
+      }, 460);
+
+      sendHeight(true);
+    }, 215);
+  }
+
   function showPostingPage() {
     if (!postingPageContent || !postingPageContent.innerHTML.trim()) {
       return;
     }
 
-    lessonContent.hidden = true;
-    postingPage.hidden = false;
-
-    document.querySelectorAll("[data-posting-card]").forEach(card => {
+    postingPageContent.querySelectorAll("[data-posting-card]").forEach(card => {
       syncPostingIdentity();
       syncPostingResults(card);
       syncPostingCourse(card);
     });
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    sendHeight(true);
+    animatePageSwap(lessonContent, postingPage);
+
+    window.setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 160);
   }
 
   function showLessonPage() {
-    postingPage.hidden = true;
-    lessonContent.hidden = false;
+    animatePageSwap(postingPage, lessonContent);
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    sendHeight(true);
+    window.setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 160);
   }
 
   function applyCourseIdentity() {
@@ -3395,24 +3500,23 @@ details[open]::details-content {
     try {
       const payload = await requestLessonApi();
       const tree = rowsToTree(apiRowsToSheetRows(payload.rows));
-      const postingNode = findPostingNode(tree);
+      const formButtonNode = findFormButtonNode(tree);
       const rendered = renderNodes(tree);
 
-      if (!rendered.trim() && !postingNode) {
+      if (!rendered.trim()) {
         throw new Error("A planilha não possui conteúdo válido para esta aula.");
       }
 
       lessonContent.innerHTML = rendered;
 
-      if (postingNode) {
-        postingPageContent.innerHTML = renderPostingCard(postingNode);
+      if (formButtonNode) {
+        /*
+         * A estrutura inteira do formulário pertence ao BotãoForm.
+         * Não existe mais TAG Postagem.
+         */
+        postingPageContent.innerHTML = renderPostingCard(formButtonNode);
       } else {
-        postingPageContent.innerHTML = `
-          <div class="load-state is-error">
-            ${tablerIcon("alert-triangle")}
-            <span>A TAG Postagem não foi encontrada para esta aula.</span>
-          </div>
-        `;
+        postingPageContent.innerHTML = "";
       }
 
       postingPage.hidden = true;
