@@ -210,7 +210,7 @@ img {
   border: 0;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
 }
 
@@ -312,7 +312,7 @@ img {
   column-gap: 7px;
   margin: 0 0 8px;
   color: var(--heading);
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 800;
   line-height: 1.25;
   text-transform: uppercase;
@@ -344,7 +344,7 @@ img {
   align-items: start;
   column-gap: 8px;
   color: #526457;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   line-height: 1.4;
 }
@@ -375,7 +375,7 @@ img {
   justify-content: center;
   margin-top: 1px;
   color: var(--heading);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1;
 }
@@ -719,7 +719,7 @@ details[open]::details-content {
   gap: 7px;
   margin: 0 0 8px;
   color: var(--accent);
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -778,7 +778,7 @@ details[open]::details-content {
   border: 0;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
   transition: transform .18s ease, filter .18s ease;
@@ -825,7 +825,7 @@ details[open]::details-content {
   border: 0;
   border-radius: 9px;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1.25;
   transition: transform .18s ease, filter .18s ease;
@@ -847,6 +847,96 @@ details[open]::details-content {
   pointer-events: none;
 }
 
+
+/* ---------- navegação interna / botões especiais ---------- */
+
+.internal-page {
+  width: 100%;
+}
+
+.internal-page-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 11px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(19, 143, 24, .14);
+}
+
+.internal-back-button {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 6px 9px;
+  color: var(--heading);
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.internal-back-button:hover {
+  background: rgba(19, 143, 24, .06);
+}
+
+.internal-back-button .ti {
+  font-size: 15px;
+}
+
+.internal-page-heading {
+  min-width: 0;
+  text-align: right;
+}
+
+.internal-page-eyebrow {
+  display: block;
+  margin-bottom: 1px;
+  color: #7a8b7b;
+  font-size: 8.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.internal-page-heading strong {
+  display: block;
+  color: var(--heading);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.sheet-action.is-form-button {
+  border: 0;
+  font-family: inherit;
+}
+
+.sheet-action.is-form-button,
+.sheet-action.is-system-button,
+.sheet-action.is-report-button {
+  cursor: pointer;
+}
+
+.sheet-action.is-form-button .ti,
+.sheet-action.is-system-button .ti,
+.sheet-action.is-report-button .ti {
+  font-size: 16px;
+}
+
+@media (max-width: 520px) {
+  .internal-page-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .internal-page-heading {
+    text-align: left;
+  }
+}
 
 /* ---------- postagem da aula ---------- */
 
@@ -887,7 +977,7 @@ details[open]::details-content {
 
 .posting-card-title {
   margin: 0;
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.2;
   text-transform: uppercase;
@@ -896,7 +986,7 @@ details[open]::details-content {
 .posting-card-subtitle {
   margin: 1px 0 0;
   color: #778478;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.3;
 }
@@ -946,7 +1036,7 @@ details[open]::details-content {
   display: block;
   margin: 0;
   color: #4a5f47;
-  font-size: 8.5px;
+  font-size: 11.5px;
   font-weight: 800;
   line-height: 1.3;
 }
@@ -988,7 +1078,7 @@ details[open]::details-content {
   border: 2px solid #d2dfcd;
   border-radius: 9px;
   outline: none;
-  font-size: 9.5px;
+  font-size: 12px;
   font-weight: 500;
   transition:
     border-color .18s ease,
@@ -1032,7 +1122,7 @@ details[open]::details-content {
 .posting-help {
   margin: 3px 2px 0;
   color: #879483;
-  font-size: 7.5px;
+  font-size: 9.5px;
   font-weight: 500;
   line-height: 1.35;
 }
@@ -1059,10 +1149,41 @@ details[open]::details-content {
   background: #f7f9f6;
   border: 2px solid #dbe5d7;
   border-radius: 9px;
-  font-size: 8.5px;
+  font-size: 11px;
   font-weight: 700;
   overflow-wrap: anywhere;
 }
+
+.posting-result-proof {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  margin-top: -1px;
+  padding-left: 2px;
+}
+
+.posting-result-proof > .ti {
+  width: 16px;
+  height: 16px;
+  color: #477e42;
+  font-size: 14px;
+}
+
+.posting-result-proof .posting-input {
+  min-height: 34px;
+}
+
+.posting-result-proof-hint {
+  grid-column: 2;
+  margin-top: -3px;
+  color: #879483;
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
 
 .posting-empty-results {
   padding: 8px 9px;
@@ -1070,7 +1191,7 @@ details[open]::details-content {
   background: #f7f9f6;
   border: 2px dashed #dbe5d7;
   border-radius: 9px;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 600;
 }
 
@@ -1090,7 +1211,7 @@ details[open]::details-content {
   border: 2px solid #dbe5d7;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 600;
   line-height: 1.35;
 }
@@ -1137,7 +1258,7 @@ details[open]::details-content {
   border: 0;
   border-radius: 9px;
   cursor: pointer;
-  font-size: 9px;
+  font-size: 11.5px;
   font-weight: 800;
   transition: transform .18s ease, filter .18s ease, opacity .18s ease;
 }
@@ -1164,7 +1285,7 @@ details[open]::details-content {
 .posting-status {
   min-width: 0;
   color: var(--text-muted);
-  font-size: 8px;
+  font-size: 10.5px;
   font-weight: 700;
   line-height: 1.35;
 }
@@ -1387,6 +1508,22 @@ details[open]::details-content {
             <span>Carregando conteúdo da aula...</span>
           </div>
         </div>
+
+        <section id="postingPage" class="internal-page" hidden aria-label="Postagem das Aulas">
+          <div class="internal-page-toolbar">
+            <button class="internal-back-button" type="button" data-close-posting-page>
+              <i class="ti ti-arrow-left" aria-hidden="true"></i>
+              <span>Voltar para a aula</span>
+            </button>
+
+            <div class="internal-page-heading">
+              <span class="internal-page-eyebrow">Registro</span>
+              <strong>Postagem das Aulas</strong>
+            </div>
+          </div>
+
+          <div id="postingPageContent"></div>
+        </section>
       </section>
     </div>
 
@@ -1442,6 +1579,8 @@ details[open]::details-content {
   const PM_SUBJECT = ACTIVE_COURSE.fullName;
 
   const lessonContent = document.getElementById("lessonContent");
+  const postingPage = document.getElementById("postingPage");
+  const postingPageContent = document.getElementById("postingPageContent");
   const copiedLines = new Set();
   const mpMessages = new Map();
   const pendingPmRequests = new Map();
@@ -1817,6 +1956,36 @@ details[open]::details-content {
           });
           break;
 
+        case "BOTAOFORM":
+          addNode(current(), {
+            type: "specialButton",
+            action: "form",
+            label: "POSTAR NO FORMULÁRIO",
+            url: "",
+            row: sheetRow
+          });
+          break;
+
+        case "BOTAOSYSTEM":
+          addNode(current(), {
+            type: "specialButton",
+            action: "system",
+            label: "POSTAR NO RCCSYSTEM",
+            url: columnC,
+            row: sheetRow
+          });
+          break;
+
+        case "BOTAORELATORIO":
+          addNode(current(), {
+            type: "specialButton",
+            action: "report",
+            label: "CONFERIR NO RELATÓRIO",
+            url: columnC,
+            row: sheetRow
+          });
+          break;
+
         case "POSTAGEM":
           addNode(current(), {
             type: "posting",
@@ -1962,10 +2131,32 @@ details[open]::details-content {
   }
 
   function formatStartDateTime(date) {
-    return new Intl.DateTimeFormat("pt-BR", {
-      dateStyle: "short",
-      timeStyle: "short"
-    }).format(date);
+    const pad = value => String(value).padStart(2, "0");
+
+    return [
+      date.getFullYear(),
+      "-",
+      pad(date.getMonth() + 1),
+      "-",
+      pad(date.getDate()),
+      "T",
+      pad(date.getHours()),
+      ":",
+      pad(date.getMinutes())
+    ].join("");
+  }
+
+  function findPostingNode(nodes) {
+    for (const node of nodes || []) {
+      if (node.type === "posting") return node;
+
+      if (node.type === "spoiler" && Array.isArray(node.children)) {
+        const nested = findPostingNode(node.children);
+        if (nested) return nested;
+      }
+    }
+
+    return null;
   }
 
   function renderPostingCard(node) {
@@ -1973,9 +2164,8 @@ details[open]::details-content {
     const confirmationName = `${id}-confirmation`;
     const tutorName = `${id}-tutor`;
 
-    const confirmation = ACTIVE_COURSE.key === "SUP"
-      ? `
-        <div class="posting-field is-full posting-confirmation">
+    const confirmation = `
+        <div class="posting-field is-full posting-confirmation" ${ACTIVE_COURSE.key === "SUP" ? "" : "hidden"}>
           <div class="posting-group-heading">
             ${tablerIcon("shield-check")}
             <p class="posting-group-title">Etapa de confirmação</p>
@@ -1997,8 +2187,7 @@ details[open]::details-content {
             </label>
           </div>
         </div>
-      `
-      : "";
+      `;
 
     return `
       <section class="posting-card" data-posting-card="${escapeHtml(id)}">
@@ -2025,7 +2214,6 @@ details[open]::details-content {
                   type="text"
                   value="${escapeHtml(forumContext.username || "")}"
                   placeholder="Carregando usuário..."
-                  readonly
                 >
               </div>
             </div>
@@ -2037,13 +2225,11 @@ details[open]::details-content {
               </div>
               <div class="posting-control has-icon">
                 <span class="posting-control-icon" aria-hidden="true">${tablerIcon("book-2")}</span>
-                <input
-                  id="${id}-course"
-                  class="posting-input posting-course"
-                  type="text"
-                  value="${escapeHtml(ACTIVE_COURSE.postingName || ACTIVE_COURSE.title)}"
-                  readonly
-                >
+                <select id="${id}-course" class="posting-select posting-course">
+                  <option value="Aula de Supervisão" data-course-key="SUP" ${ACTIVE_COURSE.key === "SUP" ? "selected" : ""}>Aula de Supervisão</option>
+                  <option value="Aula de Segurança" data-course-key="SEG" ${ACTIVE_COURSE.key === "SEG" ? "selected" : ""}>Aula de Segurança</option>
+                  <option value="Aula de Promotor" data-course-key="PRO" ${ACTIVE_COURSE.key === "PRO" ? "selected" : ""}>Aula de Promotor</option>
+                </select>
               </div>
             </div>
 
@@ -2097,9 +2283,8 @@ details[open]::details-content {
                 <input
                   id="${id}-started"
                   class="posting-input posting-started"
-                  type="text"
+                  type="datetime-local"
                   value="${escapeHtml(formatStartDateTime(SCRIPT_STARTED_AT))}"
-                  readonly
                 >
               </div>
             </div>
@@ -2179,9 +2364,14 @@ details[open]::details-content {
     if (!container) return;
 
     const currentValues = new Map();
+    const currentProofs = new Map();
 
     container.querySelectorAll(".posting-result-select[data-student]").forEach(select => {
       currentValues.set(select.dataset.student, select.value);
+    });
+
+    container.querySelectorAll(".posting-proof-input[data-student]").forEach(input => {
+      currentProofs.set(input.dataset.student, input.value);
     });
 
     const students = getPostingStudents(card);
@@ -2198,12 +2388,32 @@ details[open]::details-content {
 
     container.innerHTML = students.map((student, index) => {
       const current = currentValues.get(student) || "";
+      const proof = currentProofs.get(student) || "";
 
       const option = value => `
         <option value="${escapeHtml(value)}" ${current === value ? "selected" : ""}>
           ${escapeHtml(value)}
         </option>
       `;
+
+      const proofField = current === "Caiu"
+        ? `
+          <div class="posting-result-proof">
+            ${tablerIcon("photo")}
+            <input
+              class="posting-input posting-proof-input"
+              type="url"
+              data-student="${escapeHtml(student)}"
+              value="${escapeHtml(proof)}"
+              placeholder="Link da comprovação em PNG"
+              aria-label="Comprovação da queda de ${escapeHtml(student)}"
+            >
+            <div class="posting-result-proof-hint">
+              Informe o link direto da imagem .png que comprova a queda.
+            </div>
+          </div>
+        `
+        : "";
 
       return `
         <div class="posting-result-row">
@@ -2222,6 +2432,8 @@ details[open]::details-content {
             ${option("Caiu")}
             ${option("-x-")}
           </select>
+
+          ${proofField}
         </div>
       `;
     }).join("");
@@ -2231,11 +2443,35 @@ details[open]::details-content {
 
   function syncPostingIdentity() {
     document.querySelectorAll(".posting-supervisor").forEach(input => {
-      input.value = forumContext.username || "";
+      if (!input.dataset.autofilled && forumContext.username) {
+        input.value = forumContext.username;
+        input.dataset.autofilled = "true";
+      }
+
       input.placeholder = forumContext.loggedIn
         ? "Usuário do fórum"
         : "Usuário não identificado";
     });
+  }
+
+  function syncPostingCourse(card) {
+    const courseSelect = card.querySelector(".posting-course");
+    const confirmation = card.querySelector(".posting-confirmation");
+    if (!courseSelect || !confirmation) return;
+
+    const courseKey =
+      courseSelect.selectedOptions?.[0]?.dataset.courseKey ||
+      ACTIVE_COURSE.key;
+
+    confirmation.hidden = courseKey !== "SUP";
+
+    if (confirmation.hidden) {
+      confirmation.querySelectorAll('input[type="radio"]').forEach(input => {
+        input.checked = false;
+      });
+    }
+
+    sendHeight(true);
   }
 
   function setPostingStatus(card, message, isError = false) {
@@ -2254,12 +2490,27 @@ details[open]::details-content {
       card.querySelectorAll(".posting-result-select[data-student]")
     );
 
-    const results = resultSelects.map(select => ({
-      student: select.dataset.student || "",
-      result: select.value || ""
-    }));
+    const results = resultSelects.map(select => {
+      const student = select.dataset.student || "";
+      const proofInput = Array.from(
+        card.querySelectorAll(".posting-proof-input[data-student]")
+      ).find(input => input.dataset.student === student);
 
-    const confirmation = ACTIVE_COURSE.key === "SUP"
+      return {
+        student,
+        result: select.value || "",
+        proof: String(proofInput?.value || "").trim()
+      };
+    });
+
+    const courseSelect = card.querySelector(".posting-course");
+    const selectedCourseOption = courseSelect?.selectedOptions?.[0];
+
+    const courseKey =
+      selectedCourseOption?.dataset.courseKey ||
+      ACTIVE_COURSE.key;
+
+    const confirmation = courseKey === "SUP"
       ? card.querySelector('.posting-confirmation input[type="radio"]:checked')?.value || ""
       : "";
 
@@ -2268,9 +2519,9 @@ details[open]::details-content {
     )?.value || "";
 
     return {
-      supervisor: forumContext.username || card.querySelector(".posting-supervisor")?.value || "",
-      course: ACTIVE_COURSE.postingName || ACTIVE_COURSE.title,
-      courseKey: ACTIVE_COURSE.key,
+      supervisor: String(card.querySelector(".posting-supervisor")?.value || "").trim(),
+      course: String(courseSelect?.value || "").trim(),
+      courseKey,
       students,
       location: card.querySelector(".posting-location")?.value || "",
       startedAt: card.querySelector(".posting-started")?.value || "",
@@ -2282,7 +2533,9 @@ details[open]::details-content {
   }
 
   function validatePostingData(data) {
-    if (!data.supervisor) return "Não foi possível identificar o seu nickname no fórum.";
+    if (!data.supervisor) return "Informe o seu nickname.";
+    if (!data.course) return "Selecione a aula aplicada.";
+    if (!data.startedAt) return "Informe a data e hora de início.";
     if (!data.students.length) return "Informe ao menos um aluno.";
     if (!data.location) return "Selecione o local da aplicação.";
 
@@ -2291,7 +2544,25 @@ details[open]::details-content {
       return `Selecione o resultado de ${missingResult.student}.`;
     }
 
-    if (ACTIVE_COURSE.key === "SUP" && !data.confirmation) {
+    const missingProof = data.results.find(
+      item => item.result === "Caiu" && !item.proof
+    );
+
+    if (missingProof) {
+      return `Anexe o link PNG que comprova a queda de ${missingProof.student}.`;
+    }
+
+    const invalidProof = data.results.find(
+      item =>
+        item.result === "Caiu" &&
+        !/^https?:\/\/.+\.png(?:[?#].*)?$/i.test(item.proof)
+    );
+
+    if (invalidProof) {
+      return `A comprovação de ${invalidProof.student} deve ser um link direto para arquivo .png.`;
+    }
+
+    if (data.courseKey === "SUP" && !data.confirmation) {
       return "Selecione uma opção na Etapa de confirmação.";
     }
 
@@ -2502,6 +2773,19 @@ details[open]::details-content {
 
   function renderButtonGroup(nodes) {
     const buttons = nodes.map(node => {
+      if (node.type === "specialButton" && node.action === "form") {
+        return `
+          <button
+            class="sheet-action is-form-button"
+            type="button"
+            data-open-posting-page
+          >
+            ${tablerIcon("clipboard-text")}
+            <span>POSTAR NO FORMULÁRIO</span>
+          </button>
+        `;
+      }
+
       const url = safeUrl(node.url);
 
       if (!url) {
@@ -2513,9 +2797,27 @@ details[open]::details-content {
         `;
       }
 
+      let className = "";
+      let icon = "external-link";
+
+      if (node.type === "specialButton" && node.action === "system") {
+        className = " is-system-button";
+        icon = "device-desktop";
+      }
+
+      if (node.type === "specialButton" && node.action === "report") {
+        className = " is-report-button";
+        icon = "report-analytics";
+      }
+
       return `
-        <a class="sheet-action" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
-          ${tablerIcon("external-link")}
+        <a
+          class="sheet-action${className}"
+          href="${escapeHtml(url)}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ${tablerIcon(icon)}
           <span>${escapeHtml(node.label)}</span>
         </a>
       `;
@@ -2530,10 +2832,13 @@ details[open]::details-content {
     for (let index = 0; index < nodes.length; index += 1) {
       const node = nodes[index];
 
-      if (node.type === "button") {
+      if (node.type === "button" || node.type === "specialButton") {
         const grouped = [node];
 
-        while (nodes[index + 1]?.type === "button") {
+        while (
+          nodes[index + 1]?.type === "button" ||
+          nodes[index + 1]?.type === "specialButton"
+        ) {
           grouped.push(nodes[index + 1]);
           index += 1;
         }
@@ -2604,7 +2909,6 @@ details[open]::details-content {
           break;
 
         case "posting":
-          html += renderPostingCard(node);
           break;
       }
     }
@@ -2995,6 +3299,32 @@ details[open]::details-content {
     );
   }
 
+  function showPostingPage() {
+    if (!postingPageContent || !postingPageContent.innerHTML.trim()) {
+      return;
+    }
+
+    lessonContent.hidden = true;
+    postingPage.hidden = false;
+
+    document.querySelectorAll("[data-posting-card]").forEach(card => {
+      syncPostingIdentity();
+      syncPostingResults(card);
+      syncPostingCourse(card);
+    });
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    sendHeight(true);
+  }
+
+  function showLessonPage() {
+    postingPage.hidden = true;
+    lessonContent.hidden = false;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    sendHeight(true);
+  }
+
   function applyCourseIdentity() {
     const heroTitle = document.getElementById("heroTitle");
     const shell = document.getElementById("courseShell");
@@ -3065,17 +3395,38 @@ details[open]::details-content {
     try {
       const payload = await requestLessonApi();
       const tree = rowsToTree(apiRowsToSheetRows(payload.rows));
+      const postingNode = findPostingNode(tree);
       const rendered = renderNodes(tree);
 
-      if (!rendered.trim()) {
-        throw new Error("A planilha não possui conteúdo válido nas colunas A:C.");
+      if (!rendered.trim() && !postingNode) {
+        throw new Error("A planilha não possui conteúdo válido para esta aula.");
       }
 
       lessonContent.innerHTML = rendered;
+
+      if (postingNode) {
+        postingPageContent.innerHTML = renderPostingCard(postingNode);
+      } else {
+        postingPageContent.innerHTML = `
+          <div class="load-state is-error">
+            ${tablerIcon("alert-triangle")}
+            <span>A TAG Postagem não foi encontrada para esta aula.</span>
+          </div>
+        `;
+      }
+
+      postingPage.hidden = true;
+      lessonContent.hidden = false;
+
       applyCopyState();
       bindDetails();
       syncPostingIdentity();
-      document.querySelectorAll("[data-posting-card]").forEach(syncPostingResults);
+
+      postingPageContent.querySelectorAll("[data-posting-card]").forEach(card => {
+        syncPostingResults(card);
+        syncPostingCourse(card);
+      });
+
       sendHeight(true);
     } catch (error) {
       console.error(error);
@@ -3101,6 +3452,20 @@ details[open]::details-content {
       return;
     }
 
+    const openPostingButton = event.target.closest("[data-open-posting-page]");
+    if (openPostingButton) {
+      event.preventDefault();
+      showPostingPage();
+      return;
+    }
+
+    const closePostingButton = event.target.closest("[data-close-posting-page]");
+    if (closePostingButton) {
+      event.preventDefault();
+      showLessonPage();
+      return;
+    }
+
     const postingButton = event.target.closest("[data-submit-posting]");
     if (postingButton) {
       event.preventDefault();
@@ -3113,6 +3478,20 @@ details[open]::details-content {
 
     const card = event.target.closest("[data-posting-card]");
     if (card) syncPostingResults(card);
+  });
+
+  document.addEventListener("change", event => {
+    const card = event.target.closest("[data-posting-card]");
+    if (!card) return;
+
+    if (event.target.matches(".posting-result-select")) {
+      syncPostingResults(card);
+      return;
+    }
+
+    if (event.target.matches(".posting-course")) {
+      syncPostingCourse(card);
+    }
   });
 
   const iframeContentRoot = document.querySelector(".page-wrap");
