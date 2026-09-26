@@ -1019,64 +1019,20 @@ details[open]::details-content {
 /* ---------- postagem da aula ---------- */
 
 .posting-card {
-  margin: 9px 0 7px;
-  overflow: hidden;
+  margin: 0;
   background: transparent;
   border: 0;
-  border-radius: 12px;
-}
-
-.posting-card-header {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 44px;
-  padding: 9px 12px;
-  color: #162216;
-  background: #ffffff;
-  border: 2px solid #d2dfcd;
-  border-radius: 11px;
-}
-
-.posting-card-header > .ti {
-  width: 20px;
-  height: 20px;
-  flex: 0 0 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #267022;
-  font-size: 18px;
-}
-
-.posting-card-heading {
-  min-width: 0;
-}
-
-.posting-card-title {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.posting-card-subtitle {
-  margin: 1px 0 0;
-  color: #778478;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.3;
+  border-radius: 0;
 }
 
 .posting-card-body {
-  padding: 10px 2px 0;
+  padding: 2px 0 0;
 }
 
 .posting-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 10px;
+  gap: 12px 14px;
 }
 
 .posting-field {
@@ -1091,21 +1047,21 @@ details[open]::details-content {
 .posting-group-heading {
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin: 0 0 4px;
-  color: #4a6746;
+  gap: 7px;
+  margin: 0 0 6px;
+  color: var(--heading);
 }
 
 .posting-label-row > .ti,
 .posting-group-heading > .ti {
-  width: 15px;
-  height: 15px;
-  flex: 0 0 15px;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #2f792b;
-  font-size: 14px;
+  color: var(--heading);
+  font-size: 17px;
   line-height: 1;
 }
 
@@ -1113,10 +1069,10 @@ details[open]::details-content {
 .posting-group-title {
   display: block;
   margin: 0;
-  color: #4a5f47;
-  font-size: 11.5px;
+  color: #3f5d3d;
+  font-size: 11px;
   font-weight: 800;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .posting-control {
@@ -1127,21 +1083,21 @@ details[open]::details-content {
 .posting-control > .posting-control-icon {
   position: absolute;
   top: 50%;
-  left: 10px;
+  left: 13px;
   z-index: 1;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transform: translateY(-50%);
-  color: #477e42;
-  font-size: 15px;
+  color: #4f7e4a;
+  font-size: 17px;
   pointer-events: none;
 }
 
 .posting-control.has-textarea > .posting-control-icon {
-  top: 11px;
+  top: 14px;
   transform: none;
 }
 
@@ -1149,43 +1105,52 @@ details[open]::details-content {
 .posting-select,
 .posting-textarea {
   width: 100%;
-  min-height: 35px;
-  padding: 7px 10px;
-  color: var(--text-main);
+  min-height: 44px;
+  padding: 10px 12px;
+  color: #1d271d;
   background: #ffffff;
-  border: 2px solid #d2dfcd;
-  border-radius: 9px;
+  border: 2px solid #cbd9c6;
+  border-radius: 10px;
   outline: none;
   font-size: 12px;
   font-weight: 500;
+  line-height: 1.4;
   transition:
-    border-color .18s ease,
-    box-shadow .18s ease,
-    background-color .18s ease;
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease,
+    transform .18s ease;
 }
 
 .posting-control.has-icon .posting-input,
 .posting-control.has-icon .posting-select,
 .posting-control.has-icon .posting-textarea {
-  padding-left: 33px;
+  padding-left: 40px;
 }
 
 .posting-input::placeholder,
 .posting-textarea::placeholder {
-  color: #75856f;
+  color: #8a9786;
   opacity: 1;
+}
+
+.posting-input:hover,
+.posting-select:hover,
+.posting-textarea:hover {
+  border-color: #aebfa9;
 }
 
 .posting-input:focus,
 .posting-select:focus,
 .posting-textarea:focus {
-  border-color: #77a970;
-  box-shadow: 0 0 0 2px rgba(73, 132, 66, .08);
+  border-color: #5f9d59;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(19, 143, 24, .09);
 }
 
 .posting-input[readonly] {
-  color: #647361;
-  background: #f5f8f3;
+  color: #5d6c5b;
+  background: #f4f7f3;
 }
 
 .posting-select {
@@ -1193,39 +1158,43 @@ details[open]::details-content {
 }
 
 .posting-textarea {
-  min-height: 58px;
+  min-height: 92px;
   resize: vertical;
 }
 
 .posting-help {
-  margin: 3px 2px 0;
-  color: #879483;
+  margin: 5px 2px 0;
+  color: #849181;
   font-size: 9.5px;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .posting-results {
   display: grid;
-  gap: 5px;
+  gap: 8px;
 }
 
 .posting-result-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(125px, .55fr);
-  gap: 7px;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, .58fr);
+  gap: 8px 10px;
   align-items: center;
+  padding: 9px;
+  background: rgba(255, 255, 255, .46);
+  border: 1px solid rgba(19, 143, 24, .10);
+  border-radius: 10px;
 }
 
 .posting-result-student {
   min-width: 0;
-  min-height: 35px;
+  min-height: 42px;
   display: flex;
   align-items: center;
-  padding: 7px 9px;
-  color: #536257;
-  background: #f7f9f6;
-  border: 2px solid #dbe5d7;
+  padding: 9px 11px;
+  color: #476045;
+  background: #f5f8f4;
+  border: 2px solid #d5e0d1;
   border-radius: 9px;
   font-size: 11px;
   font-weight: 700;
@@ -1235,84 +1204,92 @@ details[open]::details-content {
 .posting-result-proof {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 16px minmax(0, 1fr);
+  grid-template-columns: 18px minmax(0, 1fr);
   align-items: center;
-  gap: 7px;
-  margin-top: -1px;
-  padding-left: 2px;
+  gap: 8px;
+  margin-top: 1px;
 }
 
 .posting-result-proof > .ti {
-  width: 16px;
-  height: 16px;
-  color: #477e42;
-  font-size: 14px;
+  width: 18px;
+  height: 18px;
+  color: #4f7e4a;
+  font-size: 16px;
 }
 
 .posting-result-proof .posting-input {
-  min-height: 34px;
+  min-height: 42px;
 }
 
 .posting-result-proof-hint {
   grid-column: 2;
   margin-top: -3px;
   color: #879483;
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
-
 .posting-empty-results {
-  padding: 8px 9px;
-  color: #839086;
+  padding: 11px 12px;
+  color: #7f8c7d;
   background: #f7f9f6;
-  border: 2px dashed #dbe5d7;
-  border-radius: 9px;
+  border: 2px dashed #d5e0d1;
+  border-radius: 10px;
   font-size: 10px;
   font-weight: 600;
+  line-height: 1.45;
 }
 
 .posting-choice-list {
   display: grid;
-  gap: 5px;
+  gap: 8px;
 }
 
 .posting-choice {
   min-width: 0;
   display: flex;
   align-items: flex-start;
-  gap: 6px;
-  padding: 6px 8px;
-  color: #56655a;
+  gap: 8px;
+  padding: 9px 10px;
+  color: #4f614d;
   background: #ffffff;
-  border: 2px solid #dbe5d7;
-  border-radius: 8px;
+  border: 2px solid #d5e0d1;
+  border-radius: 9px;
   cursor: pointer;
   font-size: 10px;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.4;
+  transition:
+    border-color .18s ease,
+    background-color .18s ease,
+    transform .18s ease;
+}
+
+.posting-choice:hover {
+  border-color: #b8cbb3;
+  background: #f9fbf8;
 }
 
 .posting-choice:has(input:checked) {
-  border-color: #7cac76;
-  background: #f5f9f4;
+  border-color: #6da567;
+  background: #f1f7f0;
 }
 
 .posting-choice input {
   flex: 0 0 auto;
-  margin: 1px 0 0;
+  margin: 2px 0 0;
   accent-color: var(--accent);
 }
 
 .posting-tutor-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
 .posting-tutor-options .posting-choice {
-  min-width: 78px;
+  min-width: 96px;
   justify-content: flex-start;
 }
 
@@ -1320,25 +1297,30 @@ details[open]::details-content {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 9px;
-  margin-top: 9px;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(19, 143, 24, .10);
 }
 
 .posting-submit {
-  min-height: 34px;
+  min-height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 7px;
-  padding: 7px 14px;
+  gap: 8px;
+  padding: 9px 16px;
   color: var(--white);
   background: var(--accent);
   border: 0;
   border-radius: 9px;
   cursor: pointer;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
-  transition: transform .18s ease, filter .18s ease, opacity .18s ease;
+  transition:
+    transform .18s ease,
+    filter .18s ease,
+    opacity .18s ease;
 }
 
 .posting-submit:hover {
@@ -1357,15 +1339,15 @@ details[open]::details-content {
 }
 
 .posting-submit .ti {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .posting-status {
   min-width: 0;
   color: var(--text-muted);
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .posting-status.is-error {
@@ -2264,15 +2246,7 @@ details[open]::details-content {
 
     return `
       <section class="posting-card" data-posting-card="${escapeHtml(id)}">
-        <header class="posting-card-header">
-          ${tablerIcon("user-plus")}
-          <div class="posting-card-heading">
-            <h3 class="posting-card-title">Postagem das Aulas</h3>
-            <p class="posting-card-subtitle">Preencha os dados da aplicação para registrar a aula na planilha.</p>
-          </div>
-        </header>
-
-        <div class="posting-card-body">
+<div class="posting-card-body">
           <div class="posting-grid">
             <div class="posting-field">
               <div class="posting-label-row">
