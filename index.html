@@ -10,7 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin>
-<link rel="preconnect" href="https://docs.google.com/">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.45.0/dist/tabler-icons.min.css" rel="stylesheet">
@@ -1089,15 +1088,6 @@ details[open]::details-content {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .page-transition-enter,
-  .page-transition-exit,
-  .internal-page-toolbar,
-  .posting-card {
-    animation: none !important;
-  }
-}
-
 /* ---------- navegação interna / botões especiais ---------- */
 
 .internal-page {
@@ -1164,23 +1154,6 @@ details[open]::details-content {
   font-size: 15px;
   font-weight: 800;
   line-height: 1.2;
-}
-
-.sheet-action.is-form-button {
-  border: 0;
-  font-family: inherit;
-}
-
-.sheet-action.is-form-button,
-.sheet-action.is-system-button,
-.sheet-action.is-report-button {
-  cursor: pointer;
-}
-
-.sheet-action.is-form-button .ti,
-.sheet-action.is-system-button .ti,
-.sheet-action.is-report-button .ti {
-  font-size: 16px;
 }
 
 @media (max-width: 520px) {
@@ -1611,22 +1584,6 @@ details[open]::details-content {
 #postingPage .posting-group-heading > .ti,
 #postingPage .posting-datetime-button > .ti {
   color: var(--form-icon);
-}
-
-/* O input nativo de data permanece apenas como armazenamento do valor. */
-#postingPage .posting-started.is-enhanced {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  margin: -1px !important;
-  padding: 0 !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* Evita qualquer resquício do ícone antigo caso um navegador preserve o nó. */
-#postingPage .posting-control:has(.posting-started.is-enhanced) > .posting-control-icon {
-  display: none !important;
 }
 
 /* ---------- controles personalizados da postagem ---------- */
@@ -2260,7 +2217,7 @@ details[open]::details-content {
   color: var(--white);
   cursor: pointer;
 }
-.hero-settings-button .ti { font-size: 19px; }
+.hero-settings-button .icon-tabler { width: 19px; height: 19px; }
 .hero-settings-button:hover { background: var(--accent-hover); }
 .hero-settings-button:focus-visible { outline: 2px solid var(--white); outline-offset: -3px; }
 
@@ -2349,8 +2306,8 @@ details[open]::details-content {
   overflow: hidden;
 }
 .settings-dialog .settings-color-group > summary { color: var(--field-text); padding: 12px; font-size: 11px; justify-content: space-between; }
-.settings-dialog .settings-color-group > summary::after { content: "+"; font-size: 18px; line-height: 1; }
-.settings-dialog .settings-color-group[open] > summary::after { content: "−"; }
+.settings-color-chevron { width: 18px; height: 18px; flex-shrink: 0; transition: transform .2s ease; }
+.settings-color-group[open] .settings-color-chevron { transform: rotate(180deg); }
 .settings-dialog .settings-color-group::details-content { transition: none; transform: none; }
 .settings-color-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; padding: 5px 12px 14px; }
 .settings-color-field { min-width: 0; display: grid; gap: 5px; }
@@ -2404,6 +2361,13 @@ details[open]::details-content {
   .settings-color-grid, .settings-choices { grid-template-columns: 1fr; }
 }
 
+/* A integração do fórum hospeda esta vista numa janela da página principal. */
+:root[data-settings-view], :root[data-settings-view] body { height: 100%; overflow: hidden; }
+:root[data-settings-view] .page-wrap { display: none; }
+:root[data-settings-view] .settings-dialog {
+  position: static; inset: auto; width: 100%; max-width: none;
+  height: 100%; max-height: none; margin: 0; border-radius: 16px;
+}
 </style>
 </head>
 
@@ -2431,7 +2395,7 @@ details[open]::details-content {
           <a class="hero-course" data-course-shortcut="PRO" href="?course=PRO" title="Aula para Promotor" aria-label="Aula para Promotor">PRO</a>
         </nav>
         <nav id="heroActions" class="hero-actions" aria-label="Ações da aula" hidden></nav>
-        <button id="openSettings" class="hero-settings-button" type="button" aria-label="Configurações" title="Configurações" aria-haspopup="dialog" aria-controls="settingsDialog" aria-expanded="false"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2h5l.5 3 2 1 2.8-1 2.4 4.2-2.2 2v1.6l2.2 2-2.4 4.2-2.8-1-2 1-.5 3h-5L9 19l-2-1-2.8 1-2.4-4.2 2.2-2v-1.6l-2.2-2L4.2 5 7 6l2-1z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        <button id="openSettings" class="hero-settings-button" type="button" aria-label="Configurações" title="Configurações" aria-haspopup="dialog" aria-controls="settingsDialog" aria-expanded="false"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings" > <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" /> <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /> </svg></button>
       </div>
     </header>
 
@@ -2475,7 +2439,7 @@ details[open]::details-content {
 <dialog id="settingsDialog" class="settings-dialog" aria-labelledby="settingsTitle" aria-describedby="settingsDescription">
   <header class="settings-header">
     <h2 id="settingsTitle">Configurações</h2>
-    <button class="settings-close" type="button" data-close-settings aria-label="Fechar configurações" autofocus><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    <button class="settings-close" type="button" data-close-settings aria-label="Fechar configurações" autofocus><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x" > <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M18 6l-12 12" /> <path d="M6 6l12 12" /> </svg></button>
   </header>
   <div class="settings-body">
     <p id="settingsDescription" class="settings-description">Personalize sua leitura. As alterações são aplicadas na hora e ficam salvas neste navegador.</p>
@@ -2511,7 +2475,10 @@ details[open]::details-content {
 
   const SUP_API_URL = "https://script.google.com/macros/s/AKfycbyJcYhraH71hPC9VeTjdZiEryVy8aGLdd9VCrPQm9K8lkcsJxLwhsluSYo1ej7k3uDzUA/exec";
   const SHEET_ID = "134gZZbaQB7tn6a1-AgX6Y0JdcgHWilMLT7tmzmd-u0M";
-  const SHEET_GID = "0";
+  const SETTINGS_PARAMS = new URLSearchParams(window.location.search);
+  const IS_SETTINGS_VIEW = SETTINGS_PARAMS.get("view") === "settings" && window.parent !== window;
+  const SETTINGS_SESSION = IS_SETTINGS_VIEW ? SETTINGS_PARAMS.get("settingsSession") || "" : "";
+  if (IS_SETTINGS_VIEW) document.documentElement.dataset.settingsView = "true";
   const FORUM_ORIGIN = "https://www.policiarcc.com";
 
   const COURSES = Object.freeze({
@@ -2519,22 +2486,19 @@ details[open]::details-content {
       key: "SUP",
       title: "Aula de Supervisão",
       fullName: "Aula de Supervisão (SUP)",
-      postingName: "Aula de Supervisão",
-      apiRange: "A:C"
+      postingName: "Aula de Supervisão"
     },
     SEG: {
       key: "SEG",
       title: "Aula de Segurança",
       fullName: "Aula de Segurança (SEG)",
-      postingName: "Aula de Segurança",
-      apiRange: "E:G"
+      postingName: "Aula de Segurança"
     },
     PRO: {
       key: "PRO",
       title: "Aula para Promotor",
       fullName: "Aula para Promotor (PRO)",
-      postingName: "Aula de Promotor",
-      apiRange: "I:K"
+      postingName: "Aula de Promotor"
     }
   });
 
@@ -3118,35 +3082,35 @@ details[open]::details-content {
     return /^#[0-9a-f]{6}$/.test(hex) ? hex : null;
   }
 
-  function loadSitePreferences() {
+  function sanitizeSitePreferences(saved) {
+    if (!saved || saved.version !== 1) return null;
     const defaults = defaultSitePreferences();
+    defaults.savedAt = Number.isFinite(saved.savedAt) ? saved.savedAt : 0;
+    defaults.copyPosition = saved.copyPosition === "inline" ? "inline" : "edge";
+    defaults.actionPlacement = saved.actionPlacement === "panel" ? "panel" : "hero";
+    for (const item of THEME_COLORS) {
+      const color = saved.colors?.[item.key];
+      const hex = normalizeThemeHex(color?.hex);
+      if (!hex) continue;
+      defaults.colors[item.key] = {
+        hex,
+        alpha: typeof color.alpha === "number" && Number.isFinite(color.alpha)
+          ? Math.min(1, Math.max(0, color.alpha)) : item.alpha
+      };
+    }
+    return defaults;
+  }
+
+  function loadSitePreferences() {
     const candidates = [];
     for (const name of ["localStorage", "sessionStorage"]) {
       try {
-        const saved = JSON.parse(window[name].getItem(PREFERENCES_KEY) || "null");
-        if (saved?.version === 1) candidates.push(saved);
+        const saved = sanitizeSitePreferences(JSON.parse(window[name].getItem(PREFERENCES_KEY) || "null"));
+        if (saved) candidates.push(saved);
       } catch (error) {}
     }
-    candidates.sort((a, b) => (Number(b.savedAt) || 0) - (Number(a.savedAt) || 0));
-    for (const saved of candidates) {
-      try {
-        defaults.savedAt = Number(saved.savedAt) || 0;
-        defaults.copyPosition = saved.copyPosition === "inline" ? "inline" : "edge";
-        defaults.actionPlacement = saved.actionPlacement === "panel" ? "panel" : "hero";
-        for (const item of THEME_COLORS) {
-          const color = saved.colors?.[item.key];
-          const hex = normalizeThemeHex(color?.hex);
-          if (!hex) continue;
-          defaults.colors[item.key] = {
-            hex,
-            alpha: typeof color.alpha === "number" && Number.isFinite(color.alpha)
-              ? Math.min(1, Math.max(0, color.alpha)) : item.alpha
-          };
-        }
-        return defaults;
-      } catch (error) { /* Preferência inválida ou bloqueada: mantém o padrão. */ }
-    }
-    return defaults;
+    candidates.sort((a, b) => b.savedAt - a.savedAt);
+    return candidates[0] || defaultSitePreferences();
   }
 
   let sitePreferences = loadSitePreferences();
@@ -3176,7 +3140,7 @@ details[open]::details-content {
     status.textContent = "Alterações aplicadas. O navegador não permitiu salvá-las para a próxima visita.";
   }
 
-  function applySitePreferences() {
+  function applySitePreferences(notifyParent = true) {
     const root = document.documentElement;
     root.dataset.copyPosition = sitePreferences.copyPosition;
     root.dataset.actionPlacement = sitePreferences.actionPlacement;
@@ -3190,6 +3154,7 @@ details[open]::details-content {
           ? color.hex : `rgba(${rgb.join(", ")}, ${color.alpha})`);
       }
     }
+    if (notifyParent && IS_SETTINGS_VIEW) sendSettingsMessage("sup-settings-change", { preferences: sitePreferences });
     sendHeight(true);
   }
 
@@ -3197,7 +3162,7 @@ details[open]::details-content {
     const groups = [...new Set(THEME_COLORS.map(item => item.group))];
     document.getElementById("settingsPalette").innerHTML = groups.map((group, index) => `
       <details class="settings-color-group" ${index === 0 ? "open" : ""}>
-        <summary>${escapeHtml(group)}</summary>
+        <summary>${escapeHtml(group)}<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-color-chevron icon icon-tabler icons-tabler-outline icon-tabler-chevron-down" > <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M6 9l6 6l6 -6" /> </svg></summary>
         <div class="settings-color-grid">
           ${THEME_COLORS.filter(item => item.group === group).map(item => `
             <div class="settings-color-field">
@@ -3232,18 +3197,17 @@ details[open]::details-content {
   }
 
   function initializeSettings() {
-    applySitePreferences();
+    applySitePreferences(false);
     renderSettingsPalette();
     syncSettingsControls();
     const dialog = document.getElementById("settingsDialog");
     const opener = document.getElementById("openSettings");
-    opener.addEventListener("click", () => {
-      if (dialog.open) return;
-      dialog.showModal();
-      opener.setAttribute("aria-expanded", "true");
-    });
+    opener.addEventListener("click", openSettings);
     dialog.querySelectorAll("[data-close-settings]").forEach(button => {
-      button.addEventListener("click", () => dialog.close());
+      button.addEventListener("click", closeSettings);
+    });
+    dialog.addEventListener("keydown", event => {
+      if (IS_SETTINGS_VIEW && event.key === "Escape") { event.preventDefault(); closeSettings(); }
     });
     dialog.addEventListener("close", () => {
       if (preferencesSaveTimer) saveSitePreferences();
@@ -3304,6 +3268,66 @@ details[open]::details-content {
     });
   }
 
+
+  let parentSettingsRequest = '';
+  let parentSettingsTimer = 0;
+
+  function sendSettingsMessage(type, extra = {}) {
+    if (window.parent === window) return;
+    window.parent.postMessage({ type, requestId: SETTINGS_SESSION || parentSettingsRequest, ...extra }, iframeParentOrigin);
+  }
+
+  function openSettings() {
+    const dialog = document.getElementById('settingsDialog');
+    if (dialog.open || parentSettingsRequest) return;
+    document.getElementById('openSettings').setAttribute('aria-expanded', 'true');
+    if (window.parent === window) {
+      dialog.showModal();
+      return;
+    }
+    parentSettingsRequest = `settings_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    sendSettingsMessage('sup-settings-open', { preferences: sitePreferences });
+    parentSettingsTimer = window.setTimeout(() => {
+      parentSettingsRequest = '';
+      if (!dialog.open) dialog.showModal();
+    }, 1800);
+  }
+
+  function closeSettings() {
+    if (preferencesSaveTimer) saveSitePreferences();
+    if (IS_SETTINGS_VIEW) sendSettingsMessage('sup-settings-close');
+    else document.getElementById('settingsDialog').close();
+  }
+
+  function receiveSettingsMessage(data) {
+    if (IS_SETTINGS_VIEW) {
+      if (data.type !== 'sup-settings-init' || data.requestId !== SETTINGS_SESSION) return;
+      const preferences = sanitizeSitePreferences(data.preferences);
+      if (!preferences) return;
+      sitePreferences = preferences;
+      applySitePreferences(false);
+      syncSettingsControls();
+      document.querySelector('[data-close-settings]').focus({ preventScroll: true });
+      return;
+    }
+    if (!parentSettingsRequest || data.requestId !== parentSettingsRequest) return;
+    if (data.type === 'sup-settings-opened') {
+      window.clearTimeout(parentSettingsTimer);
+    } else if (data.type === 'sup-settings-change') {
+      const preferences = sanitizeSitePreferences(data.preferences);
+      if (!preferences) return;
+      sitePreferences = preferences;
+      applySitePreferences(false);
+      syncSettingsControls();
+      saveSitePreferences();
+    } else if (data.type === 'sup-settings-closed') {
+      window.clearTimeout(parentSettingsTimer);
+      parentSettingsRequest = '';
+      const opener = document.getElementById('openSettings');
+      opener.setAttribute('aria-expanded', 'false');
+      opener.focus({ preventScroll: true });
+    }
+  }
 
   function readNativeForumContext() {
     const candidates = [];
@@ -5600,7 +5624,6 @@ details[open]::details-content {
 
   let displayedLesson = null;
   let pendingLesson = null;
-  let displayedCheckedAt = 0;
   let lessonRefresh = null;
   let lessonTimer = 0;
   let lessonFailures = 0;
@@ -5627,7 +5650,7 @@ details[open]::details-content {
     sendHeight(true);
   }
 
-  function renderLessonPayload(payload, checkedAt, preserveView = false) {
+  function renderLessonPayload(payload, preserveView = false) {
     const keepPostingPage = preserveView && !postingPage.hidden &&
       Boolean(postingPageContent.innerHTML.trim());
     const valid = validateLessonPayload(payload, ACTIVE_COURSE.key);
@@ -5650,7 +5673,6 @@ details[open]::details-content {
     postingPage.hidden = !keepPostingPage;
     lessonContent.hidden = keepPostingPage;
     displayedLesson = valid;
-    displayedCheckedAt = checkedAt;
     applyCopyState();
     bindDetails();
     syncPostingIdentity();
@@ -5684,6 +5706,7 @@ details[open]::details-content {
   }
 
   function refreshLesson() {
+    if (IS_SETTINGS_VIEW) return Promise.resolve();
     if (lessonRefresh) return lessonRefresh;
     window.clearTimeout(lessonTimer);
     if (document.hidden) return Promise.resolve();
@@ -5697,18 +5720,16 @@ details[open]::details-content {
     lessonRefresh = (async () => {
       try {
         const payload = await requestLessonApi();
-        const checkedAt = Date.now();
-        if (!displayedLesson) renderLessonPayload(payload, checkedAt);
+        if (!displayedLesson) renderLessonPayload(payload);
         const record = saveLessonCache(payload, ACTIVE_COURSE.key);
         if (lessonFingerprint(payload) !== lessonFingerprint(displayedLesson)) {
           if (initialLessonSyncPending) {
-            renderLessonPayload(payload, record.checkedAt, true);
+            renderLessonPayload(payload, true);
             pendingLesson = null;
           } else {
             pendingLesson = record;
           }
         } else {
-          displayedCheckedAt = record.checkedAt;
           pendingLesson = null;
         }
         initialLessonSyncPending = false;
@@ -5735,7 +5756,7 @@ details[open]::details-content {
       const cached = readLessonCache(ACTIVE_COURSE.key);
       if (cached) {
         try {
-          renderLessonPayload(cached.payload, cached.checkedAt);
+          renderLessonPayload(cached.payload);
           setLessonStatus();
         } catch (error) { /* A consulta remota ainda pode recuperar esta aula. */ }
       }
@@ -5750,7 +5771,7 @@ details[open]::details-content {
       return;
     }
     try {
-      renderLessonPayload(pendingLesson.payload, pendingLesson.checkedAt);
+      renderLessonPayload(pendingLesson.payload);
       pendingLesson = null;
       setLessonStatus("Aula atualizada.");
     } catch (error) {
@@ -5868,13 +5889,35 @@ details[open]::details-content {
   let resizeFrame = 0;
 
   function sendHeight(force = false) {
+    if (IS_SETTINGS_VIEW) return;
     cancelAnimationFrame(resizeFrame);
 
     resizeFrame = requestAnimationFrame(() => {
+      const bounds = iframeContentRoot?.getBoundingClientRect();
+      if (!bounds || !bounds.width) return;
+      // Mede o conteúdo, não a altura do viewport, permitindo também encolher.
       const height = Math.ceil(Math.max(
-        iframeContentRoot?.scrollHeight || 0,
-        iframeContentRoot?.getBoundingClientRect().height || 0
-      ));
+        bounds.bottom + window.scrollY,
+        bounds.top + window.scrollY + iframeContentRoot.scrollHeight
+      )) + 2;
+
+      // No mesmo domínio, funciona mesmo antes de a integração do fórum carregar.
+      // Em outro domínio, frameElement é nulo e usamos postMessage abaixo.
+      try {
+        const frame = window.frameElement;
+        if (frame) {
+          const fitted = Math.max(100, Math.min(50000, height));
+          const styles = { height: `${fitted}px`, 'min-height': '0px', 'max-height': 'none', border: '0px' };
+          for (const [property, value] of Object.entries(styles)) {
+            if (frame.style.getPropertyValue(property) !== value || frame.style.getPropertyPriority(property) !== 'important') {
+              frame.style.setProperty(property, value, 'important');
+            }
+          }
+          const scrolling = height > fitted ? 'auto' : 'no';
+          if (frame.getAttribute('scrolling') !== scrolling) frame.setAttribute('scrolling', scrolling);
+          if (frame.getAttribute('height') !== String(fitted)) frame.setAttribute('height', String(fitted));
+        }
+      } catch (error) { /* A integração do pai cuida dos iframes entre domínios. */ }
 
       if (!force && height === lastHeight) return;
       lastHeight = height;
@@ -5894,12 +5937,17 @@ details[open]::details-content {
 
   window.addEventListener("load", () => sendHeight(true));
   window.addEventListener("resize", () => sendHeight());
+  window.addEventListener("pageshow", () => sendHeight(true));
 
   window.addEventListener("message", event => {
     if (event.source !== window.parent) return;
     if (iframeParentOrigin !== "*" && event.origin !== iframeParentOrigin) return;
 
     const data = event.data || {};
+    if (typeof data.type === "string" && data.type.startsWith("sup-settings-")) {
+      receiveSettingsMessage(data);
+      return;
+    }
 
     if (data.type === "forum-iframe-measure") {
       sendHeight(true);
@@ -5931,6 +5979,11 @@ details[open]::details-content {
 
   async function bootstrap() {
     initializeSettings();
+    if (IS_SETTINGS_VIEW) {
+      document.getElementById("settingsDialog").show();
+      sendSettingsMessage("sup-settings-ready");
+      return;
+    }
     applyCourseIdentity();
     // A identidade do fórum não deve atrasar a abertura da cópia local.
     const contextReady = requestForumContext();
