@@ -30,6 +30,71 @@
   --answer: #54675a;
   --white: #ffffff;
   --danger: #8d3636;
+
+  --hero-kicker: #70be68;
+  --hero-title: #f1f1f1;
+  --quote-text: #4d5f51;
+  --legend-text: #526457;
+  --form-eyebrow: #7c8c79;
+  --form-label: #355733;
+  --form-icon-secondary: #558151;
+  --field-text: #233123;
+  --field-bg: #ffffff;
+  --placeholder: #95a092;
+  --field-hover: #f6f9f5;
+  --field-focus: #eef7ec;
+  --field-help: #657364;
+  --field-readonly: #f3f6f2;
+  --form-muted: #879484;
+  --student-text: #476045;
+  --student-bg: #f2f6f0;
+  --proof-hint: #879483;
+  --empty-text: #7d8a7a;
+  --empty-bg: #f4f7f2;
+  --choice-text: #50614e;
+  --choice-bg: #f7faf6;
+  --choice-hover: #f1f7ef;
+  --choice-selected-text: #31582e;
+  --choice-selected-bg: #edf6eb;
+  --posting-error: #9f4343;
+  --selection-text: #21451f;
+  --selection-bg: #d8edd4;
+  --input-selection-text: #173b18;
+  --input-selection-bg: #cbe6c6;
+  --form-icon: #26802a;
+  --select-focus: #edf5eb;
+  --select-arrow: #5e7f5b;
+  --select-arrow-bg: #e8f1e5;
+  --menu-border: #d9e5d5;
+  --menu-text: #344b32;
+  --menu-active-text: #165f17;
+  --scrollbar: #c8d9c3;
+  --calendar-nav: #41663e;
+  --calendar-nav-bg: #f1f6ef;
+  --calendar-nav-hover: #e7f1e4;
+  --calendar-month: #2f4e2d;
+  --calendar-day: #385036;
+  --calendar-outside: #b0b9ad;
+  --calendar-today: #137f18;
+  --time-border: #e1eadf;
+  --time-title: #466443;
+  --time-label: #8b9788;
+  --time-option: #40543e;
+  --shortcut-bg: rgba(255, 255, 255, .12);
+  --shortcut-hover: rgba(255, 255, 255, .22);
+  --quote-bg: rgba(255, 255, 255, .46);
+  --code-bg: rgba(0, 0, 0, .06);
+  --legend-border: rgba(19, 143, 24, .18);
+  --separator: rgba(19, 143, 24, .22);
+  --spoiler-hover: rgba(255, 255, 255, .055);
+  --spoiler-focus: rgba(255, 255, 255, .36);
+  --mp-inset-bg: rgba(255, 255, 255, .34);
+  --toolbar-line: rgba(19, 143, 24, .10);
+  --back-bg: rgba(19, 143, 24, .06);
+  --result-bg: rgba(255, 255, 255, .48);
+  --posting-divider: rgba(19, 143, 24, .08);
+  --footer-text: rgba(255, 255, 255, .86);
+  --surface-mix: #ffffff;
 }
 
 * { box-sizing: border-box; }
@@ -113,7 +178,7 @@ img {
   align-items: center;
   gap: 18px;
   margin-top: -20px;
-  padding: 0 28px;
+  padding: 0 14px 0 28px;
   background: var(--frame-bg);
 }
 
@@ -133,9 +198,71 @@ img {
   transform: translateY(15px);
 }
 
+/* Atalhos e ações no hero, alinhados à lateral direita do panel. */
+.hero-tools {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  transform: translateY(15px);
+}
+
+.hero-courses,
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-course {
+  min-width: 44px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  padding: 0 8px;
+  background: var(--shortcut-bg);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  transition: background .18s ease;
+}
+
+.hero-course:hover {
+  background: var(--shortcut-hover);
+}
+
+.hero-course[aria-current="page"] {
+  background: var(--white);
+  color: var(--frame-bg);
+}
+
+.hero-actions[hidden] {
+  display: none;
+}
+
+.hero-actions .sheet-action {
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
+  flex: 0 0 auto;
+  justify-content: center;
+  padding: 0;
+  gap: 0;
+  border-radius: 9px;
+}
+
+.hero-course:focus-visible,
+.hero-actions .sheet-action:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: -3px;
+}
+
 .hero-kicker {
   margin: 0 0 2px;
-  color: #70be68;
+  color: var(--hero-kicker);
   font-size: 12px;
   font-weight: 500;
   line-height: 1.15;
@@ -145,7 +272,7 @@ img {
 
 .hero-title {
   margin: 0;
-  color: #f1f1f1;
+  color: var(--hero-title);
   font-size: 24px;
   font-weight: 800;
   line-height: 1;
@@ -167,6 +294,39 @@ img {
   background: var(--content-bg);
   border: 3px solid var(--content-border);
   border-radius: 15px;
+}
+
+.lesson-sync-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 9px;
+  background: var(--spoiler-bg);
+  color: var(--text-main);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.lesson-sync-status[hidden],
+.lesson-sync-status button[hidden] { display: none; }
+
+.lesson-sync-status button {
+  border: 0;
+  border-radius: 7px;
+  padding: 7px 10px;
+  background: var(--accent);
+  color: var(--white);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.lesson-sync-status button:focus-visible {
+  outline: 2px solid var(--heading);
+  outline-offset: 2px;
 }
 
 .lesson-content {
@@ -284,8 +444,8 @@ img {
   display: block;
   margin: 5px 0;
   padding: 7px 9px;
-  color: #4d5f51;
-  background: rgba(255, 255, 255, .46);
+  color: var(--quote-text);
+  background: var(--quote-bg);
   border-left: 3px solid var(--accent);
   border-radius: 0 7px 7px 0;
 }
@@ -293,7 +453,7 @@ img {
 .bbcode-code {
   display: inline;
   padding: 1px 4px;
-  background: rgba(0, 0, 0, .06);
+  background: var(--code-bg);
   border-radius: 4px;
   font-family: Consolas, "Courier New", monospace;
   font-size: .94em;
@@ -302,7 +462,7 @@ img {
 .script-legend {
   margin-top: 12px;
   padding-top: 10px;
-  border-top: 1px solid rgba(19, 143, 24, .18);
+  border-top: 1px solid var(--legend-border);
 }
 
 .script-legend-title {
@@ -343,7 +503,7 @@ img {
   grid-template-columns: 18px minmax(0, 1fr);
   align-items: start;
   column-gap: 8px;
-  color: #526457;
+  color: var(--legend-text);
   font-size: 10px;
   font-weight: 600;
   line-height: 1.4;
@@ -412,6 +572,11 @@ img {
   margin-top: 6px;
 }
 
+.copy-line.is-question .copy-line-text {
+  color: var(--heading);
+  font-weight: 700;
+}
+
 .copy-line-button {
   width: 24px;
   height: 24px;
@@ -460,7 +625,7 @@ img {
   align-items: flex-start;
   gap: 7px;
   margin: 2px 5px 10px 8px;
-  color: rgba(19, 143, 24, .62);
+  color: var(--heading);
   font-size: 11px;
   font-weight: 600;
   line-height: 1.5;
@@ -471,7 +636,7 @@ img {
 .alert-line-icon {
   flex: 0 0 auto;
   margin-top: 2px;
-  color: rgba(19, 143, 24, .72);
+  color: var(--heading);
   font-size: 14px;
   line-height: 1;
 }
@@ -497,11 +662,10 @@ img {
   overflow-wrap: anywhere;
 }
 
-.answer-line .ti {
+.answer-line-prefix {
   flex: 0 0 auto;
-  margin-top: 2px;
-  color: var(--text-muted);
-  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 /* ---------- tags auxiliares ---------- */
@@ -537,7 +701,15 @@ img {
   content: "";
   height: 1px;
   flex: 1 1 auto;
-  background: rgba(19, 143, 24, .22);
+  background: var(--separator);
+}
+
+.section-bar.is-untitled {
+  gap: 0;
+}
+
+.section-bar.is-untitled::after {
+  display: none;
 }
 
 .section-bar-label {
@@ -597,11 +769,11 @@ summary {
 }
 
 summary:hover {
-  background: rgba(255, 255, 255, .055);
+  background: var(--spoiler-hover);
 }
 
 summary:focus-visible {
-  outline: 3px solid rgba(255, 255, 255, .36);
+  outline: 3px solid var(--spoiler-focus);
   outline-offset: -3px;
 }
 
@@ -704,13 +876,13 @@ details[open]::details-content {
 .mp-block {
   margin: 9px 0;
   padding: 11px;
-  background: color-mix(in srgb, var(--content-bg) 62%, white);
+  background: color-mix(in srgb, var(--content-bg) 62%, var(--surface-mix));
   border: 1px solid color-mix(in srgb, var(--accent) 16%, transparent);
   border-radius: 10px;
 }
 
 .spoiler-content .mp-block {
-  background: rgba(255, 255, 255, .34);
+  background: var(--mp-inset-bg);
 }
 
 .mp-heading {
@@ -936,34 +1108,38 @@ details[open]::details-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 11px;
-  padding-bottom: 9px;
-  border-bottom: 1px solid rgba(19, 143, 24, .14);
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 2px 0 13px;
+  border-bottom: 1px solid var(--toolbar-line);
 }
 
 .internal-back-button {
-  min-height: 32px;
+  min-height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 6px;
-  padding: 6px 9px;
+  gap: 7px;
+  padding: 7px 10px;
   color: var(--heading);
-  background: transparent;
+  background: var(--back-bg);
   border: 0;
-  border-radius: 7px;
+  border-radius: 9px;
   cursor: pointer;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
+  transition:
+    background-color .18s ease,
+    transform .18s ease;
 }
 
 .internal-back-button:hover {
-  background: rgba(19, 143, 24, .06);
+  background: var(--toolbar-line);
+  transform: translateX(-2px);
 }
 
 .internal-back-button .ti {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .internal-page-heading {
@@ -973,18 +1149,20 @@ details[open]::details-content {
 
 .internal-page-eyebrow {
   display: block;
-  margin-bottom: 1px;
-  color: #7a8b7b;
-  font-size: 8.5px;
+  margin-bottom: 2px;
+  color: var(--form-eyebrow);
+  font-size: 9px;
   font-weight: 700;
   line-height: 1.2;
+  letter-spacing: .06em;
   text-transform: uppercase;
 }
 
 .internal-page-heading strong {
   display: block;
   color: var(--heading);
-  font-size: 12px;
+  font-size: 15px;
+  font-weight: 800;
   line-height: 1.2;
 }
 
@@ -1008,7 +1186,7 @@ details[open]::details-content {
 @media (max-width: 520px) {
   .internal-page-toolbar {
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .internal-page-heading {
@@ -1020,19 +1198,20 @@ details[open]::details-content {
 
 .posting-card {
   margin: 0;
+  padding: 0;
   background: transparent;
   border: 0;
   border-radius: 0;
 }
 
 .posting-card-body {
-  padding: 2px 0 0;
+  padding: 0;
 }
 
 .posting-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px 14px;
+  gap: 18px 18px;
 }
 
 .posting-field {
@@ -1047,21 +1226,20 @@ details[open]::details-content {
 .posting-group-heading {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin: 0 0 6px;
-  color: var(--heading);
+  gap: 8px;
+  margin: 0 0 7px;
 }
 
 .posting-label-row > .ti,
 .posting-group-heading > .ti {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--heading);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1;
 }
 
@@ -1069,13 +1247,14 @@ details[open]::details-content {
 .posting-group-title {
   display: block;
   margin: 0;
-  color: #3f5d3d;
-  font-size: 11px;
+  color: var(--form-label);
+  font-size: 11.5px;
   font-weight: 800;
   line-height: 1.35;
 }
 
-.posting-control {
+.posting-control,
+.posting-select-wrap {
   position: relative;
   min-width: 0;
 }
@@ -1083,21 +1262,21 @@ details[open]::details-content {
 .posting-control > .posting-control-icon {
   position: absolute;
   top: 50%;
-  left: 13px;
-  z-index: 1;
-  width: 18px;
-  height: 18px;
+  left: 14px;
+  z-index: 2;
+  width: 19px;
+  height: 19px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transform: translateY(-50%);
-  color: #4f7e4a;
-  font-size: 17px;
+  color: var(--form-icon-secondary);
+  font-size: 18px;
   pointer-events: none;
 }
 
 .posting-control.has-textarea > .posting-control-icon {
-  top: 14px;
+  top: 15px;
   transform: none;
 }
 
@@ -1105,19 +1284,18 @@ details[open]::details-content {
 .posting-select,
 .posting-textarea {
   width: 100%;
-  min-height: 44px;
-  padding: 10px 12px;
-  color: #1d271d;
-  background: #ffffff;
-  border: 2px solid #cbd9c6;
-  border-radius: 10px;
-  outline: none;
+  min-height: 46px;
+  padding: 11px 13px;
+  color: var(--field-text);
+  background: var(--field-bg);
+  border: 0;
+  border-radius: 11px;
+  outline: 0;
+  font-family: inherit;
   font-size: 12px;
   font-weight: 500;
   line-height: 1.4;
   transition:
-    border-color .2s ease,
-    box-shadow .2s ease,
     background-color .2s ease,
     transform .18s ease;
 }
@@ -1125,77 +1303,74 @@ details[open]::details-content {
 .posting-control.has-icon .posting-input,
 .posting-control.has-icon .posting-select,
 .posting-control.has-icon .posting-textarea {
-  padding-left: 40px;
+  padding-left: 43px;
 }
 
 .posting-input::placeholder,
 .posting-textarea::placeholder {
-  color: #8a9786;
+  color: var(--placeholder);
   opacity: 1;
 }
 
 .posting-input:hover,
 .posting-select:hover,
 .posting-textarea:hover {
-  border-color: #aebfa9;
+  background: var(--field-hover);
 }
 
 .posting-input:focus,
 .posting-select:focus,
 .posting-textarea:focus {
-  border-color: #5f9d59;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(19, 143, 24, .09);
+  background: var(--field-focus);
 }
 
 .posting-input[readonly] {
-  color: #5d6c5b;
-  background: #f4f7f3;
-}
-
-.posting-select {
-  cursor: pointer;
+  color: var(--field-help);
+  background: var(--field-readonly);
 }
 
 .posting-textarea {
-  min-height: 92px;
+  min-height: 104px;
   resize: vertical;
 }
 
 .posting-help {
-  margin: 5px 2px 0;
-  color: #849181;
+  margin: 6px 3px 0;
+  color: var(--form-muted);
   font-size: 9.5px;
   font-weight: 500;
   line-height: 1.4;
 }
 
+
+
+/* Resultados */
 .posting-results {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 .posting-result-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(150px, .58fr);
-  gap: 8px 10px;
+  grid-template-columns: minmax(0, 1fr) minmax(165px, .55fr);
+  gap: 10px 12px;
   align-items: center;
-  padding: 9px;
-  background: rgba(255, 255, 255, .46);
-  border: 1px solid rgba(19, 143, 24, .10);
-  border-radius: 10px;
+  padding: 11px;
+  background: var(--result-bg);
+  border: 0;
+  border-radius: 12px;
 }
 
 .posting-result-student {
   min-width: 0;
-  min-height: 42px;
+  min-height: 44px;
   display: flex;
   align-items: center;
-  padding: 9px 11px;
-  color: #476045;
-  background: #f5f8f4;
-  border: 2px solid #d5e0d1;
-  border-radius: 9px;
+  padding: 10px 12px;
+  color: var(--student-text);
+  background: var(--student-bg);
+  border: 0;
+  border-radius: 10px;
   font-size: 11px;
   font-weight: 700;
   overflow-wrap: anywhere;
@@ -1204,76 +1379,76 @@ details[open]::details-content {
 .posting-result-proof {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 18px minmax(0, 1fr);
+  grid-template-columns: 19px minmax(0, 1fr);
   align-items: center;
-  gap: 8px;
-  margin-top: 1px;
+  gap: 9px;
+  margin-top: 2px;
 }
 
 .posting-result-proof > .ti {
-  width: 18px;
-  height: 18px;
-  color: #4f7e4a;
-  font-size: 16px;
+  width: 19px;
+  height: 19px;
+  color: var(--form-icon-secondary);
+  font-size: 17px;
 }
 
 .posting-result-proof .posting-input {
-  min-height: 42px;
+  min-height: 44px;
 }
 
 .posting-result-proof-hint {
   grid-column: 2;
-  margin-top: -3px;
-  color: #879483;
+  margin-top: -4px;
+  color: var(--proof-hint);
   font-size: 9px;
   font-weight: 500;
   line-height: 1.35;
 }
 
 .posting-empty-results {
-  padding: 11px 12px;
-  color: #7f8c7d;
-  background: #f7f9f6;
-  border: 2px dashed #d5e0d1;
-  border-radius: 10px;
+  padding: 12px 13px;
+  color: var(--empty-text);
+  background: var(--empty-bg);
+  border: 0;
+  border-radius: 11px;
   font-size: 10px;
   font-weight: 600;
   line-height: 1.45;
 }
 
+/* Opções */
 .posting-choice-list {
   display: grid;
-  gap: 8px;
+  gap: 9px;
 }
 
 .posting-choice {
   min-width: 0;
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  padding: 9px 10px;
-  color: #4f614d;
-  background: #ffffff;
-  border: 2px solid #d5e0d1;
-  border-radius: 9px;
+  gap: 9px;
+  padding: 10px 11px;
+  color: var(--choice-text);
+  background: var(--choice-bg);
+  border: 0;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 10px;
   font-weight: 600;
   line-height: 1.4;
   transition:
-    border-color .18s ease,
     background-color .18s ease,
     transform .18s ease;
 }
 
 .posting-choice:hover {
-  border-color: #b8cbb3;
-  background: #f9fbf8;
+  background: var(--choice-hover);
+  transform: translateY(-1px);
 }
 
 .posting-choice:has(input:checked) {
-  border-color: #6da567;
-  background: #f1f7f0;
+  color: var(--choice-selected-text);
+  background: var(--choice-selected-bg);
 }
 
 .posting-choice input {
@@ -1285,35 +1460,36 @@ details[open]::details-content {
 .posting-tutor-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 9px;
 }
 
 .posting-tutor-options .posting-choice {
-  min-width: 96px;
+  min-width: 100px;
   justify-content: flex-start;
 }
 
+/* Ações */
 .posting-actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 14px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(19, 143, 24, .10);
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 18px;
+  padding-top: 13px;
+  border-top: 1px solid var(--posting-divider);
 }
 
 .posting-submit {
-  min-height: 40px;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  padding: 9px 16px;
+  padding: 9px 17px;
   color: var(--white);
   background: var(--accent);
   border: 0;
-  border-radius: 9px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 11px;
   font-weight: 800;
@@ -1324,7 +1500,7 @@ details[open]::details-content {
 }
 
 .posting-submit:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.04);
   transform: translateY(-1px);
 }
 
@@ -1344,6 +1520,8 @@ details[open]::details-content {
 
 .posting-status {
   min-width: 0;
+  flex: 1 1 auto;
+  text-align: left;
   color: var(--text-muted);
   font-size: 10px;
   font-weight: 700;
@@ -1351,12 +1529,13 @@ details[open]::details-content {
 }
 
 .posting-status.is-error {
-  color: #9f4343;
+  color: var(--posting-error);
 }
 
 @media (max-width: 650px) {
   .posting-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .posting-field.is-full {
@@ -1378,6 +1557,481 @@ details[open]::details-content {
   }
 }
 
+
+
+/* Seleção de texto personalizada da página de postagem */
+#postingPage ::selection {
+  color: var(--selection-text);
+  background: var(--selection-bg);
+}
+
+#postingPage ::-moz-selection {
+  color: var(--selection-text);
+  background: var(--selection-bg);
+}
+
+#postingPage input::selection,
+#postingPage textarea::selection {
+  color: var(--input-selection-text);
+  background: var(--input-selection-bg);
+}
+
+#postingPage input::-moz-selection,
+#postingPage textarea::-moz-selection {
+  color: var(--input-selection-text);
+  background: var(--input-selection-bg);
+}
+
+
+/* Consistência cromática dos campos da postagem */
+#postingPage .posting-input,
+#postingPage .posting-textarea,
+#postingPage .posting-custom-select-button,
+#postingPage .posting-datetime-button {
+  color: var(--field-text);
+  background: var(--field-bg);
+}
+
+#postingPage .posting-input:hover,
+#postingPage .posting-textarea:hover,
+#postingPage .posting-custom-select-button:hover,
+#postingPage .posting-datetime-button:hover {
+  background: var(--field-hover);
+}
+
+#postingPage .posting-input:focus,
+#postingPage .posting-textarea:focus,
+#postingPage .posting-custom-select.is-open .posting-custom-select-button,
+#postingPage .posting-datetime.is-open .posting-datetime-button {
+  background: var(--field-focus);
+}
+
+#postingPage .posting-control-icon,
+#postingPage .posting-label-row > .ti,
+#postingPage .posting-group-heading > .ti,
+#postingPage .posting-datetime-button > .ti {
+  color: var(--form-icon);
+}
+
+/* O input nativo de data permanece apenas como armazenamento do valor. */
+#postingPage .posting-started.is-enhanced {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Evita qualquer resquício do ícone antigo caso um navegador preserve o nó. */
+#postingPage .posting-control:has(.posting-started.is-enhanced) > .posting-control-icon {
+  display: none !important;
+}
+
+/* ---------- controles personalizados da postagem ---------- */
+
+.posting-native-select.is-enhanced,
+.posting-started.is-enhanced {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.posting-custom-select {
+  position: relative;
+  width: 100%;
+}
+
+.posting-custom-select-button {
+  width: 100%;
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 11px 11px 13px;
+  color: var(--field-text);
+  background: var(--field-bg);
+  border: 0;
+  border-radius: 11px;
+  outline: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  transition:
+    background-color .18s ease,
+    transform .18s ease;
+}
+
+.posting-control.has-icon .posting-custom-select-button {
+  padding-left: 43px;
+}
+
+.posting-custom-select-button:hover,
+.posting-custom-select.is-open .posting-custom-select-button {
+  background: var(--choice-hover);
+}
+
+.posting-custom-select-button:focus-visible {
+  background: var(--select-focus);
+}
+
+.posting-custom-select-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.posting-custom-select-chevron {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  color: var(--select-arrow);
+  background: var(--select-arrow-bg);
+  border-radius: 8px;
+  transition: transform .2s ease;
+}
+
+.posting-custom-select-chevron .ti {
+  font-size: 16px;
+}
+
+.posting-custom-select.is-open .posting-custom-select-chevron {
+  transform: rotate(180deg);
+}
+
+.posting-custom-select-menu {
+  position: absolute;
+  z-index: 80;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 230px;
+  overflow-y: auto;
+  padding: 5px;
+  background: var(--field-bg);
+  border: 1px solid var(--menu-border);
+  border-radius: 10px;
+}
+
+.posting-custom-select-option {
+  width: 100%;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 7px 9px;
+  color: var(--menu-text);
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.posting-custom-select-option:hover,
+.posting-custom-select-option.is-active {
+  color: var(--menu-active-text);
+  background: var(--choice-selected-bg);
+}
+
+.posting-custom-select-option.is-selected {
+  color: var(--white);
+  background: var(--accent);
+}
+
+.posting-custom-select-menu::-webkit-scrollbar,
+.posting-datetime-time-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.posting-custom-select-menu::-webkit-scrollbar-track,
+.posting-datetime-time-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.posting-custom-select-menu::-webkit-scrollbar-thumb,
+.posting-datetime-time-list::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 999px;
+}
+
+/* Data e hora personalizada */
+.posting-datetime {
+  position: relative;
+  width: 100%;
+}
+
+.posting-datetime-button {
+  width: 100%;
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 11px 11px 13px;
+  color: var(--field-text);
+  background: var(--field-bg);
+  border: 0;
+  border-radius: 11px;
+  outline: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  transition: background-color .18s ease;
+}
+
+.posting-datetime-button:hover,
+.posting-datetime.is-open .posting-datetime-button {
+  background: var(--choice-hover);
+}
+
+.posting-datetime-button > .ti {
+  color: var(--form-icon-secondary);
+  font-size: 18px;
+}
+
+.posting-datetime-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.posting-datetime-toggle {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  color: var(--select-arrow);
+  background: var(--select-arrow-bg);
+  border-radius: 8px;
+}
+
+.posting-datetime-toggle .ti {
+  font-size: 16px;
+}
+
+.posting-datetime-popover {
+  position: absolute;
+  z-index: 90;
+  top: calc(100% + 7px);
+  right: 0;
+  width: min(560px, calc(100vw - 42px));
+  display: grid;
+  grid-template-columns: minmax(270px, 1fr) 148px;
+  overflow: hidden;
+  background: var(--field-bg);
+  border: 1px solid var(--menu-border);
+  border-radius: 12px;
+}
+
+.posting-calendar {
+  padding: 12px;
+}
+
+.posting-calendar-head {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 34px;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.posting-calendar-nav {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--calendar-nav);
+  background: var(--calendar-nav-bg);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.posting-calendar-nav:hover {
+  background: var(--calendar-nav-hover);
+}
+
+.posting-calendar-nav .ti {
+  font-size: 16px;
+}
+
+.posting-calendar-month {
+  color: var(--calendar-month);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.posting-calendar-weekdays,
+.posting-calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.posting-calendar-weekdays {
+  margin-bottom: 5px;
+}
+
+.posting-calendar-weekday {
+  padding: 3px 0;
+  color: var(--form-muted);
+  font-size: 9px;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.posting-calendar-day {
+  aspect-ratio: 1;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--calendar-day);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.posting-calendar-day:hover {
+  background: var(--choice-selected-bg);
+}
+
+.posting-calendar-day.is-outside {
+  color: var(--calendar-outside);
+}
+
+.posting-calendar-day.is-today {
+  color: var(--calendar-today);
+  background: var(--field-focus);
+}
+
+.posting-calendar-day.is-selected {
+  color: var(--white);
+  background: var(--accent);
+}
+
+.posting-datetime-time {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100%;
+  padding: 12px 10px 10px;
+  background: var(--choice-bg);
+  border-left: 1px solid var(--time-border);
+}
+
+.posting-datetime-time-title {
+  margin: 0 0 8px;
+  color: var(--time-title);
+  font-size: 10px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.posting-datetime-time-columns {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.posting-datetime-time-column {
+  min-width: 0;
+}
+
+.posting-datetime-time-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--time-label);
+  font-size: 8px;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.posting-datetime-time-list {
+  max-height: 218px;
+  overflow-y: auto;
+  padding: 3px;
+  background: var(--field-bg);
+  border-radius: 8px;
+}
+
+.posting-time-option {
+  width: 100%;
+  min-height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--time-option);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.posting-time-option:hover {
+  background: var(--choice-selected-bg);
+}
+
+.posting-time-option.is-selected {
+  color: var(--white);
+  background: var(--accent);
+}
+
+@media (max-width: 650px) {
+  .posting-datetime-popover {
+    left: 0;
+    right: auto;
+    width: min(100%, 420px);
+    grid-template-columns: 1fr;
+  }
+
+  .posting-datetime-time {
+    border-top: 1px solid var(--time-border);
+    border-left: 0;
+  }
+
+  .posting-datetime-time-list {
+    max-height: 150px;
+  }
+}
 /* ---------- créditos ---------- */
 
 .footer {
@@ -1387,7 +2041,7 @@ details[open]::details-content {
   justify-content: center;
   margin: 0 auto;
   padding: 0 14px 7px;
-  color: rgba(255, 255, 255, .86);
+  color: var(--footer-text);
   font-size: 10px;
   line-height: 1.4;
   text-align: center;
@@ -1395,6 +2049,26 @@ details[open]::details-content {
 
 .footer strong {
   font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    /* As colunas de atalhos precisam ficar inteiras dentro do cabeçalho. */
+    min-height: 132px;
+    margin-top: 0;
+    padding-block: 10px;
+  }
+
+  .hero-tools {
+    gap: 8px;
+    transform: none;
+  }
+
+  .hero-courses,
+  .hero-actions {
+    flex-direction: column;
+    gap: 3px;
+  }
 }
 
 @media (max-width: 650px) {
@@ -1405,7 +2079,26 @@ details[open]::details-content {
   .hero {
     min-height: 73px;
     gap: 13px;
-    padding-inline: 18px;
+    padding-inline: 18px 10px;
+  }
+
+  .hero:has(.hero-tools) {
+    min-height: 112px;
+  }
+
+  .hero-course {
+    min-width: 38px;
+    height: 32px;
+    padding-inline: 5px;
+    border-radius: 7px;
+    font-size: 10px;
+  }
+
+  .hero-actions .sheet-action {
+    width: 32px;
+    height: 32px;
+    min-height: 32px;
+    border-radius: 7px;
   }
 
   .hero-logo {
@@ -1458,7 +2151,7 @@ details[open]::details-content {
   .hero {
     min-height: 61px;
     gap: 10px;
-    padding-inline: 12px;
+    padding-inline: 12px 7px;
   }
 
   .hero-logo {
@@ -1538,6 +2231,179 @@ details[open]::details-content {
     animation: none !important;
   }
 }
+/* Preferências de leitura, sem recriar os elementos da aula. */
+.lesson-content .is-special-action,
+.lesson-content .action-grid.is-special-only { display: none; }
+:root[data-action-placement="panel"] .lesson-content .is-special-action { display: inline-flex; }
+:root[data-action-placement="panel"] .lesson-content .action-grid.is-special-only { display: grid; }
+:root[data-action-placement="panel"] #heroActions { display: none; }
+
+:root[data-copy-position="inline"] .copy-line:not(.is-static) { display: block; }
+:root[data-copy-position="inline"] .copy-line:not(.is-static) .copy-line-text { display: inline; }
+:root[data-copy-position="inline"] .copy-line:not(.is-static) .copy-line-button {
+  display: inline-flex;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.hero-settings-button {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--white);
+  cursor: pointer;
+}
+.hero-settings-button .ti { font-size: 19px; }
+.hero-settings-button:hover { background: var(--accent-hover); }
+.hero-settings-button:focus-visible { outline: 2px solid var(--white); outline-offset: -3px; }
+
+.settings-dialog {
+  position: fixed;
+  inset: 14px 12px auto;
+  width: min(590px, calc(100% - 24px));
+  max-width: none;
+  max-height: min(680px, calc(100dvh - 28px));
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid var(--content-border);
+  border-radius: 18px;
+  color: var(--text-main);
+  background: var(--content-bg);
+  font-size: 12px;
+}
+.settings-dialog[open] { display: flex; flex-direction: column; }
+.settings-dialog::backdrop { background: rgba(0, 0, 0, .38); }
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px 14px;
+  flex: 0 0 auto;
+}
+.settings-header h2 { margin: 0; font-size: 18px; color: var(--heading); }
+.settings-close {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 9px;
+  background: var(--spoiler-bg);
+  color: var(--text-main);
+  cursor: pointer;
+}
+.settings-body {
+  padding: 0 20px 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+.settings-description { margin: 0 0 18px; line-height: 1.5; color: var(--text-muted); }
+.settings-options { margin: 0 0 18px; padding: 0; border: 0; min-width: 0; }
+.settings-options legend { padding: 0; margin-bottom: 8px; font-weight: 700; color: var(--heading); }
+.settings-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.settings-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--field-bg);
+  color: var(--field-text);
+  cursor: pointer;
+}
+.settings-choice:has(input:checked) { background: var(--choice-selected-bg); color: var(--choice-selected-text); }
+.settings-choice input { accent-color: var(--accent); margin: 0; flex: 0 0 auto; }
+.settings-choice strong { display: block; font-size: 11px; }
+.settings-choice small { display: block; font-size: 10px; font-weight: 400; }
+.settings-palette-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 4px 0 10px; }
+.settings-palette-heading h3 { margin: 0; font-size: 13px; color: var(--heading); }
+.settings-reset {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--heading);
+  background: var(--spoiler-bg);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.settings-dialog .settings-color-group {
+  margin: 8px 0 0;
+  padding: 0;
+  background: var(--field-bg);
+  border-radius: 10px;
+  color: var(--field-text);
+  overflow: hidden;
+}
+.settings-dialog .settings-color-group > summary { color: var(--field-text); padding: 12px; font-size: 11px; justify-content: space-between; }
+.settings-dialog .settings-color-group > summary::after { content: "+"; font-size: 18px; line-height: 1; }
+.settings-dialog .settings-color-group[open] > summary::after { content: "−"; }
+.settings-dialog .settings-color-group::details-content { transition: none; transform: none; }
+.settings-color-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; padding: 5px 12px 14px; }
+.settings-color-field { min-width: 0; display: grid; gap: 5px; }
+.settings-color-label { font-size: 10px; line-height: 1.4; font-weight: 600; }
+.settings-color-controls { display: flex; align-items: center; gap: 6px; }
+.settings-color-input {
+  width: 34px;
+  height: 32px;
+  flex: 0 0 auto;
+  padding: 2px;
+  border: 1px solid var(--menu-border);
+  border-radius: 7px;
+  background: var(--field-bg);
+  cursor: pointer;
+}
+.settings-hex-input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 4px 7px;
+  border: 1px solid var(--menu-border);
+  border-radius: 7px;
+  background: var(--content-bg);
+  color: var(--text-main);
+  font-size: 11px;
+}
+.settings-opacity { display: flex; align-items: center; gap: 6px; font-size: 9px; }
+.settings-opacity input { min-width: 0; width: 100%; accent-color: var(--accent); }
+.settings-footer { padding: 12px 20px; display: flex; gap: 12px; align-items: center; justify-content: space-between; background: var(--spoiler-bg); flex: 0 0 auto; }
+.settings-footer p { margin: 0; font-size: 10px; line-height: 1.4; }
+.settings-done { border: 0; border-radius: 8px; padding: 9px 16px; background: var(--accent); color: var(--white); font-weight: 700; cursor: pointer; }
+.settings-dialog :is(button,input,summary):focus-visible { outline: 2px solid var(--heading); outline-offset: 2px; }
+
+@media (max-width: 650px) {
+  .hero-settings-button { width: 32px; height: 32px; border-radius: 7px; }
+}
+/* Em celulares, a faixa de botões fica abaixo do título e dentro do hero. */
+@media (max-width: 520px) {
+  .hero { flex-wrap: wrap; row-gap: 10px; padding-bottom: 12px; }
+  .hero-logo, .hero-copy { transform: none; }
+  .hero-copy { flex: 1 1 0; }
+  .hero-tools { flex: 0 0 100%; justify-content: flex-end; gap: 8px; }
+  .hero-courses, .hero-actions { flex-direction: row; gap: 4px; }
+  .hero-course { min-width: 34px; }
+  .hero:has(.hero-tools) { min-height: 0; }
+  .settings-header { padding: 14px 14px 10px; }
+  .settings-body { padding: 0 14px 14px; }
+  .settings-footer { padding: 12px 14px; }
+}
+@media (max-width: 360px) {
+  .settings-color-grid, .settings-choices { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 
@@ -1558,10 +2424,23 @@ details[open]::details-content {
         <p class="hero-kicker">Companhia dos Supervisores</p>
         <h1 class="hero-title" id="heroTitle">Aula de Supervisão</h1>
       </div>
+      <div class="hero-tools">
+        <nav class="hero-courses" aria-label="Atalhos das aulas">
+          <a class="hero-course" data-course-shortcut="SUP" href="?course=SUP" title="Aula de Supervisão" aria-label="Aula de Supervisão">SUP</a>
+          <a class="hero-course" data-course-shortcut="SEG" href="?course=SEG" title="Aula de Segurança" aria-label="Aula de Segurança">SEG</a>
+          <a class="hero-course" data-course-shortcut="PRO" href="?course=PRO" title="Aula para Promotor" aria-label="Aula para Promotor">PRO</a>
+        </nav>
+        <nav id="heroActions" class="hero-actions" aria-label="Ações da aula" hidden></nav>
+        <button id="openSettings" class="hero-settings-button" type="button" aria-label="Configurações" title="Configurações" aria-haspopup="dialog" aria-controls="settingsDialog" aria-expanded="false"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2h5l.5 3 2 1 2.8-1 2.4 4.2-2.2 2v1.6l2.2 2-2.4 4.2-2.8-1-2 1-.5 3h-5L9 19l-2-1-2.8 1-2.4-4.2 2.2-2v-1.6l-2.2-2L4.2 5 7 6l2-1z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      </div>
     </header>
 
     <div class="panel-wrap">
       <section class="panel">
+        <div id="lessonSyncStatus" class="lesson-sync-status" role="status" aria-live="polite" hidden>
+          <span id="lessonSyncMessage"></span>
+          <button id="applyLessonUpdate" type="button" hidden>Atualizar aula</button>
+        </div>
         <div id="lessonContent" class="lesson-content" aria-live="polite">
           <div class="load-state is-loading">
             <i class="ti ti-loader-2" aria-hidden="true"></i>
@@ -1592,6 +2471,39 @@ details[open]::details-content {
     </footer>
   </section>
 </main>
+
+<dialog id="settingsDialog" class="settings-dialog" aria-labelledby="settingsTitle" aria-describedby="settingsDescription">
+  <header class="settings-header">
+    <h2 id="settingsTitle">Configurações</h2>
+    <button class="settings-close" type="button" data-close-settings aria-label="Fechar configurações" autofocus><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  </header>
+  <div class="settings-body">
+    <p id="settingsDescription" class="settings-description">Personalize sua leitura. As alterações são aplicadas na hora e ficam salvas neste navegador.</p>
+    <fieldset class="settings-options">
+      <legend>Posição do ícone de copiar</legend>
+      <div class="settings-choices">
+        <label class="settings-choice"><input type="radio" name="copyPosition" value="edge"><span><strong>Alinhado à direita</strong><small>Formato atual</small></span></label>
+        <label class="settings-choice"><input type="radio" name="copyPosition" value="inline"><span><strong>Junto ao texto</strong><small>Logo após o fim da linha</small></span></label>
+      </div>
+    </fieldset>
+    <fieldset class="settings-options">
+      <legend>Botões Form, System e Relatório</legend>
+      <div class="settings-choices">
+        <label class="settings-choice"><input type="radio" name="actionPlacement" value="hero"><span><strong>No cabeçalho</strong><small>Somente os ícones</small></span></label>
+        <label class="settings-choice"><input type="radio" name="actionPlacement" value="panel"><span><strong>No painel da aula</strong><small>Ícone e texto, na posição original</small></span></label>
+      </div>
+    </fieldset>
+    <div class="settings-palette-heading">
+      <h3>Cores do site</h3>
+      <button id="resetThemeColors" class="settings-reset" type="button">Redefinir cores padrão</button>
+    </div>
+    <div id="settingsPalette"></div>
+  </div>
+  <footer class="settings-footer">
+    <p id="settingsSaveStatus" role="status" aria-live="polite">Suas preferências são pessoais.</p>
+    <button class="settings-done" type="button" data-close-settings>Concluir</button>
+  </footer>
+</dialog>
 
 <script>
 (() => {
@@ -1645,6 +2557,753 @@ details[open]::details-content {
   const mpMessages = new Map();
   const pendingPmRequests = new Map();
   const SCRIPT_STARTED_AT = new Date();
+
+  const THEME_COLORS = [
+  {
+    "key": "frame-border",
+    "group": "Estrutura",
+    "label": "Borda externa",
+    "hex": "#159c0c",
+    "alpha": 1
+  },
+  {
+    "key": "frame-bg",
+    "group": "Estrutura",
+    "label": "Fundo do cabeçalho e moldura",
+    "hex": "#006a06",
+    "alpha": 1
+  },
+  {
+    "key": "accent",
+    "group": "Textos e botões",
+    "label": "Botões e destaques",
+    "hex": "#109c08",
+    "alpha": 1
+  },
+  {
+    "key": "accent-hover",
+    "group": "Textos e botões",
+    "label": "Botões ao passar o mouse",
+    "hex": "#0f9408",
+    "alpha": 1
+  },
+  {
+    "key": "content-border",
+    "group": "Estrutura",
+    "label": "Borda do painel",
+    "hex": "#ffffff",
+    "alpha": 1
+  },
+  {
+    "key": "content-bg",
+    "group": "Estrutura",
+    "label": "Fundo do painel",
+    "hex": "#eef2ef",
+    "alpha": 1
+  },
+  {
+    "key": "spoiler-bg",
+    "group": "Estrutura",
+    "label": "Fundo dos spoilers",
+    "hex": "#e4e9e5",
+    "alpha": 1
+  },
+  {
+    "key": "text-main",
+    "group": "Textos e botões",
+    "label": "Texto principal",
+    "hex": "#161616",
+    "alpha": 1
+  },
+  {
+    "key": "text-muted",
+    "group": "Textos e botões",
+    "label": "Texto secundário",
+    "hex": "#73915f",
+    "alpha": 1
+  },
+  {
+    "key": "heading",
+    "group": "Textos e botões",
+    "label": "Títulos, perguntas e alertas",
+    "hex": "#138f18",
+    "alpha": 1
+  },
+  {
+    "key": "answer",
+    "group": "Textos e botões",
+    "label": "Respostas",
+    "hex": "#54675a",
+    "alpha": 1
+  },
+  {
+    "key": "white",
+    "group": "Textos e botões",
+    "label": "Texto sobre os botões",
+    "hex": "#ffffff",
+    "alpha": 1
+  },
+  {
+    "key": "danger",
+    "group": "Textos e botões",
+    "label": "Erros de carregamento",
+    "hex": "#8d3636",
+    "alpha": 1
+  },
+  {
+    "key": "hero-kicker",
+    "group": "Estrutura",
+    "label": "Subtítulo do cabeçalho",
+    "hex": "#70be68",
+    "alpha": 1
+  },
+  {
+    "key": "hero-title",
+    "group": "Estrutura",
+    "label": "Título do cabeçalho",
+    "hex": "#f1f1f1",
+    "alpha": 1
+  },
+  {
+    "key": "quote-text",
+    "group": "Textos e botões",
+    "label": "Texto das citações",
+    "hex": "#4d5f51",
+    "alpha": 1
+  },
+  {
+    "key": "legend-text",
+    "group": "Textos e botões",
+    "label": "Legenda dos scripts",
+    "hex": "#526457",
+    "alpha": 1
+  },
+  {
+    "key": "form-eyebrow",
+    "group": "Formulário",
+    "label": "Subtítulo da postagem",
+    "hex": "#7c8c79",
+    "alpha": 1
+  },
+  {
+    "key": "form-label",
+    "group": "Formulário",
+    "label": "Rótulos dos campos",
+    "hex": "#355733",
+    "alpha": 1
+  },
+  {
+    "key": "form-icon-secondary",
+    "group": "Formulário",
+    "label": "Ícones secundários",
+    "hex": "#558151",
+    "alpha": 1
+  },
+  {
+    "key": "field-text",
+    "group": "Formulário",
+    "label": "Texto dos campos",
+    "hex": "#233123",
+    "alpha": 1
+  },
+  {
+    "key": "field-bg",
+    "group": "Formulário",
+    "label": "Fundo dos campos e menus",
+    "hex": "#ffffff",
+    "alpha": 1
+  },
+  {
+    "key": "placeholder",
+    "group": "Formulário",
+    "label": "Texto de exemplo dos campos",
+    "hex": "#95a092",
+    "alpha": 1
+  },
+  {
+    "key": "field-hover",
+    "group": "Formulário",
+    "label": "Campos ao passar o mouse",
+    "hex": "#f6f9f5",
+    "alpha": 1
+  },
+  {
+    "key": "field-focus",
+    "group": "Formulário",
+    "label": "Campos em foco e dia atual",
+    "hex": "#eef7ec",
+    "alpha": 1
+  },
+  {
+    "key": "field-help",
+    "group": "Formulário",
+    "label": "Textos de ajuda",
+    "hex": "#657364",
+    "alpha": 1
+  },
+  {
+    "key": "field-readonly",
+    "group": "Formulário",
+    "label": "Campos somente leitura",
+    "hex": "#f3f6f2",
+    "alpha": 1
+  },
+  {
+    "key": "form-muted",
+    "group": "Formulário",
+    "label": "Legendas dos grupos",
+    "hex": "#879484",
+    "alpha": 1
+  },
+  {
+    "key": "student-text",
+    "group": "Formulário",
+    "label": "Nome dos alunos",
+    "hex": "#476045",
+    "alpha": 1
+  },
+  {
+    "key": "student-bg",
+    "group": "Formulário",
+    "label": "Fundo dos alunos",
+    "hex": "#f2f6f0",
+    "alpha": 1
+  },
+  {
+    "key": "proof-hint",
+    "group": "Formulário",
+    "label": "Orientação dos comprovantes",
+    "hex": "#879483",
+    "alpha": 1
+  },
+  {
+    "key": "empty-text",
+    "group": "Formulário",
+    "label": "Texto dos resultados vazios",
+    "hex": "#7d8a7a",
+    "alpha": 1
+  },
+  {
+    "key": "empty-bg",
+    "group": "Formulário",
+    "label": "Fundo dos resultados vazios",
+    "hex": "#f4f7f2",
+    "alpha": 1
+  },
+  {
+    "key": "choice-text",
+    "group": "Formulário",
+    "label": "Texto das opções",
+    "hex": "#50614e",
+    "alpha": 1
+  },
+  {
+    "key": "choice-bg",
+    "group": "Formulário",
+    "label": "Fundo das opções e horários",
+    "hex": "#f7faf6",
+    "alpha": 1
+  },
+  {
+    "key": "choice-hover",
+    "group": "Formulário",
+    "label": "Opções ao passar o mouse",
+    "hex": "#f1f7ef",
+    "alpha": 1
+  },
+  {
+    "key": "choice-selected-text",
+    "group": "Formulário",
+    "label": "Texto da opção selecionada",
+    "hex": "#31582e",
+    "alpha": 1
+  },
+  {
+    "key": "choice-selected-bg",
+    "group": "Formulário",
+    "label": "Opções selecionadas e realces",
+    "hex": "#edf6eb",
+    "alpha": 1
+  },
+  {
+    "key": "posting-error",
+    "group": "Formulário",
+    "label": "Erros de postagem",
+    "hex": "#9f4343",
+    "alpha": 1
+  },
+  {
+    "key": "selection-text",
+    "group": "Seleção de texto",
+    "label": "Texto selecionado",
+    "hex": "#21451f",
+    "alpha": 1
+  },
+  {
+    "key": "selection-bg",
+    "group": "Seleção de texto",
+    "label": "Fundo do texto selecionado",
+    "hex": "#d8edd4",
+    "alpha": 1
+  },
+  {
+    "key": "input-selection-text",
+    "group": "Seleção de texto",
+    "label": "Texto selecionado nos campos",
+    "hex": "#173b18",
+    "alpha": 1
+  },
+  {
+    "key": "input-selection-bg",
+    "group": "Seleção de texto",
+    "label": "Seleção dentro dos campos",
+    "hex": "#cbe6c6",
+    "alpha": 1
+  },
+  {
+    "key": "form-icon",
+    "group": "Formulário",
+    "label": "Ícones principais dos campos",
+    "hex": "#26802a",
+    "alpha": 1
+  },
+  {
+    "key": "select-focus",
+    "group": "Calendário e menus",
+    "label": "Menu em foco",
+    "hex": "#edf5eb",
+    "alpha": 1
+  },
+  {
+    "key": "select-arrow",
+    "group": "Calendário e menus",
+    "label": "Setas dos menus",
+    "hex": "#5e7f5b",
+    "alpha": 1
+  },
+  {
+    "key": "select-arrow-bg",
+    "group": "Calendário e menus",
+    "label": "Fundo das setas",
+    "hex": "#e8f1e5",
+    "alpha": 1
+  },
+  {
+    "key": "menu-border",
+    "group": "Calendário e menus",
+    "label": "Borda dos menus e calendário",
+    "hex": "#d9e5d5",
+    "alpha": 1
+  },
+  {
+    "key": "menu-text",
+    "group": "Calendário e menus",
+    "label": "Texto dos menus",
+    "hex": "#344b32",
+    "alpha": 1
+  },
+  {
+    "key": "menu-active-text",
+    "group": "Calendário e menus",
+    "label": "Texto destacado nos menus",
+    "hex": "#165f17",
+    "alpha": 1
+  },
+  {
+    "key": "scrollbar",
+    "group": "Calendário e menus",
+    "label": "Barra de rolagem",
+    "hex": "#c8d9c3",
+    "alpha": 1
+  },
+  {
+    "key": "calendar-nav",
+    "group": "Calendário e menus",
+    "label": "Setas do calendário",
+    "hex": "#41663e",
+    "alpha": 1
+  },
+  {
+    "key": "calendar-nav-bg",
+    "group": "Calendário e menus",
+    "label": "Fundo das setas do calendário",
+    "hex": "#f1f6ef",
+    "alpha": 1
+  },
+  {
+    "key": "calendar-nav-hover",
+    "group": "Calendário e menus",
+    "label": "Setas do calendário ao passar o mouse",
+    "hex": "#e7f1e4",
+    "alpha": 1
+  },
+  {
+    "key": "calendar-month",
+    "group": "Calendário e menus",
+    "label": "Nome do mês",
+    "hex": "#2f4e2d",
+    "alpha": 1
+  },
+  {
+    "key": "calendar-day",
+    "group": "Calendário e menus",
+    "label": "Dias do calendário",
+    "hex": "#385036",
+    "alpha": 1
+  },
+  {
+    "key": "calendar-outside",
+    "group": "Calendário e menus",
+    "label": "Dias fora do mês",
+    "hex": "#b0b9ad",
+    "alpha": 1
+  },
+  {
+    "key": "calendar-today",
+    "group": "Calendário e menus",
+    "label": "Texto do dia atual",
+    "hex": "#137f18",
+    "alpha": 1
+  },
+  {
+    "key": "time-border",
+    "group": "Calendário e menus",
+    "label": "Divisórias dos horários",
+    "hex": "#e1eadf",
+    "alpha": 1
+  },
+  {
+    "key": "time-title",
+    "group": "Calendário e menus",
+    "label": "Título dos horários",
+    "hex": "#466443",
+    "alpha": 1
+  },
+  {
+    "key": "time-label",
+    "group": "Calendário e menus",
+    "label": "Legendas de hora e minuto",
+    "hex": "#8b9788",
+    "alpha": 1
+  },
+  {
+    "key": "time-option",
+    "group": "Calendário e menus",
+    "label": "Texto dos horários",
+    "hex": "#40543e",
+    "alpha": 1
+  },
+  {
+    "key": "shortcut-bg",
+    "group": "Realces e detalhes",
+    "label": "Fundo dos atalhos",
+    "hex": "#ffffff",
+    "alpha": 0.12
+  },
+  {
+    "key": "shortcut-hover",
+    "group": "Realces e detalhes",
+    "label": "Atalhos ao passar o mouse",
+    "hex": "#ffffff",
+    "alpha": 0.22
+  },
+  {
+    "key": "quote-bg",
+    "group": "Realces e detalhes",
+    "label": "Fundo das citações",
+    "hex": "#ffffff",
+    "alpha": 0.46
+  },
+  {
+    "key": "code-bg",
+    "group": "Realces e detalhes",
+    "label": "Fundo dos trechos de código",
+    "hex": "#000000",
+    "alpha": 0.06
+  },
+  {
+    "key": "legend-border",
+    "group": "Realces e detalhes",
+    "label": "Divisória da legenda",
+    "hex": "#138f18",
+    "alpha": 0.18
+  },
+  {
+    "key": "separator",
+    "group": "Realces e detalhes",
+    "label": "Barras separadoras",
+    "hex": "#138f18",
+    "alpha": 0.22
+  },
+  {
+    "key": "spoiler-hover",
+    "group": "Realces e detalhes",
+    "label": "Spoiler ao passar o mouse",
+    "hex": "#ffffff",
+    "alpha": 0.055
+  },
+  {
+    "key": "spoiler-focus",
+    "group": "Realces e detalhes",
+    "label": "Contorno de foco do spoiler",
+    "hex": "#ffffff",
+    "alpha": 0.36
+  },
+  {
+    "key": "mp-inset-bg",
+    "group": "Realces e detalhes",
+    "label": "Fundo da MP dentro de spoilers",
+    "hex": "#ffffff",
+    "alpha": 0.34
+  },
+  {
+    "key": "toolbar-line",
+    "group": "Realces e detalhes",
+    "label": "Divisória e realce do botão Voltar",
+    "hex": "#138f18",
+    "alpha": 0.1
+  },
+  {
+    "key": "back-bg",
+    "group": "Realces e detalhes",
+    "label": "Fundo do botão Voltar",
+    "hex": "#138f18",
+    "alpha": 0.06
+  },
+  {
+    "key": "result-bg",
+    "group": "Realces e detalhes",
+    "label": "Fundo dos resultados",
+    "hex": "#ffffff",
+    "alpha": 0.48
+  },
+  {
+    "key": "posting-divider",
+    "group": "Realces e detalhes",
+    "label": "Divisória do envio",
+    "hex": "#138f18",
+    "alpha": 0.08
+  },
+  {
+    "key": "footer-text",
+    "group": "Estrutura",
+    "label": "Créditos do rodapé",
+    "hex": "#ffffff",
+    "alpha": 0.86
+  },
+  {
+    "key": "surface-mix",
+    "group": "Realces e detalhes",
+    "label": "Base clara dos fundos derivados",
+    "hex": "#ffffff",
+    "alpha": 1
+  }
+];
+
+  const PREFERENCES_KEY = `sup-preferences:v1:${SHEET_ID}`;
+
+  function defaultSitePreferences() {
+    return {
+      version: 1,
+      copyPosition: "edge",
+      actionPlacement: "hero",
+      colors: Object.fromEntries(THEME_COLORS.map(item => [item.key, { hex: item.hex, alpha: item.alpha }]))
+    };
+  }
+
+  function normalizeThemeHex(value) {
+    if (typeof value !== "string") return null;
+    let hex = value.trim().toLowerCase();
+    if (/^#[0-9a-f]{3}$/.test(hex)) hex = "#" + hex.slice(1).split("").map(char => char + char).join("");
+    return /^#[0-9a-f]{6}$/.test(hex) ? hex : null;
+  }
+
+  function loadSitePreferences() {
+    const defaults = defaultSitePreferences();
+    const candidates = [];
+    for (const name of ["localStorage", "sessionStorage"]) {
+      try {
+        const saved = JSON.parse(window[name].getItem(PREFERENCES_KEY) || "null");
+        if (saved?.version === 1) candidates.push(saved);
+      } catch (error) {}
+    }
+    candidates.sort((a, b) => (Number(b.savedAt) || 0) - (Number(a.savedAt) || 0));
+    for (const saved of candidates) {
+      try {
+        defaults.savedAt = Number(saved.savedAt) || 0;
+        defaults.copyPosition = saved.copyPosition === "inline" ? "inline" : "edge";
+        defaults.actionPlacement = saved.actionPlacement === "panel" ? "panel" : "hero";
+        for (const item of THEME_COLORS) {
+          const color = saved.colors?.[item.key];
+          const hex = normalizeThemeHex(color?.hex);
+          if (!hex) continue;
+          defaults.colors[item.key] = {
+            hex,
+            alpha: typeof color.alpha === "number" && Number.isFinite(color.alpha)
+              ? Math.min(1, Math.max(0, color.alpha)) : item.alpha
+          };
+        }
+        return defaults;
+      } catch (error) { /* Preferência inválida ou bloqueada: mantém o padrão. */ }
+    }
+    return defaults;
+  }
+
+  let sitePreferences = loadSitePreferences();
+  let preferencesSaveTimer = 0;
+
+  function saveSitePreferences() {
+    window.clearTimeout(preferencesSaveTimer);
+    preferencesSaveTimer = 0;
+    sitePreferences.savedAt = Math.max(Date.now(), (sitePreferences.savedAt || 0) + 1);
+    const serialized = JSON.stringify(sitePreferences);
+    const status = document.getElementById("settingsSaveStatus");
+    for (const name of ["localStorage", "sessionStorage"]) {
+      try {
+        window[name].setItem(PREFERENCES_KEY, serialized);
+        // Evita que uma cópia permanente antiga tenha prioridade sobre a sessão nova.
+        if (name === "localStorage") {
+          try { window.sessionStorage.removeItem(PREFERENCES_KEY); } catch (error) {}
+        } else {
+          try { window.localStorage.removeItem(PREFERENCES_KEY); } catch (error) {}
+        }
+        status.textContent = name === "localStorage"
+          ? "Preferências salvas neste navegador."
+          : "Preferências salvas somente nesta sessão.";
+        return;
+      } catch (error) {}
+    }
+    status.textContent = "Alterações aplicadas. O navegador não permitiu salvá-las para a próxima visita.";
+  }
+
+  function applySitePreferences() {
+    const root = document.documentElement;
+    root.dataset.copyPosition = sitePreferences.copyPosition;
+    root.dataset.actionPlacement = sitePreferences.actionPlacement;
+    for (const item of THEME_COLORS) {
+      const color = sitePreferences.colors[item.key];
+      if (color.hex === item.hex && color.alpha === item.alpha) {
+        root.style.removeProperty(`--${item.key}`);
+      } else {
+        const rgb = [1, 3, 5].map(index => parseInt(color.hex.slice(index, index + 2), 16));
+        root.style.setProperty(`--${item.key}`, color.alpha === 1
+          ? color.hex : `rgba(${rgb.join(", ")}, ${color.alpha})`);
+      }
+    }
+    sendHeight(true);
+  }
+
+  function renderSettingsPalette() {
+    const groups = [...new Set(THEME_COLORS.map(item => item.group))];
+    document.getElementById("settingsPalette").innerHTML = groups.map((group, index) => `
+      <details class="settings-color-group" ${index === 0 ? "open" : ""}>
+        <summary>${escapeHtml(group)}</summary>
+        <div class="settings-color-grid">
+          ${THEME_COLORS.filter(item => item.group === group).map(item => `
+            <div class="settings-color-field">
+              <label class="settings-color-label" for="theme-${item.key}">${escapeHtml(item.label)}</label>
+              <div class="settings-color-controls">
+                <input id="theme-${item.key}" class="settings-color-input" type="color" data-theme-color="${item.key}" aria-label="${escapeHtml(item.label)}">
+                <input class="settings-hex-input" type="text" data-theme-hex="${item.key}" maxlength="7" spellcheck="false" aria-label="Código hexadecimal de ${escapeHtml(item.label)}" placeholder="#000000">
+              </div>
+              ${item.alpha < 1 ? `<label class="settings-opacity">Opacidade <input type="range" min="0" max="1000" step="1" data-theme-alpha="${item.key}" aria-label="Opacidade de ${escapeHtml(item.label)}"><output data-theme-output="${item.key}"></output></label>` : ""}
+            </div>`).join("")}
+        </div>
+      </details>`).join("");
+  }
+
+  function syncSettingsControls() {
+    const dialog = document.getElementById("settingsDialog");
+    dialog.querySelectorAll('[name="copyPosition"]').forEach(input => { input.checked = input.value === sitePreferences.copyPosition; });
+    dialog.querySelectorAll('[name="actionPlacement"]').forEach(input => { input.checked = input.value === sitePreferences.actionPlacement; });
+    for (const item of THEME_COLORS) syncThemeField(item.key);
+  }
+
+  function syncThemeField(key, keepHex = false) {
+    const dialog = document.getElementById("settingsDialog");
+    const color = sitePreferences.colors[key];
+    dialog.querySelector(`[data-theme-color="${key}"]`).value = color.hex;
+    if (!keepHex) dialog.querySelector(`[data-theme-hex="${key}"]`).value = color.hex;
+    const alpha = dialog.querySelector(`[data-theme-alpha="${key}"]`);
+    if (alpha) {
+      alpha.value = Math.round(color.alpha * 1000);
+      dialog.querySelector(`[data-theme-output="${key}"]`).value = `${Math.round(color.alpha * 100)}%`;
+    }
+  }
+
+  function initializeSettings() {
+    applySitePreferences();
+    renderSettingsPalette();
+    syncSettingsControls();
+    const dialog = document.getElementById("settingsDialog");
+    const opener = document.getElementById("openSettings");
+    opener.addEventListener("click", () => {
+      if (dialog.open) return;
+      dialog.showModal();
+      opener.setAttribute("aria-expanded", "true");
+    });
+    dialog.querySelectorAll("[data-close-settings]").forEach(button => {
+      button.addEventListener("click", () => dialog.close());
+    });
+    dialog.addEventListener("close", () => {
+      if (preferencesSaveTimer) saveSitePreferences();
+      opener.setAttribute("aria-expanded", "false");
+      opener.focus({ preventScroll: true });
+    });
+    dialog.addEventListener("click", event => {
+      if (event.target !== dialog) return;
+      const bounds = dialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right ||
+          event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+    });
+    dialog.addEventListener("change", event => {
+      const input = event.target;
+      if (input.name === "copyPosition" && ["edge", "inline"].includes(input.value)) {
+        sitePreferences.copyPosition = input.value;
+      } else if (input.name === "actionPlacement" && ["hero", "panel"].includes(input.value)) {
+        sitePreferences.actionPlacement = input.value;
+      } else {
+        const key = input.dataset.themeHex;
+        if (key && sitePreferences.colors[key]) {
+          syncThemeField(key);
+          input.removeAttribute("aria-invalid");
+        }
+        return;
+      }
+      applySitePreferences();
+      saveSitePreferences();
+    });
+    dialog.addEventListener("input", event => {
+      const input = event.target;
+      const key = input.dataset.themeColor || input.dataset.themeHex || input.dataset.themeAlpha;
+      if (!key || !sitePreferences.colors[key]) return;
+      if (input.dataset.themeAlpha) {
+        sitePreferences.colors[key].alpha = Math.min(1000, Math.max(0, Number(input.value))) / 1000;
+      } else {
+        const hex = normalizeThemeHex(input.value);
+        if (!hex) {
+          input.setAttribute("aria-invalid", "true");
+          return;
+        }
+        input.removeAttribute("aria-invalid");
+        sitePreferences.colors[key].hex = hex;
+      }
+      syncThemeField(key, Boolean(input.dataset.themeHex));
+      applySitePreferences();
+      window.clearTimeout(preferencesSaveTimer);
+      preferencesSaveTimer = window.setTimeout(saveSitePreferences, 160);
+    });
+    document.getElementById("resetThemeColors").addEventListener("click", () => {
+      sitePreferences.colors = defaultSitePreferences().colors;
+      applySitePreferences();
+      syncSettingsControls();
+      saveSitePreferences();
+    });
+    window.addEventListener("pagehide", () => {
+      if (preferencesSaveTimer) saveSitePreferences();
+    });
+  }
+
 
   function readNativeForumContext() {
     const candidates = [];
@@ -1826,60 +3485,131 @@ details[open]::details-content {
 
   const tablerIcon = name => `<i class="ti ti-${name}" aria-hidden="true"></i>`;
 
-  function requestLessonApi() {
-    return new Promise((resolve, reject) => {
+  const LESSON_CACHE_VERSION = 1;
+  const LESSON_POLL_MS = 120000;
+  const LESSON_TIMEOUT_MS = 8000;
+  const API_SCRIPT_NONCE = document.currentScript?.nonce || "";
+  const lessonMemory = new Map();
+  const lessonStorageMode = new Map();
+  const lessonRequests = new Map();
+
+  function lessonCacheKey(course) {
+    return `sup-lesson:v${LESSON_CACHE_VERSION}:${encodeURIComponent(SUP_API_URL)}:${course}`;
+  }
+
+  function validateLessonPayload(payload, course) {
+    if (!payload || payload.ok !== true || payload.course !== course ||
+        !Array.isArray(payload.rows) || !payload.rows.length) {
+      throw new Error("A API não retornou uma aula válida. A cópia anterior foi preservada.");
+    }
+    if (payload.spreadsheetId && payload.spreadsheetId !== SHEET_ID) {
+      throw new Error("A API retornou dados de outra planilha.");
+    }
+    const rows = payload.rows.map(row => {
+      if (!row || typeof row.tag !== "string" ||
+          (row.b != null && typeof row.b !== "string") ||
+          (row.c != null && typeof row.c !== "string")) {
+        throw new Error("A API retornou linhas inválidas.");
+      }
+      return { tag: row.tag.trim(), b: row.b || "", c: row.c || "" };
+    });
+    const tree = rowsToTree(apiRowsToSheetRows(rows));
+    const hasContent = nodes => nodes.some(node => node.type === "spoiler"
+      ? hasContent(node.children)
+      : node.type !== "space");
+    if (!hasContent(tree)) throw new Error("A aula recebida está vazia ou não possui conteúdo reconhecido.");
+    return { ok: true, course, rows };
+  }
+
+  function readLessonCache(course) {
+    let best = lessonMemory.get(course) || null;
+    for (const name of ["localStorage", "sessionStorage"]) {
+      try {
+        const record = JSON.parse(window[name].getItem(lessonCacheKey(course)) || "null");
+        if (!record || record.version !== LESSON_CACHE_VERSION ||
+            !Number.isFinite(record.checkedAt) || record.checkedAt <= 0) continue;
+        record.payload = validateLessonPayload(record.payload, course);
+        if (!best || record.checkedAt > best.checkedAt) {
+          best = record;
+          lessonStorageMode.set(course, name);
+        }
+      } catch (error) {
+        // Cache corrompido ou armazenamento bloqueado não impedem a leitura da API.
+      }
+    }
+    if (best) lessonMemory.set(course, best);
+    return best;
+  }
+
+  function saveLessonCache(payload, course) {
+    const valid = validateLessonPayload(payload, course);
+    const record = { version: LESSON_CACHE_VERSION, checkedAt: Date.now(), payload: valid };
+    const serialized = JSON.stringify(record);
+    lessonMemory.set(course, record);
+    lessonStorageMode.set(course, "memory");
+    for (const name of ["localStorage", "sessionStorage"]) {
+      try {
+        window[name].setItem(lessonCacheKey(course), serialized);
+        lessonStorageMode.set(course, name);
+        break;
+      } catch (error) {
+        // Sem permissão ou sem espaço: mantém a aula em memória e tenta a sessão.
+      }
+    }
+    return record;
+  }
+
+  function requestLessonApi(course = ACTIVE_COURSE.key) {
+    if (lessonRequests.has(course)) return lessonRequests.get(course);
+    const request = new Promise((resolve, reject) => {
       const callbackName = `__supApi_${Date.now()}_${Math.random().toString(36).slice(2)}`;
       const script = document.createElement("script");
       let settled = false;
-
       const timeout = window.setTimeout(() => {
-        finish(new Error("Tempo limite ao consultar a API da aula."));
-      }, 10000);
+        finish(new Error("A API demorou para responder. Uma nova tentativa será feita automaticamente."));
+      }, LESSON_TIMEOUT_MS);
 
-      const cleanup = () => {
-        window.clearTimeout(timeout);
-        script.remove();
+      const onPolicyViolation = event => {
+        if (event.disposition === "report" || !String(event.effectiveDirective).startsWith("script-src")) return;
         try {
-          delete window[callbackName];
-        } catch (error) {
-          window[callbackName] = undefined;
-        }
+          const host = new URL(event.blockedURI).hostname;
+          if (host === "script.google.com" || host === "script.googleusercontent.com" ||
+              host.endsWith(".script.googleusercontent.com")) {
+            finish(new Error("A política desta página bloqueou a API. A cópia salva continua disponível, se existir."));
+          }
+        } catch (error) {}
       };
 
       const finish = (error, payload) => {
         if (settled) return;
         settled = true;
-        cleanup();
+        window.clearTimeout(timeout);
+        document.removeEventListener("securitypolicyviolation", onPolicyViolation);
+        script.remove();
+        // Uma resposta atrasada não deve gerar erro de callback inexistente.
+        window[callbackName] = () => {};
+        window.setTimeout(() => { delete window[callbackName]; }, 60000);
         error ? reject(error) : resolve(payload);
       };
 
       window[callbackName] = payload => {
-        if (!payload || payload.ok !== true || !Array.isArray(payload.rows)) {
-          finish(new Error(payload?.error || "A API não retornou dados válidos."));
-          return;
-        }
-
-        if (payload.course && String(payload.course).toUpperCase() !== ACTIVE_COURSE.key) {
-          finish(new Error("A API retornou uma aula diferente da solicitada."));
-          return;
-        }
-
-        finish(null, payload);
+        try { finish(null, validateLessonPayload(payload, course)); }
+        catch (error) { finish(error); }
       };
-
-      script.onerror = () => finish(new Error("Não foi possível acessar a API da aula."));
-
-      const query = new URLSearchParams({
-        action: "lesson",
-        course: ACTIVE_COURSE.key,
-        callback: callbackName,
-        _: Date.now().toString()
-      });
-
+      script.onerror = () => finish(new Error("Não foi possível consultar a API. Tentaremos novamente em segundo plano."));
+      const query = new URLSearchParams({ action: "lesson", course, callback: callbackName, _: Date.now().toString() });
+      script.async = true;
+      if (API_SCRIPT_NONCE) script.nonce = API_SCRIPT_NONCE;
       script.src = `${SUP_API_URL}?${query.toString()}`;
-      document.head.appendChild(script);
+      document.addEventListener("securitypolicyviolation", onPolicyViolation);
+      try { document.head.appendChild(script); }
+      catch (error) { finish(new Error("O navegador bloqueou o carregamento da API.")); }
     });
+    const tracked = request.finally(() => lessonRequests.delete(course));
+    lessonRequests.set(course, tracked);
+    return tracked;
   }
+
 
   function apiRowsToSheetRows(rows) {
     return rows.map(item => ({
@@ -1988,7 +3718,7 @@ details[open]::details-content {
           break;
 
         case "BARRA":
-          if (columnB) addNode(current(), { type: "bar", text: columnB, row: sheetRow });
+          addNode(current(), { type: "bar", text: columnB, row: sheetRow });
           break;
 
         case "ALERTA":
@@ -2307,15 +4037,15 @@ details[open]::details-content {
               <div class="posting-control has-icon">
                 <span class="posting-control-icon" aria-hidden="true">${tablerIcon("building")}</span>
                 <select id="${id}-location" class="posting-select posting-location">
-                <option value="">Selecione...</option>
-                <option>Sala de Aplicação 01</option>
-                <option>Sala de Aplicação 02</option>
-                <option>Sala de Aplicação 03</option>
-                <option>Sala de Aplicação 04</option>
-                <option>Batalhões</option>
-                <option>Corredores</option>
-                <option>Quarto Particular</option>
-                <option>Cabanas do Batalhão Auxiliar</option>
+                  <option value="">Selecione...</option>
+                  <option>Sala de Aplicação 01</option>
+                  <option>Sala de Aplicação 02</option>
+                  <option>Sala de Aplicação 03</option>
+                  <option>Sala de Aplicação 04</option>
+                  <option>Batalhões</option>
+                  <option>Corredores</option>
+                  <option>Quarto Particular</option>
+                  <option>Cabanas do Batalhão Auxiliar</option>
                 </select>
               </div>
             </div>
@@ -2325,8 +4055,7 @@ details[open]::details-content {
                 ${tablerIcon("clock")}
                 <label class="posting-label" for="${id}-started">Data e Hora de Início</label>
               </div>
-              <div class="posting-control has-icon">
-                <span class="posting-control-icon" aria-hidden="true">${tablerIcon("calendar-time")}</span>
+              <div class="posting-control">
                 <input
                   id="${id}-started"
                   class="posting-input posting-started"
@@ -2385,12 +4114,12 @@ details[open]::details-content {
           </div>
 
           <div class="posting-actions">
+            <div class="posting-status" role="status" aria-live="polite" hidden></div>
+
             <button class="posting-submit" type="button" data-submit-posting>
               ${tablerIcon("send-2")}
               <span>Enviar</span>
             </button>
-
-            <div class="posting-status" role="status" aria-live="polite" hidden></div>
           </div>
         </div>
       </section>
@@ -2404,6 +4133,116 @@ details[open]::details-content {
       .split("/")
       .map(item => item.trim())
       .filter(Boolean);
+  }
+
+  function closePostingPopovers(except = null) {
+    document.querySelectorAll(".posting-custom-select.is-open").forEach(widget => {
+      if (widget === except) return;
+      widget.classList.remove("is-open");
+      const menu = widget.querySelector(".posting-custom-select-menu");
+      const button = widget.querySelector(".posting-custom-select-button");
+      if (menu) menu.hidden = true;
+      if (button) button.setAttribute("aria-expanded", "false");
+    });
+
+    document.querySelectorAll(".posting-datetime.is-open").forEach(widget => {
+      if (widget === except) return;
+      widget.classList.remove("is-open");
+      const popover = widget.querySelector(".posting-datetime-popover");
+      const button = widget.querySelector(".posting-datetime-button");
+      if (popover) popover.hidden = true;
+      if (button) button.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function enhancePostingSelect(select) {
+    if (!select || select.dataset.customReady === "true") return;
+
+    select.dataset.customReady = "true";
+    select.classList.add("posting-native-select", "is-enhanced");
+
+    const widget = document.createElement("div");
+    widget.className = "posting-custom-select";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "posting-custom-select-button";
+    button.setAttribute("aria-haspopup", "listbox");
+    button.setAttribute("aria-expanded", "false");
+
+    const value = document.createElement("span");
+    value.className = "posting-custom-select-value";
+
+    const chevron = document.createElement("span");
+    chevron.className = "posting-custom-select-chevron";
+    chevron.setAttribute("aria-hidden", "true");
+    chevron.innerHTML = tablerIcon("chevron-down");
+
+    button.append(value, chevron);
+
+    const menu = document.createElement("div");
+    menu.className = "posting-custom-select-menu";
+    menu.setAttribute("role", "listbox");
+    menu.hidden = true;
+
+    const rebuild = () => {
+      const selected = select.selectedOptions?.[0];
+      value.textContent = selected?.textContent || "Selecione...";
+      menu.innerHTML = "";
+
+      Array.from(select.options).forEach(option => {
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = "posting-custom-select-option";
+        item.setAttribute("role", "option");
+        item.dataset.value = option.value;
+        item.textContent = option.textContent;
+
+        const isSelected = option.value === select.value;
+        item.classList.toggle("is-selected", isSelected);
+        item.setAttribute("aria-selected", isSelected ? "true" : "false");
+
+        item.addEventListener("click", () => {
+          select.value = option.value;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+          rebuild();
+
+          widget.classList.remove("is-open");
+          menu.hidden = true;
+          button.setAttribute("aria-expanded", "false");
+          button.focus();
+        });
+
+        menu.appendChild(item);
+      });
+    };
+
+    button.addEventListener("click", () => {
+      const opening = !widget.classList.contains("is-open");
+      closePostingPopovers(opening ? widget : null);
+
+      widget.classList.toggle("is-open", opening);
+      menu.hidden = !opening;
+      button.setAttribute("aria-expanded", opening ? "true" : "false");
+
+      if (opening) {
+        const selectedItem = menu.querySelector(".is-selected");
+        selectedItem?.scrollIntoView({ block: "nearest" });
+      }
+
+      sendHeight(true);
+    });
+
+    select.addEventListener("change", rebuild);
+
+    select.insertAdjacentElement("afterend", widget);
+    widget.append(button, menu);
+
+    rebuild();
+  }
+
+  function enhancePostingSelects(root = document) {
+    root.querySelectorAll("select.posting-select").forEach(enhancePostingSelect);
   }
 
   function syncPostingResults(card) {
@@ -2468,24 +4307,296 @@ details[open]::details-content {
             ${escapeHtml(student)}
           </div>
 
-          <select
-            class="posting-select posting-result-select"
-            data-student="${escapeHtml(student)}"
-            aria-label="Resultado de ${escapeHtml(student)}"
-          >
-            <option value="">Selecione o resultado...</option>
-            ${option("Aprovado")}
-            ${option("Reprovado")}
-            ${option("Caiu")}
-            ${option("-x-")}
-          </select>
+          <div class="posting-select-wrap">
+            <select
+              class="posting-select posting-result-select"
+              data-student="${escapeHtml(student)}"
+              aria-label="Resultado de ${escapeHtml(student)}"
+            >
+              <option value="">Selecione o resultado...</option>
+              ${option("Aprovado")}
+              ${option("Reprovado")}
+              ${option("Caiu")}
+              ${option("-x-")}
+            </select>
+          </div>
 
           ${proofField}
         </div>
       `;
     }).join("");
 
+    enhancePostingSelects(container);
     sendHeight(true);
+  }
+
+  function parsePostingDateTime(value) {
+    const match = String(value || "").match(
+      /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/
+    );
+
+    if (!match) return new Date();
+
+    const date = new Date(
+      Number(match[1]),
+      Number(match[2]) - 1,
+      Number(match[3]),
+      Number(match[4]),
+      Number(match[5]),
+      0,
+      0
+    );
+
+    return Number.isNaN(date.getTime()) ? new Date() : date;
+  }
+
+  function formatPostingDateTimeDisplay(date) {
+    return new Intl.DateTimeFormat("pt-BR", {
+      dateStyle: "short",
+      timeStyle: "short"
+    }).format(date);
+  }
+
+  function enhancePostingDateTime(input) {
+    if (!input || input.dataset.datetimeReady === "true") return;
+
+    input.dataset.datetimeReady = "true";
+    input.classList.add("is-enhanced");
+
+    let selected = parsePostingDateTime(input.value);
+    let viewDate = new Date(
+      selected.getFullYear(),
+      selected.getMonth(),
+      1
+    );
+
+    const widget = document.createElement("div");
+    widget.className = "posting-datetime";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "posting-datetime-button";
+    button.setAttribute("aria-haspopup", "dialog");
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = `
+      ${tablerIcon("calendar-time")}
+      <span class="posting-datetime-value"></span>
+      <span class="posting-datetime-toggle" aria-hidden="true">
+        ${tablerIcon("chevron-down")}
+      </span>
+    `;
+
+    const popover = document.createElement("div");
+    popover.className = "posting-datetime-popover";
+    popover.hidden = true;
+
+    const calendar = document.createElement("div");
+    calendar.className = "posting-calendar";
+
+    const time = document.createElement("div");
+    time.className = "posting-datetime-time";
+
+    popover.append(calendar, time);
+    widget.append(button, popover);
+    input.insertAdjacentElement("afterend", widget);
+
+    const syncInput = () => {
+      input.value = formatStartDateTime(selected);
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+
+      const display = button.querySelector(".posting-datetime-value");
+      if (display) {
+        display.textContent = formatPostingDateTimeDisplay(selected);
+      }
+    };
+
+    const renderCalendar = () => {
+      const year = viewDate.getFullYear();
+      const month = viewDate.getMonth();
+
+      const first = new Date(year, month, 1);
+      const startDay = first.getDay();
+      const gridStart = new Date(year, month, 1 - startDay);
+
+      const monthLabel = new Intl.DateTimeFormat("pt-BR", {
+        month: "long",
+        year: "numeric"
+      }).format(first);
+
+      const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
+
+      const days = Array.from({ length: 42 }, (_, index) => {
+        const day = new Date(gridStart);
+        day.setDate(gridStart.getDate() + index);
+
+        const isOutside = day.getMonth() !== month;
+        const isSelected =
+          day.getFullYear() === selected.getFullYear() &&
+          day.getMonth() === selected.getMonth() &&
+          day.getDate() === selected.getDate();
+
+        const now = new Date();
+        const isToday =
+          day.getFullYear() === now.getFullYear() &&
+          day.getMonth() === now.getMonth() &&
+          day.getDate() === now.getDate();
+
+        return `
+          <button
+            class="posting-calendar-day${isOutside ? " is-outside" : ""}${isToday ? " is-today" : ""}${isSelected ? " is-selected" : ""}"
+            type="button"
+            data-date="${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, "0")}-${String(day.getDate()).padStart(2, "0")}"
+          >
+            ${day.getDate()}
+          </button>
+        `;
+      }).join("");
+
+      calendar.innerHTML = `
+        <div class="posting-calendar-head">
+          <button class="posting-calendar-nav" type="button" data-calendar-prev aria-label="Mês anterior">
+            ${tablerIcon("chevron-left")}
+          </button>
+
+          <div class="posting-calendar-month">${escapeHtml(monthLabel)}</div>
+
+          <button class="posting-calendar-nav" type="button" data-calendar-next aria-label="Próximo mês">
+            ${tablerIcon("chevron-right")}
+          </button>
+        </div>
+
+        <div class="posting-calendar-weekdays">
+          ${weekdays.map(day => `<span class="posting-calendar-weekday">${day}</span>`).join("")}
+        </div>
+
+        <div class="posting-calendar-days">${days}</div>
+      `;
+
+      calendar.querySelector("[data-calendar-prev]")?.addEventListener("click", () => {
+        viewDate = new Date(year, month - 1, 1);
+        renderCalendar();
+      });
+
+      calendar.querySelector("[data-calendar-next]")?.addEventListener("click", () => {
+        viewDate = new Date(year, month + 1, 1);
+        renderCalendar();
+      });
+
+      calendar.querySelectorAll("[data-date]").forEach(dayButton => {
+        dayButton.addEventListener("click", () => {
+          const [y, m, d] = dayButton.dataset.date.split("-").map(Number);
+
+          selected = new Date(
+            y,
+            m - 1,
+            d,
+            selected.getHours(),
+            selected.getMinutes(),
+            0,
+            0
+          );
+
+          viewDate = new Date(y, m - 1, 1);
+          syncInput();
+          renderCalendar();
+          renderTime();
+        });
+      });
+    };
+
+    const renderTime = () => {
+      const hours = Array.from({ length: 24 }, (_, hour) => {
+        const value = String(hour).padStart(2, "0");
+        return `
+          <button
+            type="button"
+            class="posting-time-option${selected.getHours() === hour ? " is-selected" : ""}"
+            data-hour="${hour}"
+          >${value}</button>
+        `;
+      }).join("");
+
+      const minutes = Array.from({ length: 60 }, (_, minute) => {
+        const value = String(minute).padStart(2, "0");
+        return `
+          <button
+            type="button"
+            class="posting-time-option${selected.getMinutes() === minute ? " is-selected" : ""}"
+            data-minute="${minute}"
+          >${value}</button>
+        `;
+      }).join("");
+
+      time.innerHTML = `
+        <p class="posting-datetime-time-title">Horário</p>
+
+        <div class="posting-datetime-time-columns">
+          <div class="posting-datetime-time-column">
+            <span class="posting-datetime-time-label">Hora</span>
+            <div class="posting-datetime-time-list">${hours}</div>
+          </div>
+
+          <div class="posting-datetime-time-column">
+            <span class="posting-datetime-time-label">Min.</span>
+            <div class="posting-datetime-time-list">${minutes}</div>
+          </div>
+        </div>
+      `;
+
+      time.querySelectorAll("[data-hour]").forEach(hourButton => {
+        hourButton.addEventListener("click", () => {
+          selected.setHours(Number(hourButton.dataset.hour));
+          syncInput();
+          renderTime();
+        });
+      });
+
+      time.querySelectorAll("[data-minute]").forEach(minuteButton => {
+        minuteButton.addEventListener("click", () => {
+          selected.setMinutes(Number(minuteButton.dataset.minute));
+          syncInput();
+          renderTime();
+        });
+      });
+
+      time.querySelector("[data-hour].is-selected")?.scrollIntoView({
+        block: "center"
+      });
+
+      time.querySelector("[data-minute].is-selected")?.scrollIntoView({
+        block: "center"
+      });
+    };
+
+    button.addEventListener("click", () => {
+      const opening = !widget.classList.contains("is-open");
+      closePostingPopovers(opening ? widget : null);
+
+      widget.classList.toggle("is-open", opening);
+      popover.hidden = !opening;
+      button.setAttribute("aria-expanded", opening ? "true" : "false");
+
+      if (opening) {
+        selected = parsePostingDateTime(input.value);
+        viewDate = new Date(
+          selected.getFullYear(),
+          selected.getMonth(),
+          1
+        );
+        renderCalendar();
+        renderTime();
+      }
+
+      sendHeight(true);
+    });
+
+    syncInput();
+    renderCalendar();
+    renderTime();
+  }
+
+  function enhancePostingDateTimes(root = document) {
+    root.querySelectorAll(".posting-started").forEach(enhancePostingDateTime);
   }
 
   function syncPostingIdentity() {
@@ -2818,17 +4929,27 @@ details[open]::details-content {
     }
   }
 
-  function renderButtonGroup(nodes) {
+  function collectHeroActions(nodes) {
+    return nodes.flatMap(node => {
+      if (node.type === "specialButton") return [node];
+      return Array.isArray(node.children) ? collectHeroActions(node.children) : [];
+    });
+  }
+
+  function renderButtonGroup(nodes, iconsOnly = false) {
     const buttons = nodes.map(node => {
+      const specialClass = node.type === "specialButton" ? " is-special-action" : "";
       if (node.type === "specialButton" && node.action === "form") {
         return `
           <button
-            class="sheet-action is-form-button"
+            class="sheet-action is-form-button${specialClass}"
             type="button"
             data-open-posting-page
+            aria-label="POSTAR NO FORMULÁRIO"
+            title="POSTAR NO FORMULÁRIO"
           >
             ${tablerIcon("clipboard-text")}
-            <span>POSTAR NO FORMULÁRIO</span>
+            ${iconsOnly ? "" : "<span>POSTAR NO FORMULÁRIO</span>"}
           </button>
         `;
       }
@@ -2837,9 +4958,9 @@ details[open]::details-content {
 
       if (!url) {
         return `
-          <span class="sheet-action is-disabled" aria-disabled="true">
+          <span class="sheet-action is-disabled${specialClass}" aria-disabled="true" aria-label="${escapeHtml(node.label)}" title="${escapeHtml(node.label)} — link não configurado">
             ${tablerIcon("link-off")}
-            <span>${escapeHtml(node.label)}</span>
+            ${iconsOnly ? "" : `<span>${escapeHtml(node.label)}</span>`}
           </span>
         `;
       }
@@ -2859,18 +4980,21 @@ details[open]::details-content {
 
       return `
         <a
-          class="sheet-action${className}"
+          class="sheet-action${className}${specialClass}"
           href="${escapeHtml(url)}"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="${escapeHtml(node.label)}"
+          title="${escapeHtml(node.label)}"
         >
           ${tablerIcon(icon)}
-          <span>${escapeHtml(node.label)}</span>
+          ${iconsOnly ? "" : `<span>${escapeHtml(node.label)}</span>`}
         </a>
       `;
     }).join("");
 
-    return `<div class="action-grid">${buttons}</div>`;
+    const onlySpecial = nodes.every(node => node.type === "specialButton");
+    return iconsOnly ? buttons : `<div class="action-grid${onlySpecial ? " is-special-only" : ""}">${buttons}</div>`;
   }
 
   function renderNodes(nodes, noCopy = false) {
@@ -2925,7 +5049,7 @@ details[open]::details-content {
         case "answer":
           html += `
             <div class="answer-line">
-              ${tablerIcon("corner-down-right")}
+              <span class="answer-line-prefix">R.:</span>
               <span>${renderBbcode(node.text)}</span>
             </div>
           `;
@@ -2941,8 +5065,8 @@ details[open]::details-content {
 
         case "bar":
           html += `
-            <div class="section-bar" role="separator" aria-label="${escapeHtml(node.text)}">
-              <span class="section-bar-label">${renderBbcode(node.text)}</span>
+            <div class="section-bar${node.text ? "" : " is-untitled"}" role="separator"${node.text ? ` aria-label="${escapeHtml(node.text)}"` : ""}>
+              ${node.text ? `<span class="section-bar-label">${renderBbcode(node.text)}</span>` : ""}
             </div>
           `;
           break;
@@ -3385,6 +5509,8 @@ details[open]::details-content {
 
     postingPageContent.querySelectorAll("[data-posting-card]").forEach(card => {
       syncPostingIdentity();
+      enhancePostingSelects(card);
+      enhancePostingDateTimes(card);
       syncPostingResults(card);
       syncPostingCourse(card);
     });
@@ -3408,6 +5534,20 @@ details[open]::details-content {
     const heroTitle = document.getElementById("heroTitle");
     const shell = document.getElementById("courseShell");
     const description = document.getElementById("pageDescription");
+
+    document.querySelectorAll("[data-course-shortcut]").forEach(link => {
+      const course = link.dataset.courseShortcut;
+      const url = new URL(window.location.href);
+      url.searchParams.set("course", course);
+      url.searchParams.delete("aula");
+      link.href = url.href;
+
+      if (course === ACTIVE_COURSE.key) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
 
     document.title = `[${ACTIVE_COURSE.key}] ${ACTIVE_COURSE.title}`;
 
@@ -3458,62 +5598,187 @@ details[open]::details-content {
     sendHeight(true);
   }
 
-  async function loadLesson() {
-    copiedLines.clear();
-    mpMessages.clear();
+  let displayedLesson = null;
+  let pendingLesson = null;
+  let displayedCheckedAt = 0;
+  let lessonRefresh = null;
+  let lessonTimer = 0;
+  let lessonFailures = 0;
+  let lessonLastAttempt = 0;
+  let lessonPrefetch = null;
+  // A abertura só termina após sincronizar uma resposta válida da API.
+  let initialLessonSyncPending = true;
 
-    lessonContent.innerHTML = `
-      <div class="load-state is-loading">
-        ${tablerIcon("loader-2")}
-        <span>Carregando conteúdo da aula...</span>
-      </div>
-    `;
-
-    sendHeight(true);
-
-    try {
-      const payload = await requestLessonApi();
-      const tree = rowsToTree(apiRowsToSheetRows(payload.rows));
-      const formButtonNode = findFormButtonNode(tree);
-      const rendered = renderNodes(tree);
-
-      if (!rendered.trim()) {
-        throw new Error("A planilha não possui conteúdo válido para esta aula.");
-      }
-
-      lessonContent.innerHTML = rendered;
-
-      if (formButtonNode) {
-        /*
-         * A estrutura inteira do formulário pertence ao BotãoForm.
-         * Não existe mais TAG Postagem.
-         */
-        postingPageContent.innerHTML = renderPostingCard(formButtonNode);
-      } else {
-        postingPageContent.innerHTML = "";
-      }
-
-      postingPage.hidden = true;
-      lessonContent.hidden = false;
-
-      applyCopyState();
-      bindDetails();
-      syncPostingIdentity();
-
-      postingPageContent.querySelectorAll("[data-posting-card]").forEach(card => {
-        syncPostingResults(card);
-        syncPostingCourse(card);
-      });
-
-      sendHeight(true);
-    } catch (error) {
-      console.error(error);
-      showLoadError(
-        error?.message ||
-        "Não foi possível carregar o conteúdo da aula pela API."
-      );
-    }
+  function lessonFingerprint(payload) {
+    return JSON.stringify(payload.rows);
   }
+
+  function setLessonStatus(message = "") {
+    const status = document.getElementById("lessonSyncStatus");
+    const label = document.getElementById("lessonSyncMessage");
+    const button = document.getElementById("applyLessonUpdate");
+    const limited = displayedLesson && lessonStorageMode.get(ACTIVE_COURSE.key) !== "localStorage";
+    const storageNote = limited
+      ? " O navegador não permitiu salvar uma cópia permanente neste dispositivo."
+      : "";
+    label.textContent = (pendingLesson ? "Há uma versão mais recente desta aula. " : "") + message + storageNote;
+    button.hidden = !pendingLesson;
+    status.hidden = !label.textContent.trim();
+    sendHeight(true);
+  }
+
+  function renderLessonPayload(payload, checkedAt, preserveView = false) {
+    const keepPostingPage = preserveView && !postingPage.hidden &&
+      Boolean(postingPageContent.innerHTML.trim());
+    const valid = validateLessonPayload(payload, ACTIVE_COURSE.key);
+    const tree = rowsToTree(apiRowsToSheetRows(valid.rows));
+    const formButtonNode = findFormButtonNode(tree);
+    const actionNodes = collectHeroActions(tree);
+    // Só altera a página depois de preparar todo o conteúdo da aula.
+    const rendered = renderNodes(tree);
+    const actions = renderButtonGroup(actionNodes, true);
+    const posting = formButtonNode ? renderPostingCard(formButtonNode) : "";
+    copiedLines.clear();
+    lessonContent.innerHTML = rendered;
+    const heroActions = document.getElementById("heroActions");
+    heroActions.innerHTML = actions;
+    heroActions.hidden = !actionNodes.length;
+    // Preserva um formulário já preenchido quando a atualização ainda contém BotãoForm.
+    if (!keepPostingPage && (!formButtonNode || !postingPageContent.innerHTML.trim())) {
+      postingPageContent.innerHTML = posting;
+    }
+    postingPage.hidden = !keepPostingPage;
+    lessonContent.hidden = keepPostingPage;
+    displayedLesson = valid;
+    displayedCheckedAt = checkedAt;
+    applyCopyState();
+    bindDetails();
+    syncPostingIdentity();
+    postingPageContent.querySelectorAll("[data-posting-card]").forEach(card => {
+      enhancePostingSelects(card);
+      enhancePostingDateTimes(card);
+      syncPostingResults(card);
+      syncPostingCourse(card);
+    });
+    sendHeight(true);
+  }
+
+  function scheduleLessonCheck(delay = LESSON_POLL_MS) {
+    window.clearTimeout(lessonTimer);
+    if (document.hidden) return;
+    lessonTimer = window.setTimeout(() => { refreshLesson(); }, delay);
+  }
+
+  function prefetchOtherLessons() {
+    if (lessonPrefetch) return lessonPrefetch;
+    lessonPrefetch = (async () => {
+      for (const course of Object.keys(COURSES)) {
+        if (course === ACTIVE_COURSE.key || document.hidden || navigator.onLine === false) continue;
+        const cached = readLessonCache(course);
+        if (cached && Date.now() - cached.checkedAt < LESSON_POLL_MS) continue;
+        try { saveLessonCache(await requestLessonApi(course), course); }
+        catch (error) { /* Uma falha em outra aula não afeta a que está aberta. */ }
+      }
+    })().finally(() => { lessonPrefetch = null; });
+    return lessonPrefetch;
+  }
+
+  function refreshLesson() {
+    if (lessonRefresh) return lessonRefresh;
+    window.clearTimeout(lessonTimer);
+    if (document.hidden) return Promise.resolve();
+    if (navigator.onLine === false) {
+      if (displayedLesson) setLessonStatus("Sem conexão no momento. A aula continua disponível pela cópia salva.");
+      else showLoadError("Sem conexão e sem cópia salva desta aula neste navegador. A leitura será retomada quando a conexão voltar.");
+      scheduleLessonCheck(15000);
+      return Promise.resolve();
+    }
+    lessonLastAttempt = Date.now();
+    lessonRefresh = (async () => {
+      try {
+        const payload = await requestLessonApi();
+        const checkedAt = Date.now();
+        if (!displayedLesson) renderLessonPayload(payload, checkedAt);
+        const record = saveLessonCache(payload, ACTIVE_COURSE.key);
+        if (lessonFingerprint(payload) !== lessonFingerprint(displayedLesson)) {
+          if (initialLessonSyncPending) {
+            renderLessonPayload(payload, record.checkedAt, true);
+            pendingLesson = null;
+          } else {
+            pendingLesson = record;
+          }
+        } else {
+          displayedCheckedAt = record.checkedAt;
+          pendingLesson = null;
+        }
+        initialLessonSyncPending = false;
+        lessonFailures = 0;
+        setLessonStatus();
+        // Prepara também os atalhos SUP, SEG e PRO para uma futura falha da API.
+        void prefetchOtherLessons();
+      } catch (error) {
+        lessonFailures += 1;
+        if (displayedLesson) {
+          setLessonStatus("Não foi possível verificar atualizações agora. Tentaremos novamente automaticamente.");
+        } else {
+          showLoadError(`${error?.message || "A API está indisponível."} Ainda não há uma cópia salva desta aula neste navegador.`);
+        }
+      } finally {
+        scheduleLessonCheck(lessonFailures ? Math.min(15000 * (2 ** Math.min(lessonFailures - 1, 3)), LESSON_POLL_MS) : LESSON_POLL_MS);
+      }
+    })().finally(() => { lessonRefresh = null; });
+    return lessonRefresh;
+  }
+
+  function loadLesson() {
+    if (!displayedLesson) {
+      const cached = readLessonCache(ACTIVE_COURSE.key);
+      if (cached) {
+        try {
+          renderLessonPayload(cached.payload, cached.checkedAt);
+          setLessonStatus();
+        } catch (error) { /* A consulta remota ainda pode recuperar esta aula. */ }
+      }
+    }
+    return refreshLesson();
+  }
+
+  document.getElementById("applyLessonUpdate").addEventListener("click", () => {
+    if (!pendingLesson) return;
+    if (!postingPage.hidden || pendingPmRequests.size || lessonContent.querySelector("[data-send-mp]:disabled")) {
+      setLessonStatus("Volte à aula e aguarde os envios terminarem para aplicar a atualização.");
+      return;
+    }
+    try {
+      renderLessonPayload(pendingLesson.payload, pendingLesson.checkedAt);
+      pendingLesson = null;
+      setLessonStatus("Aula atualizada.");
+    } catch (error) {
+      setLessonStatus("Não foi possível aplicar a atualização. A versão atual foi mantida.");
+    }
+  });
+
+  const resumeLessonChecks = () => {
+    if (document.hidden) return;
+    if (Date.now() - lessonLastAttempt >= 10000) void refreshLesson();
+    else scheduleLessonCheck(10000);
+  };
+  window.addEventListener("online", resumeLessonChecks);
+  window.addEventListener("pageshow", event => {
+    // Voltar pelo histórico pode restaurar a página inteira sem executar bootstrap.
+    if (event.persisted) {
+      initialLessonSyncPending = true;
+      pendingLesson = null;
+      setLessonStatus();
+    }
+    resumeLessonChecks();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) window.clearTimeout(lessonTimer);
+    else resumeLessonChecks();
+  });
+  window.addEventListener("pagehide", () => window.clearTimeout(lessonTimer));
+
 
   document.addEventListener("click", event => {
     const copyButton = event.target.closest("[data-copy-line]");
@@ -3556,6 +5821,23 @@ details[open]::details-content {
 
     const card = event.target.closest("[data-posting-card]");
     if (card) syncPostingResults(card);
+  });
+
+  document.addEventListener("click", event => {
+    if (
+      event.target.closest(".posting-custom-select") ||
+      event.target.closest(".posting-datetime")
+    ) {
+      return;
+    }
+
+    closePostingPopovers();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closePostingPopovers();
+    }
   });
 
   document.addEventListener("change", event => {
@@ -3648,9 +5930,12 @@ details[open]::details-content {
   });
 
   async function bootstrap() {
+    initializeSettings();
     applyCourseIdentity();
-    await requestForumContext();
+    // A identidade do fórum não deve atrasar a abertura da cópia local.
+    const contextReady = requestForumContext();
     await loadLesson();
+    await contextReady;
     sendHeight(true);
   }
 
