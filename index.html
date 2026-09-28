@@ -5559,12 +5559,11 @@ details[open]::details-content {
 
   function animateCourseArrival() {
     if (IS_SETTINGS_VIEW || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    document.querySelectorAll(".hero-copy, .hero-tools, .panel-wrap").forEach((element, index) => {
-      element.animate([
-        { opacity: 0, transform: "translateY(7px)" },
-        { opacity: 1, transform: "translateY(0)" }
-      ], { duration: 340, delay: index * 35, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" });
-    });
+    // Uma variação discreta de opacidade mantém a estrutura visual estável.
+    document.querySelector(".panel-wrap").animate([
+      { opacity: .9 },
+      { opacity: 1 }
+    ], { duration: 260, easing: "cubic-bezier(.2,.65,.3,1)" });
   }
 
   document.addEventListener("click", async event => {
@@ -5576,8 +5575,8 @@ details[open]::details-content {
     const shell = document.getElementById("courseShell");
     shell.setAttribute("aria-busy", "true");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      courseExitAnimation = shell.animate([{ opacity: 1 }, { opacity: .25 }],
-        { duration: 160, easing: "ease-out", fill: "forwards" });
+      courseExitAnimation = document.querySelector(".panel-wrap").animate([{ opacity: 1 }, { opacity: .9 }],
+        { duration: 120, easing: "ease-in-out", fill: "forwards" });
       await courseExitAnimation.finished.catch(() => {});
     }
     window.location.assign(link.href);
