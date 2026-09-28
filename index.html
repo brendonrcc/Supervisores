@@ -5554,6 +5554,42 @@ details[open]::details-content {
     }, 160);
   }
 
+  let courseNavigationPending = false;
+  let courseExitAnimation = null;
+
+  function animateCourseArrival() {
+    if (IS_SETTINGS_VIEW || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    document.querySelectorAll(".hero-copy, .hero-tools, .panel-wrap").forEach((element, index) => {
+      element.animate([
+        { opacity: 0, transform: "translateY(7px)" },
+        { opacity: 1, transform: "translateY(0)" }
+      ], { duration: 340, delay: index * 35, easing: "cubic-bezier(.22,1,.36,1)", fill: "backwards" });
+    });
+  }
+
+  document.addEventListener("click", async event => {
+    const link = event.target.closest("[data-course-shortcut]");
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (courseNavigationPending || link.dataset.courseShortcut === ACTIVE_COURSE.key) return;
+    courseNavigationPending = true;
+    const shell = document.getElementById("courseShell");
+    shell.setAttribute("aria-busy", "true");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      courseExitAnimation = shell.animate([{ opacity: 1 }, { opacity: .25 }],
+        { duration: 160, easing: "ease-out", fill: "forwards" });
+      await courseExitAnimation.finished.catch(() => {});
+    }
+    window.location.assign(link.href);
+  });
+
+  window.addEventListener("pageshow", event => {
+    courseNavigationPending = false;
+    courseExitAnimation?.cancel();
+    document.getElementById("courseShell").removeAttribute("aria-busy");
+    if (event.persisted) animateCourseArrival();
+  });
+
   function applyCourseIdentity() {
     const heroTitle = document.getElementById("heroTitle");
     const shell = document.getElementById("courseShell");
@@ -5651,6 +5687,7 @@ details[open]::details-content {
   }
 
   function renderLessonPayload(payload, preserveView = false) {
+    const firstRender = !displayedLesson;
     const keepPostingPage = preserveView && !postingPage.hidden &&
       Boolean(postingPageContent.innerHTML.trim());
     const valid = validateLessonPayload(payload, ACTIVE_COURSE.key);
@@ -5673,6 +5710,7 @@ details[open]::details-content {
     postingPage.hidden = !keepPostingPage;
     lessonContent.hidden = keepPostingPage;
     displayedLesson = valid;
+    if (firstRender) animateCourseArrival();
     applyCopyState();
     bindDetails();
     syncPostingIdentity();
@@ -5877,12 +5915,18 @@ details[open]::details-content {
 
   const iframeContentRoot = document.querySelector(".page-wrap");
 
-  const iframeParentOrigin = (() => {
+  let iframeParentOrigin = (() => {
+    if (window.parent === window) return window.location.origin;
+    // O referrer muda para a aula anterior ao navegar dentro do iframe.
+    try { return window.parent.location.origin; } catch (error) {}
+    const ancestor = window.location.ancestorOrigins?.[0];
+    if (ancestor && ancestor !== "null") return ancestor;
     try {
-      return document.referrer ? new URL(document.referrer).origin : "*";
-    } catch (error) {
-      return "*";
-    }
+      const referrer = document.referrer ? new URL(document.referrer).origin : "";
+      if (referrer && referrer !== window.location.origin && referrer !== "null") return referrer;
+    } catch (error) {}
+    // Descobre o pai pela resposta da integração, sempre validando event.source.
+    return "*";
   })();
 
   let lastHeight = 0;
@@ -5944,6 +5988,10 @@ details[open]::details-content {
     if (iframeParentOrigin !== "*" && event.origin !== iframeParentOrigin) return;
 
     const data = event.data || {};
+    if (iframeParentOrigin === "*" && event.origin !== "null" &&
+        ["sup-forum-context", "forum-iframe-measure", "sup-settings-opened", "sup-settings-init"].includes(data.type)) {
+      iframeParentOrigin = event.origin;
+    }
     if (typeof data.type === "string" && data.type.startsWith("sup-settings-")) {
       receiveSettingsMessage(data);
       return;
