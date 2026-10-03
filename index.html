@@ -11,90 +11,103 @@
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.45.0/dist/tabler-icons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" rel="stylesheet">
 
 <style>
 :root {
-  --frame-border: #159c0c;
-  --frame-bg: #006a06;
-  --accent: #109c08;
-  --accent-hover: #0f9408;
+  --site-font: "Space Grotesk", Arial, Helvetica, sans-serif;
+  --frame-border: #189600;
+  --frame-bg: #005e00;
+  --accent: #189600;
+  --accent-hover: #168700;
   --content-border: #ffffff;
   --content-bg: #eef2ef;
-  --spoiler-bg: #e4e9e5;
-  --text-main: #161616;
-  --text-muted: #73915f;
-  --heading: #138f18;
-  --answer: #54675a;
+  --spoiler-bg: #e2e9e4;
+  --spoiler-multiple-bg: #73937d;
+  --spoiler-multiple-hover: #678470;
+  --spoiler-multiple-content: #e8ebea;
+  --spoiler-failure-bg: #b34242;
+  --spoiler-failure-hover: #a13b3b;
+  --spoiler-failure-content: #f3e8e8;
+  --spoiler-success-bg: #3b9529;
+  --spoiler-success-hover: #358625;
+  --text-main: #222222;
+  --text-muted: rgba(34, 34, 34, 0.72);
+  --heading: #189600;
+  --question: #104306;
+  --answer: #355e3b;
   --white: #ffffff;
-  --danger: #8d3636;
+  --danger: #cd3c3c;
 
-  --hero-kicker: #70be68;
-  --hero-title: #f1f1f1;
-  --quote-text: #4d5f51;
-  --legend-text: #526457;
-  --form-eyebrow: #7c8c79;
-  --form-label: #355733;
-  --form-icon-secondary: #558151;
-  --field-text: #233123;
+  --hero-kicker: #bee2b8;
+  --hero-title: #ffffff;
+  --quote-text: #355e3b;
+  --legend-text: #355e3b;
+  --form-eyebrow: #596269;
+  --form-label: #35402b;
+  --form-icon-secondary: #004100;
+  --field-text: #222222;
   --field-bg: #ffffff;
-  --placeholder: #95a092;
-  --field-hover: #f6f9f5;
-  --field-focus: #eef7ec;
-  --field-help: #657364;
-  --field-readonly: #f3f6f2;
-  --form-muted: #879484;
-  --student-text: #476045;
-  --student-bg: #f2f6f0;
-  --proof-hint: #879483;
-  --empty-text: #7d8a7a;
-  --empty-bg: #f4f7f2;
-  --choice-text: #50614e;
-  --choice-bg: #f7faf6;
-  --choice-hover: #f1f7ef;
-  --choice-selected-text: #31582e;
-  --choice-selected-bg: #edf6eb;
-  --posting-error: #9f4343;
-  --selection-text: #21451f;
-  --selection-bg: #d8edd4;
-  --input-selection-text: #173b18;
-  --input-selection-bg: #cbe6c6;
-  --form-icon: #26802a;
-  --select-focus: #edf5eb;
-  --select-arrow: #5e7f5b;
-  --select-arrow-bg: #e8f1e5;
-  --menu-border: #d9e5d5;
-  --menu-text: #344b32;
-  --menu-active-text: #165f17;
-  --scrollbar: #c8d9c3;
-  --calendar-nav: #41663e;
-  --calendar-nav-bg: #f1f6ef;
-  --calendar-nav-hover: #e7f1e4;
-  --calendar-month: #2f4e2d;
-  --calendar-day: #385036;
-  --calendar-outside: #b0b9ad;
-  --calendar-today: #137f18;
-  --time-border: #e1eadf;
-  --time-title: #466443;
-  --time-label: #8b9788;
-  --time-option: #40543e;
-  --shortcut-bg: rgba(255, 255, 255, .12);
-  --shortcut-hover: rgba(255, 255, 255, .22);
-  --quote-bg: rgba(255, 255, 255, .46);
-  --code-bg: rgba(0, 0, 0, .06);
-  --legend-border: rgba(19, 143, 24, .18);
-  --separator: rgba(19, 143, 24, .22);
-  --spoiler-hover: rgba(255, 255, 255, .055);
-  --spoiler-focus: rgba(255, 255, 255, .36);
-  --mp-inset-bg: rgba(255, 255, 255, .34);
-  --toolbar-line: rgba(19, 143, 24, .10);
-  --back-bg: rgba(19, 143, 24, .06);
-  --result-bg: rgba(255, 255, 255, .48);
-  --posting-divider: rgba(19, 143, 24, .08);
-  --footer-text: rgba(255, 255, 255, .86);
+  --placeholder: #596269;
+  --field-hover: #f2f5f3;
+  --field-focus: #e2e9e4;
+  --field-help: #355e3b;
+  --field-readonly: #eef2ef;
+  --form-muted: #596269;
+  --student-text: #355e3b;
+  --student-bg: #e2e9e4;
+  --proof-hint: #596269;
+  --empty-text: #596269;
+  --empty-bg: #eef2ef;
+  --choice-text: #35402b;
+  --choice-bg: #ffffff;
+  --choice-hover: #eef2ef;
+  --choice-selected-text: #004100;
+  --choice-selected-bg: #e2e9e4;
+  --posting-error: #cd3c3c;
+  --selection-text: #004100;
+  --selection-bg: #d5ecd1;
+  --input-selection-text: #004100;
+  --input-selection-bg: #cce8c7;
+  --form-icon: #004100;
+  --select-focus: #e2e9e4;
+  --select-arrow: #355e3b;
+  --select-arrow-bg: #e2e9e4;
+  --menu-border: #dbe2dc;
+  --menu-text: #35402b;
+  --menu-active-text: #004100;
+  --scrollbar: #b8c7ba;
+  --calendar-nav: #355e3b;
+  --calendar-nav-bg: #eef2ef;
+  --calendar-nav-hover: #e2e9e4;
+  --calendar-month: #004100;
+  --calendar-day: #35402b;
+  --calendar-outside: #b2b2b2;
+  --calendar-today: #189600;
+  --time-border: #e2e9e4;
+  --time-title: #355e3b;
+  --time-label: #596269;
+  --time-option: #35402b;
+  --shortcut-bg: rgba(255, 255, 255, 0.12);
+  --shortcut-hover: rgba(255, 255, 255, 0.22);
+  --quote-bg: rgba(255, 255, 255, 0.46);
+  --code-bg: rgba(0, 0, 0, 0.06);
+  --legend-border: rgba(24, 150, 0, 0.18);
+  --separator: rgba(24, 150, 0, 0.22);
+  --spoiler-hover: rgba(255, 255, 255, 0.055);
+  --spoiler-focus: rgba(255, 255, 255, 0.36);
+  --mp-inset-bg: rgba(255, 255, 255, 0.34);
+  --toolbar-line: rgba(24, 150, 0, 0.1);
+  --back-bg: rgba(24, 150, 0, 0.06);
+  --result-bg: rgba(255, 255, 255, 0.48);
+  --posting-divider: rgba(24, 150, 0, 0.08);
+  --footer-text: rgba(255, 255, 255, 0.86);
   --surface-mix: #ffffff;
 }
+
+:root[data-site-font="poppins"] { --site-font: Poppins, Arial, Helvetica, sans-serif; }
 
 * { box-sizing: border-box; }
 
@@ -111,7 +124,7 @@ select,
 textarea,
 summary,
 option {
-  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-family: var(--site-font);
 }
 
 body {
@@ -454,7 +467,7 @@ img {
   padding: 1px 4px;
   background: var(--code-bg);
   border-radius: 4px;
-  font-family: Consolas, "Courier New", monospace;
+  font-family: inherit;
   font-size: .94em;
 }
 
@@ -572,7 +585,7 @@ img {
 }
 
 .copy-line.is-question .copy-line-text {
-  color: var(--heading);
+  color: var(--question);
   font-weight: 700;
 }
 
@@ -856,6 +869,17 @@ details[open]::details-content {
   font-size: 12px;
   line-height: 1.55;
 }
+
+/* Tons do S1, identificados automaticamente pelo título. */
+.generic-spoiler.is-s1-multiple { background: var(--spoiler-multiple-bg); }
+.generic-spoiler.is-s1-multiple:hover { background: var(--spoiler-multiple-hover); }
+.generic-spoiler.is-s1-multiple > .spoiler-content { background: var(--spoiler-multiple-content); }
+.generic-spoiler.is-s1-failure { background: var(--spoiler-failure-bg); }
+.generic-spoiler.is-s1-failure:hover { background: var(--spoiler-failure-hover); }
+.generic-spoiler.is-s1-failure > .spoiler-content { background: var(--spoiler-failure-content); }
+.generic-spoiler.is-s1-success { background: var(--spoiler-success-bg); }
+.generic-spoiler.is-s1-success:hover { background: var(--spoiler-success-hover); }
+.generic-spoiler.is-s1-success > .spoiler-content { background: var(--spoiler-bg); }
 
 .orientation-spoiler summary {
   text-transform: uppercase;
@@ -1997,7 +2021,9 @@ details[open]::details-content {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  padding: 0 14px 7px;
+  gap: 6px;
+  /* Acima: 7px do painel + 8px do rodapé; abaixo: os mesmos 15px. */
+  padding: 8px 14px 15px;
   color: var(--footer-text);
   font-size: 10px;
   line-height: 1.4;
@@ -2006,6 +2032,11 @@ details[open]::details-content {
 
 .footer strong {
   font-weight: 700;
+}
+
+.footer .fa-dragon {
+  flex: 0 0 auto;
+  font-size: 12px;
 }
 
 @media (max-width: 800px) {
@@ -2189,10 +2220,10 @@ details[open]::details-content {
   }
 }
 /* Preferências de leitura, sem recriar os elementos da aula. */
-.lesson-content .is-special-action,
-.lesson-content .action-grid.is-special-only { display: none; }
-:root[data-action-placement="panel"] .lesson-content .is-special-action { display: inline-flex; }
-:root[data-action-placement="panel"] .lesson-content .action-grid.is-special-only { display: grid; }
+.lesson-content .is-lesson-action,
+.lesson-content .action-grid.is-actions-only { display: none; }
+:root[data-action-placement="panel"] .lesson-content .is-lesson-action { display: inline-flex; }
+:root[data-action-placement="panel"] .lesson-content .action-grid.is-actions-only { display: grid; }
 :root[data-action-placement="panel"] #heroActions { display: none; }
 
 :root[data-copy-position="inline"] .copy-line:not(.is-static) { display: block; }
@@ -2368,12 +2399,21 @@ details[open]::details-content {
   position: static; inset: auto; width: 100%; max-width: none;
   height: 100%; max-height: none; margin: 0; border-radius: 16px;
 }
+.script-legend-marker { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 18px; color: var(--heading); font-weight: 800; }
+.script-legend-item { grid-template-columns: 24px minmax(0, 1fr); font-size: 11px; }
+.hero-tools { flex-wrap: wrap; max-width: 100%; }
+.hero-courses { flex-wrap: wrap; max-width: 100%; }
+.hero-actions { flex-wrap: wrap; max-width: 100%; min-width: 0; }
+.donation-courses { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid var(--separator); }
+.donation-course { display: inline-flex; align-items: center; justify-content: center; min-width: 48px; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--menu-border); background: var(--field-bg); color: var(--menu-text); font-weight: 700; }
+.donation-course[aria-current="page"] { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.donation-course:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
 </head>
 
 <body>
 <main class="page-wrap">
-  <section class="shell" id="courseShell" aria-label="Companhia dos Supervisores - Aula de Supervisão">
+  <section class="shell" id="courseShell" aria-label="Companhia dos Supervisores - Supervisão de Soldados">
     <header class="hero">
       <img
         class="hero-logo"
@@ -2386,14 +2426,10 @@ details[open]::details-content {
 
       <div class="hero-copy">
         <p class="hero-kicker">Companhia dos Supervisores</p>
-        <h1 class="hero-title" id="heroTitle">Aula de Supervisão</h1>
+        <h1 class="hero-title" id="heroTitle">Supervisão de Soldados</h1>
       </div>
       <div class="hero-tools">
-        <nav class="hero-courses" aria-label="Atalhos das aulas">
-          <a class="hero-course" data-course-shortcut="SUP" href="?course=SUP" title="Aula de Supervisão" aria-label="Aula de Supervisão">SUP</a>
-          <a class="hero-course" data-course-shortcut="SEG" href="?course=SEG" title="Aula de Segurança" aria-label="Aula de Segurança">SEG</a>
-          <a class="hero-course" data-course-shortcut="PRO" href="?course=PRO" title="Aula para Promotor" aria-label="Aula para Promotor">PRO</a>
-        </nav>
+        <nav id="heroCourses" class="hero-courses" aria-label="Aulas do cargo"></nav>
         <nav id="heroActions" class="hero-actions" aria-label="Ações da aula" hidden></nav>
         <button id="openSettings" class="hero-settings-button" type="button" aria-label="Configurações" title="Configurações" aria-haspopup="dialog" aria-controls="settingsDialog" aria-expanded="false"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings" > <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" /> <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /> </svg></button>
       </div>
@@ -2401,6 +2437,7 @@ details[open]::details-content {
 
     <div class="panel-wrap">
       <section class="panel">
+        <nav id="donationCourses" class="donation-courses" aria-label="Aulas para doação" hidden></nav>
         <div id="lessonSyncStatus" class="lesson-sync-status" role="status" aria-live="polite" hidden>
           <span id="lessonSyncMessage"></span>
           <button id="applyLessonUpdate" type="button" hidden>Atualizar aula</button>
@@ -2431,7 +2468,8 @@ details[open]::details-content {
     </div>
 
     <footer class="footer">
-      Desenvolvido por <strong>.Brendon</strong>
+      <i class="fa-solid fa-dragon" aria-hidden="true"></i>
+      <span>Desenvolvido por <strong>.Brendon</strong> | Todos os direitos reservados à <strong>Companhia dos Supervisores</strong></span>
     </footer>
   </section>
 </main>
@@ -2444,6 +2482,13 @@ details[open]::details-content {
   <div class="settings-body">
     <p id="settingsDescription" class="settings-description">Personalize sua leitura. As alterações são aplicadas na hora e ficam salvas neste navegador.</p>
     <fieldset class="settings-options">
+      <legend>Fonte do site</legend>
+      <div class="settings-choices">
+        <label class="settings-choice"><input type="radio" name="fontFamily" value="space-grotesk"><span><strong>Space Grotesk</strong><small>Aplicar em todo o site</small></span></label>
+        <label class="settings-choice"><input type="radio" name="fontFamily" value="poppins"><span><strong>Poppins</strong><small>Aplicar em todo o site</small></span></label>
+      </div>
+    </fieldset>
+    <fieldset class="settings-options">
       <legend>Posição do ícone de copiar</legend>
       <div class="settings-choices">
         <label class="settings-choice"><input type="radio" name="copyPosition" value="edge"><span><strong>Alinhado à direita</strong><small>Formato atual</small></span></label>
@@ -2451,7 +2496,7 @@ details[open]::details-content {
       </div>
     </fieldset>
     <fieldset class="settings-options">
-      <legend>Botões Form, System e Relatório</legend>
+      <legend>Botões da aula (Botão, Form, System e Relatório)</legend>
       <div class="settings-choices">
         <label class="settings-choice"><input type="radio" name="actionPlacement" value="hero"><span><strong>No cabeçalho</strong><small>Somente os ícones</small></span></label>
         <label class="settings-choice"><input type="radio" name="actionPlacement" value="panel"><span><strong>No painel da aula</strong><small>Ícone e texto, na posição original</small></span></label>
@@ -2481,37 +2526,46 @@ details[open]::details-content {
   if (IS_SETTINGS_VIEW) document.documentElement.dataset.settingsView = "true";
   const FORUM_ORIGIN = "https://www.policiarcc.com";
 
-  const COURSES = Object.freeze({
-    SUP: {
-      key: "SUP",
-      title: "Aula de Supervisão",
-      fullName: "Aula de Supervisão (SUP)",
-      postingName: "Aula de Supervisão"
-    },
-    SEG: {
-      key: "SEG",
-      title: "Aula de Segurança",
-      fullName: "Aula de Segurança (SEG)",
-      postingName: "Aula de Segurança"
-    },
-    PRO: {
-      key: "PRO",
-      title: "Aula para Promotor",
-      fullName: "Aula para Promotor (PRO)",
-      postingName: "Aula de Promotor"
-    }
+  // Leitura das aulas e postagens têm configurações independentes.
+  // Preencha cada URL apenas quando a API da planilha de postagens estiver pronta.
+  const POSTING_API_URLS = Object.freeze({ SUP: "", TUT: "", GRAD: "" });
+  const ROLES = Object.freeze({
+    SUP: { name: "Supervisores", instructor: "supervisor", courses: ["SUP", "SEG", "PRO"] },
+    TUT: { name: "Tutores", instructor: "tutor", courses: ["TUT"] },
+    GRAD: { name: "Graduadores", instructor: "graduador", courses: ["BAS", "INT", "AVA"] }
   });
-
-  const requestedCourse = (() => {
+  const COURSES = Object.freeze({
+    SUP: { key: "SUP", role: "SUP", gid: 0, title: "Supervisão de Soldados", fullName: "Supervisão de Soldados (SUP)", postingName: "Supervisão de Soldados" },
+    SEG: { key: "SEG", role: "SUP", gid: 0, title: "Aula de Segurança", fullName: "Aula de Segurança (SEG)", postingName: "Aula de Segurança" },
+    PRO: { key: "PRO", role: "SUP", gid: 0, title: "Aula para Promotor", fullName: "Aula para Promotor (PRO)", postingName: "Aula de Promotor" },
+    TUT: { key: "TUT", role: "TUT", gid: 1524157837, title: "Script de Tutoria", fullName: "Script de Tutoria (TUT)", postingName: "Tutoria" },
+    BAS: { key: "BAS", role: "GRAD", gid: 722570109, title: "Básica", fullName: "Graduação Básica", postingName: "Básica" },
+    INT: { key: "INT", role: "GRAD", gid: 722570109, title: "Intermediária", fullName: "Graduação Intermediária", postingName: "Intermediária" },
+    AVA: { key: "AVA", role: "GRAD", gid: 722570109, title: "Avançada", fullName: "Graduação Avançada", postingName: "Avançada" }
+  });
+  // O cargo da URL é independente da origem do script usado na doação.
+  const routeState = (() => {
     const params = new URLSearchParams(window.location.search);
-    const value = String(params.get("course") || params.get("aula") || "SUP")
-      .trim()
-      .toUpperCase();
-
-    return COURSES[value] ? value : "SUP";
+    const course = String(params.get("course") || params.get("aula") || "").trim().toUpperCase();
+    const role = String(params.get("role") || "").trim().toUpperCase();
+    const page = String(params.get("page") || "").trim().toLowerCase();
+    const donation = role === "TUT" && (
+      ["doacao", "doação", "donation"].includes(page) ||
+      ["DOA", "DOACAO", "DOAÇÃO"].includes(course) || ROLES.SUP.courses.includes(course)
+    );
+    if (donation) return { role: "TUT", donation: true, course: ROLES.SUP.courses.includes(course) ? course : "SUP" };
+    if (ROLES[role]) return { role, donation: false, course: ROLES[role].courses.includes(course) ? course : ROLES[role].courses[0] };
+    const key = COURSES[course] ? course : "SUP";
+    return { role: COURSES[key].role, donation: false, course: key };
   })();
+  const ACTIVE_COURSE = COURSES[routeState.course];
+  const ACTIVE_ROLE_KEY = routeState.role;
+  const ACTIVE_ROLE = ROLES[ACTIVE_ROLE_KEY];
+  const IS_DONATION_VIEW = routeState.donation;
+  const PAGE_TITLE = IS_DONATION_VIEW ? "Doação de Aulas" : ACTIVE_COURSE.title;
+  const POSTING_COURSES = IS_DONATION_VIEW ? ROLES.SUP.courses : ACTIVE_ROLE.courses;
+  const POSTING_API_URL = POSTING_API_URLS[ACTIVE_ROLE_KEY];
 
-  const ACTIVE_COURSE = COURSES[requestedCourse];
   const PM_SUBJECT = ACTIVE_COURSE.fullName;
 
   const lessonContent = document.getElementById("lessonContent");
@@ -2523,32 +2577,76 @@ details[open]::details-content {
   const SCRIPT_STARTED_AT = new Date();
 
   const THEME_COLORS = [
+  { "key": "spoiler-success-bg", "group": "Spoilers S1", "label": "Cabeçalho: aprovação", "hex": "#3b9529", "alpha": 1 },
+  { "key": "spoiler-success-hover", "group": "Spoilers S1", "label": "Cabeçalho ao passar o mouse: aprovação", "hex": "#358625", "alpha": 1 },
+  {
+    "key": "spoiler-multiple-bg",
+    "group": "Spoilers S1",
+    "label": "Cabeçalho: 2 ou mais alunos",
+    "hex": "#73937d",
+    "alpha": 1
+  },
+  {
+    "key": "spoiler-multiple-hover",
+    "group": "Spoilers S1",
+    "label": "Cabeçalho ao passar o mouse: 2 ou mais alunos",
+    "hex": "#678470",
+    "alpha": 1
+  },
+  {
+    "key": "spoiler-multiple-content",
+    "group": "Spoilers S1",
+    "label": "Conteúdo: 2 ou mais alunos",
+    "hex": "#e8ebea",
+    "alpha": 1
+  },
+  {
+    "key": "spoiler-failure-bg",
+    "group": "Spoilers S1",
+    "label": "Cabeçalho: reprovação",
+    "hex": "#b34242",
+    "alpha": 1
+  },
+  {
+    "key": "spoiler-failure-hover",
+    "group": "Spoilers S1",
+    "label": "Cabeçalho ao passar o mouse: reprovação",
+    "hex": "#a13b3b",
+    "alpha": 1
+  },
+  {
+    "key": "spoiler-failure-content",
+    "group": "Spoilers S1",
+    "label": "Conteúdo: reprovação",
+    "hex": "#f3e8e8",
+    "alpha": 1
+  },
   {
     "key": "frame-border",
     "group": "Estrutura",
     "label": "Borda externa",
-    "hex": "#159c0c",
+    "hex": "#189600",
     "alpha": 1
   },
   {
     "key": "frame-bg",
     "group": "Estrutura",
     "label": "Fundo do cabeçalho e moldura",
-    "hex": "#006a06",
+    "hex": "#005e00",
     "alpha": 1
   },
   {
     "key": "accent",
     "group": "Textos e botões",
     "label": "Botões e destaques",
-    "hex": "#109c08",
+    "hex": "#189600",
     "alpha": 1
   },
   {
     "key": "accent-hover",
     "group": "Textos e botões",
     "label": "Botões ao passar o mouse",
-    "hex": "#0f9408",
+    "hex": "#168700",
     "alpha": 1
   },
   {
@@ -2569,35 +2667,42 @@ details[open]::details-content {
     "key": "spoiler-bg",
     "group": "Estrutura",
     "label": "Fundo dos spoilers",
-    "hex": "#e4e9e5",
+    "hex": "#e2e9e4",
     "alpha": 1
   },
   {
     "key": "text-main",
     "group": "Textos e botões",
     "label": "Texto principal",
-    "hex": "#161616",
+    "hex": "#222222",
     "alpha": 1
   },
   {
     "key": "text-muted",
     "group": "Textos e botões",
     "label": "Texto secundário",
-    "hex": "#73915f",
-    "alpha": 1
+    "hex": "#222222",
+    "alpha": 0.72
   },
   {
     "key": "heading",
     "group": "Textos e botões",
-    "label": "Títulos, perguntas e alertas",
-    "hex": "#138f18",
+    "label": "Títulos e alertas",
+    "hex": "#189600",
+    "alpha": 1
+  },
+  {
+    "key": "question",
+    "group": "Textos e botões",
+    "label": "Perguntas",
+    "hex": "#104306",
     "alpha": 1
   },
   {
     "key": "answer",
     "group": "Textos e botões",
     "label": "Respostas",
-    "hex": "#54675a",
+    "hex": "#355e3b",
     "alpha": 1
   },
   {
@@ -2611,63 +2716,63 @@ details[open]::details-content {
     "key": "danger",
     "group": "Textos e botões",
     "label": "Erros de carregamento",
-    "hex": "#8d3636",
+    "hex": "#cd3c3c",
     "alpha": 1
   },
   {
     "key": "hero-kicker",
     "group": "Estrutura",
     "label": "Subtítulo do cabeçalho",
-    "hex": "#70be68",
+    "hex": "#bee2b8",
     "alpha": 1
   },
   {
     "key": "hero-title",
     "group": "Estrutura",
     "label": "Título do cabeçalho",
-    "hex": "#f1f1f1",
+    "hex": "#ffffff",
     "alpha": 1
   },
   {
     "key": "quote-text",
     "group": "Textos e botões",
     "label": "Texto das citações",
-    "hex": "#4d5f51",
+    "hex": "#355e3b",
     "alpha": 1
   },
   {
     "key": "legend-text",
     "group": "Textos e botões",
     "label": "Legenda dos scripts",
-    "hex": "#526457",
+    "hex": "#355e3b",
     "alpha": 1
   },
   {
     "key": "form-eyebrow",
     "group": "Formulário",
     "label": "Subtítulo da postagem",
-    "hex": "#7c8c79",
+    "hex": "#596269",
     "alpha": 1
   },
   {
     "key": "form-label",
     "group": "Formulário",
     "label": "Rótulos dos campos",
-    "hex": "#355733",
+    "hex": "#35402b",
     "alpha": 1
   },
   {
     "key": "form-icon-secondary",
     "group": "Formulário",
     "label": "Ícones secundários",
-    "hex": "#558151",
+    "hex": "#004100",
     "alpha": 1
   },
   {
     "key": "field-text",
     "group": "Formulário",
     "label": "Texto dos campos",
-    "hex": "#233123",
+    "hex": "#222222",
     "alpha": 1
   },
   {
@@ -2681,280 +2786,280 @@ details[open]::details-content {
     "key": "placeholder",
     "group": "Formulário",
     "label": "Texto de exemplo dos campos",
-    "hex": "#95a092",
+    "hex": "#596269",
     "alpha": 1
   },
   {
     "key": "field-hover",
     "group": "Formulário",
     "label": "Campos ao passar o mouse",
-    "hex": "#f6f9f5",
+    "hex": "#f2f5f3",
     "alpha": 1
   },
   {
     "key": "field-focus",
     "group": "Formulário",
     "label": "Campos em foco e dia atual",
-    "hex": "#eef7ec",
+    "hex": "#e2e9e4",
     "alpha": 1
   },
   {
     "key": "field-help",
     "group": "Formulário",
     "label": "Textos de ajuda",
-    "hex": "#657364",
+    "hex": "#355e3b",
     "alpha": 1
   },
   {
     "key": "field-readonly",
     "group": "Formulário",
     "label": "Campos somente leitura",
-    "hex": "#f3f6f2",
+    "hex": "#eef2ef",
     "alpha": 1
   },
   {
     "key": "form-muted",
     "group": "Formulário",
     "label": "Legendas dos grupos",
-    "hex": "#879484",
+    "hex": "#596269",
     "alpha": 1
   },
   {
     "key": "student-text",
     "group": "Formulário",
     "label": "Nome dos alunos",
-    "hex": "#476045",
+    "hex": "#355e3b",
     "alpha": 1
   },
   {
     "key": "student-bg",
     "group": "Formulário",
     "label": "Fundo dos alunos",
-    "hex": "#f2f6f0",
+    "hex": "#e2e9e4",
     "alpha": 1
   },
   {
     "key": "proof-hint",
     "group": "Formulário",
     "label": "Orientação dos comprovantes",
-    "hex": "#879483",
+    "hex": "#596269",
     "alpha": 1
   },
   {
     "key": "empty-text",
     "group": "Formulário",
     "label": "Texto dos resultados vazios",
-    "hex": "#7d8a7a",
+    "hex": "#596269",
     "alpha": 1
   },
   {
     "key": "empty-bg",
     "group": "Formulário",
     "label": "Fundo dos resultados vazios",
-    "hex": "#f4f7f2",
+    "hex": "#eef2ef",
     "alpha": 1
   },
   {
     "key": "choice-text",
     "group": "Formulário",
     "label": "Texto das opções",
-    "hex": "#50614e",
+    "hex": "#35402b",
     "alpha": 1
   },
   {
     "key": "choice-bg",
     "group": "Formulário",
     "label": "Fundo das opções e horários",
-    "hex": "#f7faf6",
+    "hex": "#ffffff",
     "alpha": 1
   },
   {
     "key": "choice-hover",
     "group": "Formulário",
     "label": "Opções ao passar o mouse",
-    "hex": "#f1f7ef",
+    "hex": "#eef2ef",
     "alpha": 1
   },
   {
     "key": "choice-selected-text",
     "group": "Formulário",
     "label": "Texto da opção selecionada",
-    "hex": "#31582e",
+    "hex": "#004100",
     "alpha": 1
   },
   {
     "key": "choice-selected-bg",
     "group": "Formulário",
     "label": "Opções selecionadas e realces",
-    "hex": "#edf6eb",
+    "hex": "#e2e9e4",
     "alpha": 1
   },
   {
     "key": "posting-error",
     "group": "Formulário",
     "label": "Erros de postagem",
-    "hex": "#9f4343",
+    "hex": "#cd3c3c",
     "alpha": 1
   },
   {
     "key": "selection-text",
     "group": "Seleção de texto",
     "label": "Texto selecionado",
-    "hex": "#21451f",
+    "hex": "#004100",
     "alpha": 1
   },
   {
     "key": "selection-bg",
     "group": "Seleção de texto",
     "label": "Fundo do texto selecionado",
-    "hex": "#d8edd4",
+    "hex": "#d5ecd1",
     "alpha": 1
   },
   {
     "key": "input-selection-text",
     "group": "Seleção de texto",
     "label": "Texto selecionado nos campos",
-    "hex": "#173b18",
+    "hex": "#004100",
     "alpha": 1
   },
   {
     "key": "input-selection-bg",
     "group": "Seleção de texto",
     "label": "Seleção dentro dos campos",
-    "hex": "#cbe6c6",
+    "hex": "#cce8c7",
     "alpha": 1
   },
   {
     "key": "form-icon",
     "group": "Formulário",
     "label": "Ícones principais dos campos",
-    "hex": "#26802a",
+    "hex": "#004100",
     "alpha": 1
   },
   {
     "key": "select-focus",
     "group": "Calendário e menus",
     "label": "Menu em foco",
-    "hex": "#edf5eb",
+    "hex": "#e2e9e4",
     "alpha": 1
   },
   {
     "key": "select-arrow",
     "group": "Calendário e menus",
     "label": "Setas dos menus",
-    "hex": "#5e7f5b",
+    "hex": "#355e3b",
     "alpha": 1
   },
   {
     "key": "select-arrow-bg",
     "group": "Calendário e menus",
     "label": "Fundo das setas",
-    "hex": "#e8f1e5",
+    "hex": "#e2e9e4",
     "alpha": 1
   },
   {
     "key": "menu-border",
     "group": "Calendário e menus",
     "label": "Borda dos menus e calendário",
-    "hex": "#d9e5d5",
+    "hex": "#dbe2dc",
     "alpha": 1
   },
   {
     "key": "menu-text",
     "group": "Calendário e menus",
     "label": "Texto dos menus",
-    "hex": "#344b32",
+    "hex": "#35402b",
     "alpha": 1
   },
   {
     "key": "menu-active-text",
     "group": "Calendário e menus",
     "label": "Texto destacado nos menus",
-    "hex": "#165f17",
+    "hex": "#004100",
     "alpha": 1
   },
   {
     "key": "scrollbar",
     "group": "Calendário e menus",
     "label": "Barra de rolagem",
-    "hex": "#c8d9c3",
+    "hex": "#b8c7ba",
     "alpha": 1
   },
   {
     "key": "calendar-nav",
     "group": "Calendário e menus",
     "label": "Setas do calendário",
-    "hex": "#41663e",
+    "hex": "#355e3b",
     "alpha": 1
   },
   {
     "key": "calendar-nav-bg",
     "group": "Calendário e menus",
     "label": "Fundo das setas do calendário",
-    "hex": "#f1f6ef",
+    "hex": "#eef2ef",
     "alpha": 1
   },
   {
     "key": "calendar-nav-hover",
     "group": "Calendário e menus",
     "label": "Setas do calendário ao passar o mouse",
-    "hex": "#e7f1e4",
+    "hex": "#e2e9e4",
     "alpha": 1
   },
   {
     "key": "calendar-month",
     "group": "Calendário e menus",
     "label": "Nome do mês",
-    "hex": "#2f4e2d",
+    "hex": "#004100",
     "alpha": 1
   },
   {
     "key": "calendar-day",
     "group": "Calendário e menus",
     "label": "Dias do calendário",
-    "hex": "#385036",
+    "hex": "#35402b",
     "alpha": 1
   },
   {
     "key": "calendar-outside",
     "group": "Calendário e menus",
     "label": "Dias fora do mês",
-    "hex": "#b0b9ad",
+    "hex": "#b2b2b2",
     "alpha": 1
   },
   {
     "key": "calendar-today",
     "group": "Calendário e menus",
     "label": "Texto do dia atual",
-    "hex": "#137f18",
+    "hex": "#189600",
     "alpha": 1
   },
   {
     "key": "time-border",
     "group": "Calendário e menus",
     "label": "Divisórias dos horários",
-    "hex": "#e1eadf",
+    "hex": "#e2e9e4",
     "alpha": 1
   },
   {
     "key": "time-title",
     "group": "Calendário e menus",
     "label": "Título dos horários",
-    "hex": "#466443",
+    "hex": "#355e3b",
     "alpha": 1
   },
   {
     "key": "time-label",
     "group": "Calendário e menus",
     "label": "Legendas de hora e minuto",
-    "hex": "#8b9788",
+    "hex": "#596269",
     "alpha": 1
   },
   {
     "key": "time-option",
     "group": "Calendário e menus",
     "label": "Texto dos horários",
-    "hex": "#40543e",
+    "hex": "#35402b",
     "alpha": 1
   },
   {
@@ -2989,14 +3094,14 @@ details[open]::details-content {
     "key": "legend-border",
     "group": "Realces e detalhes",
     "label": "Divisória da legenda",
-    "hex": "#138f18",
+    "hex": "#189600",
     "alpha": 0.18
   },
   {
     "key": "separator",
     "group": "Realces e detalhes",
     "label": "Barras separadoras",
-    "hex": "#138f18",
+    "hex": "#189600",
     "alpha": 0.22
   },
   {
@@ -3024,14 +3129,14 @@ details[open]::details-content {
     "key": "toolbar-line",
     "group": "Realces e detalhes",
     "label": "Divisória e realce do botão Voltar",
-    "hex": "#138f18",
+    "hex": "#189600",
     "alpha": 0.1
   },
   {
     "key": "back-bg",
     "group": "Realces e detalhes",
     "label": "Fundo do botão Voltar",
-    "hex": "#138f18",
+    "hex": "#189600",
     "alpha": 0.06
   },
   {
@@ -3045,7 +3150,7 @@ details[open]::details-content {
     "key": "posting-divider",
     "group": "Realces e detalhes",
     "label": "Divisória do envio",
-    "hex": "#138f18",
+    "hex": "#189600",
     "alpha": 0.08
   },
   {
@@ -3064,11 +3169,23 @@ details[open]::details-content {
   }
 ];
 
+  // Migra somente as cores padrão antigas; mantém ajustes pessoais.
+  const LEGACY_THEME_COLORS = {"frame-border":["#159c0c",1],"frame-bg":["#006a06",1],"accent":["#109c08",1],"accent-hover":["#0f9408",1],"spoiler-bg":["#e4e9e5",1],"text-main":["#161616",1],"text-muted":["#73915f",1],"heading":["#138f18",1],"answer":["#54675a",1],"danger":["#8d3636",1],"hero-kicker":["#70be68",1],"hero-title":["#f1f1f1",1],"quote-text":["#4d5f51",1],"legend-text":["#526457",1],"form-eyebrow":["#7c8c79",1],"form-label":["#355733",1],"form-icon-secondary":["#558151",1],"field-text":["#233123",1],"placeholder":["#95a092",1],"field-hover":["#f6f9f5",1],"field-focus":["#eef7ec",1],"field-help":["#657364",1],"field-readonly":["#f3f6f2",1],"form-muted":["#879484",1],"student-text":["#476045",1],"student-bg":["#f2f6f0",1],"proof-hint":["#879483",1],"empty-text":["#7d8a7a",1],"empty-bg":["#f4f7f2",1],"choice-text":["#50614e",1],"choice-bg":["#f7faf6",1],"choice-hover":["#f1f7ef",1],"choice-selected-text":["#31582e",1],"choice-selected-bg":["#edf6eb",1],"posting-error":["#9f4343",1],"selection-text":["#21451f",1],"selection-bg":["#d8edd4",1],"input-selection-text":["#173b18",1],"input-selection-bg":["#cbe6c6",1],"form-icon":["#26802a",1],"select-focus":["#edf5eb",1],"select-arrow":["#5e7f5b",1],"select-arrow-bg":["#e8f1e5",1],"menu-border":["#d9e5d5",1],"menu-text":["#344b32",1],"menu-active-text":["#165f17",1],"scrollbar":["#c8d9c3",1],"calendar-nav":["#41663e",1],"calendar-nav-bg":["#f1f6ef",1],"calendar-nav-hover":["#e7f1e4",1],"calendar-month":["#2f4e2d",1],"calendar-day":["#385036",1],"calendar-outside":["#b0b9ad",1],"calendar-today":["#137f18",1],"time-border":["#e1eadf",1],"time-title":["#466443",1],"time-label":["#8b9788",1],"time-option":["#40543e",1],"legend-border":["#138f18",0.18],"separator":["#138f18",0.22],"toolbar-line":["#138f18",0.1],"back-bg":["#138f18",0.06],"posting-divider":["#138f18",0.08]};
+
+  // Preferências que ainda continham os padrões da versão anterior migram
+  // para os novos tons, preservando cores pessoais e outras configurações.
+  const PREVIOUS_SPOILER_COLORS = {
+    "spoiler-success-bg": "#489f37", "spoiler-success-hover": "#408f31",
+    "spoiler-multiple-bg": "#6c7472", "spoiler-multiple-hover": "#616966",
+    "spoiler-failure-bg": "#a65f5f", "spoiler-failure-hover": "#955555"
+  };
+
   const PREFERENCES_KEY = `sup-preferences:v1:${SHEET_ID}`;
 
   function defaultSitePreferences() {
     return {
-      version: 1,
+      version: 2,
+      fontFamily: "space-grotesk",
       copyPosition: "edge",
       actionPlacement: "hero",
       colors: Object.fromEntries(THEME_COLORS.map(item => [item.key, { hex: item.hex, alpha: item.alpha }]))
@@ -3083,20 +3200,22 @@ details[open]::details-content {
   }
 
   function sanitizeSitePreferences(saved) {
-    if (!saved || saved.version !== 1) return null;
+    if (!saved || ![1, 2].includes(saved.version)) return null;
     const defaults = defaultSitePreferences();
     defaults.savedAt = Number.isFinite(saved.savedAt) ? saved.savedAt : 0;
+    defaults.fontFamily = saved.fontFamily === "poppins" ? "poppins" : "space-grotesk";
     defaults.copyPosition = saved.copyPosition === "inline" ? "inline" : "edge";
     defaults.actionPlacement = saved.actionPlacement === "panel" ? "panel" : "hero";
     for (const item of THEME_COLORS) {
       const color = saved.colors?.[item.key];
       const hex = normalizeThemeHex(color?.hex);
       if (!hex) continue;
-      defaults.colors[item.key] = {
-        hex,
-        alpha: typeof color.alpha === "number" && Number.isFinite(color.alpha)
-          ? Math.min(1, Math.max(0, color.alpha)) : item.alpha
-      };
+      const legacy = saved.version === 1 ? LEGACY_THEME_COLORS[item.key] : null;
+      const alpha = typeof color.alpha === "number" && Number.isFinite(color.alpha)
+        ? Math.min(1, Math.max(0, color.alpha)) : (legacy?.[1] ?? item.alpha);
+      if (legacy && hex === legacy[0] && alpha === legacy[1]) continue;
+      if (PREVIOUS_SPOILER_COLORS[item.key] === hex && alpha === 1) continue;
+      defaults.colors[item.key] = { hex, alpha };
     }
     return defaults;
   }
@@ -3142,6 +3261,7 @@ details[open]::details-content {
 
   function applySitePreferences(notifyParent = true) {
     const root = document.documentElement;
+    root.dataset.siteFont = sitePreferences.fontFamily;
     root.dataset.copyPosition = sitePreferences.copyPosition;
     root.dataset.actionPlacement = sitePreferences.actionPlacement;
     for (const item of THEME_COLORS) {
@@ -3179,6 +3299,7 @@ details[open]::details-content {
 
   function syncSettingsControls() {
     const dialog = document.getElementById("settingsDialog");
+    dialog.querySelectorAll('[name="fontFamily"]').forEach(input => { input.checked = input.value === sitePreferences.fontFamily; });
     dialog.querySelectorAll('[name="copyPosition"]').forEach(input => { input.checked = input.value === sitePreferences.copyPosition; });
     dialog.querySelectorAll('[name="actionPlacement"]').forEach(input => { input.checked = input.value === sitePreferences.actionPlacement; });
     for (const item of THEME_COLORS) syncThemeField(item.key);
@@ -3222,7 +3343,9 @@ details[open]::details-content {
     });
     dialog.addEventListener("change", event => {
       const input = event.target;
-      if (input.name === "copyPosition" && ["edge", "inline"].includes(input.value)) {
+      if (input.name === "fontFamily" && ["space-grotesk", "poppins"].includes(input.value)) {
+        sitePreferences.fontFamily = input.value;
+      } else if (input.name === "copyPosition" && ["edge", "inline"].includes(input.value)) {
         sitePreferences.copyPosition = input.value;
       } else if (input.name === "actionPlacement" && ["hero", "panel"].includes(input.value)) {
         sitePreferences.actionPlacement = input.value;
@@ -3370,7 +3493,7 @@ details[open]::details-content {
   const START_TAGS = Object.freeze({
     SOS1: {
       close: "SOS2",
-      title: "ORIENTAÇÕES AO SUPERVISOR",
+      title: `ORIENTAÇÕES AO ${ACTIVE_ROLE.instructor.toUpperCase()}`,
       icon: "user-question",
       className: "orientation-spoiler"
     },
@@ -3526,7 +3649,7 @@ details[open]::details-content {
         !Array.isArray(payload.rows) || !payload.rows.length) {
       throw new Error("A API não retornou uma aula válida. A cópia anterior foi preservada.");
     }
-    if (payload.spreadsheetId && payload.spreadsheetId !== SHEET_ID) {
+    if ((payload.gid != null && Number(payload.gid) !== COURSES[course].gid) || (payload.spreadsheetId && payload.spreadsheetId !== SHEET_ID)) {
       throw new Error("A API retornou dados de outra planilha.");
     }
     const rows = payload.rows.map(row => {
@@ -3839,42 +3962,42 @@ details[open]::details-content {
         <div class="script-legend-list">
           <div class="script-legend-item">
             ${tablerIcon("copy")}
-            <span>Trecho copiável: clique no ícone para copiar exatamente o texto da linha.</span>
+            <span>Trecho copiável: clique no ícone de cópia. A linha fica marcada após copiar; textos nas orientações internas não têm esse botão.</span>
           </div>
 
           <div class="script-legend-item">
             <span class="script-legend-bullet" aria-hidden="true">•</span>
-            <span>Orientação ao supervisor: informação interna de apoio à aplicação e não copiável.</span>
+            <span>Orientação ao ${ACTIVE_ROLE.instructor}: informação interna de apoio à aplicação; não copiável.</span>
           </div>
 
           <div class="script-legend-item">
-            ${tablerIcon("help-circle")}
-            <span>Pergunta: trecho que deve ser apresentado ao aluno.</span>
+            <span class="script-legend-marker" style="color:var(--question)" aria-hidden="true">Aa</span>
+            <span>Pergunta: texto em negrito e na cor das perguntas para apresentar ao aluno; use o ícone de cópia quando disponível.</span>
+          </div>
+
+          <div class="script-legend-item">
+            <span class="script-legend-marker" aria-hidden="true">R.:</span>
+            <span>Resposta: referência para conferência do ${ACTIVE_ROLE.instructor}; não copiável.</span>
           </div>
 
           <div class="script-legend-item">
             ${tablerIcon("corner-down-right")}
-            <span>Resposta: referência esperada para conferência do supervisor e não copiável.</span>
+            <span>Alerta: instrução importante ao ${ACTIVE_ROLE.instructor} durante a aplicação; não copiável.</span>
           </div>
 
           <div class="script-legend-item">
-            ${tablerIcon("info-circle")}
-            <span>Alerta: instrução importante ao supervisor durante a aplicação.</span>
-          </div>
-
-          <div class="script-legend-item">
-            ${tablerIcon("align-left")}
+            <span class="script-legend-marker" style="font-weight:400;color:var(--text-main)" aria-hidden="true">Aa</span>
             <span>Texto sem ícone de cópia: informação apenas para leitura.</span>
           </div>
 
           <div class="script-legend-item">
-            ${tablerIcon("separator")}
-            <span>Barra: separa e identifica uma nova parte do script.</span>
+            <span class="script-legend-marker" aria-hidden="true">—</span>
+            <span>Barra: separa as etapas; pode conter o título da seção.</span>
           </div>
 
           <div class="script-legend-item">
             ${tablerIcon("message-share")}
-            <span>Mensagem privada: use o campo de nickname para enviar o BBCode indicado.</span>
+            <span>Mensagem privada: preencha os nicknames e clique em Enviar MP; o envio requer conexão e login no fórum.</span>
           </div>
 
           <div class="script-legend-item">
@@ -3886,12 +4009,24 @@ details[open]::details-content {
     `;
   }
 
+  function s1ToneClass(node) {
+    if (node.tag !== "S1") return "";
+    const title = String(node.title || "")
+      .replace(/\[[^\]]*\]/g, " ")
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toUpperCase().replace(/\s+/g, " ").trim();
+    if (title.includes("CASO HAJA 2 OU MAIS ALUNOS")) return "is-s1-multiple";
+    if (/\b(?:REPROVAD[OA]S?|REPROVACAO)\b/.test(title)) return "is-s1-failure";
+    if (/\b(?:APROVAD[OA]S?|APROVACAO)\b/.test(title)) return "is-s1-success";
+    return "";
+  }
+
   function renderSpoiler(node, inheritedNoCopy = false) {
     const noCopy = inheritedNoCopy || node.tag === "SOS1";
     const content = renderNodes(node.children, noCopy);
     const legend = node.tag === "SOS1" ? renderScriptLegend() : "";
     return `
-      <details class="${escapeHtml(node.className || "")}">
+      <details class="${escapeHtml([node.className, s1ToneClass(node)].filter(Boolean).join(" "))}">
         <summary>
           <span class="summary-leading-icon" aria-hidden="true">${tablerIcon(node.icon || "layout-list")}</span>
           <span class="summary-label">${renderBbcode(node.title)}</span>
@@ -4027,9 +4162,7 @@ details[open]::details-content {
               <div class="posting-control has-icon">
                 <span class="posting-control-icon" aria-hidden="true">${tablerIcon("book-2")}</span>
                 <select id="${id}-course" class="posting-select posting-course">
-                  <option value="Aula de Supervisão" data-course-key="SUP" ${ACTIVE_COURSE.key === "SUP" ? "selected" : ""}>Aula de Supervisão</option>
-                  <option value="Aula de Segurança" data-course-key="SEG" ${ACTIVE_COURSE.key === "SEG" ? "selected" : ""}>Aula de Segurança</option>
-                  <option value="Aula de Promotor" data-course-key="PRO" ${ACTIVE_COURSE.key === "PRO" ? "selected" : ""}>Aula de Promotor</option>
+                  ${POSTING_COURSES.map(key => `<option value="${escapeHtml(COURSES[key].postingName)}" data-course-key="${key}" ${ACTIVE_COURSE.key === key ? "selected" : ""}>${escapeHtml(COURSES[key].postingName)}</option>`).join("")}
                 </select>
               </div>
             </div>
@@ -4138,9 +4271,9 @@ details[open]::details-content {
           </div>
 
           <div class="posting-actions">
-            <div class="posting-status" role="status" aria-live="polite" hidden></div>
+            <div class="posting-status" role="status" aria-live="polite" ${POSTING_API_URL ? "hidden" : ""}>${POSTING_API_URL ? "" : "Postagens ainda não configuradas para este cargo."}</div>
 
-            <button class="posting-submit" type="button" data-submit-posting>
+            <button class="posting-submit" type="button" data-submit-posting ${POSTING_API_URL ? "" : "disabled"}>
               ${tablerIcon("send-2")}
               <span>Enviar</span>
             </button>
@@ -4776,7 +4909,8 @@ details[open]::details-content {
 
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = SUP_API_URL;
+    if (!POSTING_API_URL) throw new Error("Postagens ainda não configuradas para este cargo.");
+    form.action = POSTING_API_URL;
     form.target = frameName;
     form.acceptCharset = "UTF-8";
     form.style.display = "none";
@@ -4787,6 +4921,8 @@ details[open]::details-content {
       supervisor: data.supervisor,
       course: data.course,
       courseKey: data.courseKey,
+      role: ACTIVE_ROLE_KEY,
+      page: IS_DONATION_VIEW ? "doacao" : "",
       students: data.students.join(" / "),
       location: data.location,
       startedAt: data.startedAt,
@@ -4870,7 +5006,7 @@ details[open]::details-content {
         _: Date.now().toString()
       });
 
-      script.src = `${SUP_API_URL}?${query.toString()}`;
+      script.src = `${POSTING_API_URL}?${query.toString()}`;
       document.head.appendChild(script);
     });
   }
@@ -4907,6 +5043,10 @@ details[open]::details-content {
     const card = button.closest("[data-posting-card]");
     if (!card) return;
 
+    if (!POSTING_API_URL) {
+      setPostingStatus(card, "Postagens ainda não configuradas para este cargo.", true);
+      return;
+    }
     const nativeContext = readNativeForumContext();
     if (nativeContext) {
       handleForumContext(nativeContext);
@@ -4953,20 +5093,43 @@ details[open]::details-content {
     }
   }
 
+  function isLessonAction(node) {
+    return node.type === "button" || node.type === "specialButton";
+  }
+
   function collectHeroActions(nodes) {
     return nodes.flatMap(node => {
-      if (node.type === "specialButton") return [node];
+      if (isLessonAction(node)) return [node];
       return Array.isArray(node.children) ? collectHeroActions(node.children) : [];
     });
   }
 
+  // Na doação, todas as ações vêm da Tutoria, inclusive as que estavam em spoilers.
+  function withoutLessonActions(nodes) {
+    return nodes.flatMap(node => {
+      if (isLessonAction(node)) return [];
+      if (!Array.isArray(node.children)) return [node];
+      const children = withoutLessonActions(node.children);
+      if (node.children.length && !children.length) return [];
+      return [{ ...node, children }];
+    });
+  }
+
+  function tutorActionNodes(payload) {
+    return payload ? collectHeroActions(rowsToTree(apiRowsToSheetRows(payload.rows))) : [];
+  }
+
+  function tutorActionFingerprint(payload) {
+    return JSON.stringify(tutorActionNodes(payload).map(({ type, action, label, url }) => ({ type, action, label, url })));
+  }
+
   function renderButtonGroup(nodes, iconsOnly = false) {
     const buttons = nodes.map(node => {
-      const specialClass = node.type === "specialButton" ? " is-special-action" : "";
+      const actionClass = isLessonAction(node) ? " is-lesson-action" : "";
       if (node.type === "specialButton" && node.action === "form") {
         return `
           <button
-            class="sheet-action is-form-button${specialClass}"
+            class="sheet-action is-form-button${actionClass}"
             type="button"
             data-open-posting-page
             aria-label="POSTAR NO FORMULÁRIO"
@@ -4982,7 +5145,7 @@ details[open]::details-content {
 
       if (!url) {
         return `
-          <span class="sheet-action is-disabled${specialClass}" aria-disabled="true" aria-label="${escapeHtml(node.label)}" title="${escapeHtml(node.label)} — link não configurado">
+          <span class="sheet-action is-disabled${actionClass}" aria-disabled="true" aria-label="${escapeHtml(node.label)}" title="${escapeHtml(node.label)} — link não configurado">
             ${tablerIcon("link-off")}
             ${iconsOnly ? "" : `<span>${escapeHtml(node.label)}</span>`}
           </span>
@@ -5004,7 +5167,7 @@ details[open]::details-content {
 
       return `
         <a
-          class="sheet-action${className}${specialClass}"
+          class="sheet-action${className}${actionClass}"
           href="${escapeHtml(url)}"
           target="_blank"
           rel="noopener noreferrer"
@@ -5017,8 +5180,8 @@ details[open]::details-content {
       `;
     }).join("");
 
-    const onlySpecial = nodes.every(node => node.type === "specialButton");
-    return iconsOnly ? buttons : `<div class="action-grid${onlySpecial ? " is-special-only" : ""}">${buttons}</div>`;
+    const onlyActions = nodes.every(isLessonAction);
+    return iconsOnly ? buttons : `<div class="action-grid${onlyActions ? " is-actions-only" : ""}">${buttons}</div>`;
   }
 
   function renderNodes(nodes, noCopy = false) {
@@ -5594,37 +5757,44 @@ details[open]::details-content {
     const shell = document.getElementById("courseShell");
     const description = document.getElementById("pageDescription");
 
-    document.querySelectorAll("[data-course-shortcut]").forEach(link => {
-      const course = link.dataset.courseShortcut;
+    const heroCourses = document.getElementById("heroCourses");
+    const donationCourses = document.getElementById("donationCourses");
+    heroCourses.setAttribute("aria-label", `Subpáginas de ${ACTIVE_ROLE.name}`);
+    const makeLink = (key, label, donation, active, className) => {
       const url = new URL(window.location.href);
-      url.searchParams.set("course", course);
+      url.searchParams.set("role", ACTIVE_ROLE_KEY);
+      url.searchParams.set("course", key);
       url.searchParams.delete("aula");
-      link.href = url.href;
-
-      if (course === ACTIVE_COURSE.key) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-
-    document.title = `[${ACTIVE_COURSE.key}] ${ACTIVE_COURSE.title}`;
-
-    if (heroTitle) {
-      heroTitle.textContent = ACTIVE_COURSE.title;
+      if (donation) url.searchParams.set("page", "doacao");
+      else url.searchParams.delete("page");
+      const title = donation && className === "hero-course" ? "Doação de aulas" : COURSES[key].fullName;
+      return `<a class="${className}" data-course-shortcut="${key}" href="${escapeHtml(url.href)}" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}"${active ? ' aria-current="page"' : ''}>${escapeHtml(label)}</a>`;
+    };
+    if (ACTIVE_ROLE_KEY === "TUT") {
+      heroCourses.innerHTML = makeLink("TUT", "Tutoria", false, !IS_DONATION_VIEW, "hero-course") +
+        makeLink(IS_DONATION_VIEW ? ACTIVE_COURSE.key : "SUP", "Doação", true, IS_DONATION_VIEW, "hero-course");
+    } else {
+      heroCourses.innerHTML = ACTIVE_ROLE.courses.map(key => makeLink(key,
+        ACTIVE_ROLE_KEY === "SUP" ? key : COURSES[key].title, false,
+        key === ACTIVE_COURSE.key, "hero-course")).join("");
     }
+    donationCourses.hidden = !IS_DONATION_VIEW;
+    donationCourses.innerHTML = IS_DONATION_VIEW ? ROLES.SUP.courses.map(key =>
+      makeLink(key, key, true, key === ACTIVE_COURSE.key, "donation-course")).join("") : "";
+    document.title = `[${ACTIVE_ROLE_KEY}] ${PAGE_TITLE}${IS_DONATION_VIEW ? ` — ${ACTIVE_COURSE.title}` : ""}`;
+    if (heroTitle) heroTitle.textContent = PAGE_TITLE;
 
     if (shell) {
       shell.setAttribute(
         "aria-label",
-        `Companhia dos Supervisores - ${ACTIVE_COURSE.fullName}`
+        `Companhia dos Supervisores - ${IS_DONATION_VIEW ? "Doação de Aulas - " : ""}${ACTIVE_COURSE.fullName}`
       );
     }
 
     if (description) {
       description.setAttribute(
         "content",
-        `Página de aplicação da ${ACTIVE_COURSE.fullName} da Companhia dos Supervisores.`
+        `Página de ${IS_DONATION_VIEW ? "doação" : "aplicação"} da ${ACTIVE_COURSE.fullName} da Companhia dos Supervisores.`
       );
     }
   }
@@ -5664,6 +5834,9 @@ details[open]::details-content {
   let lessonFailures = 0;
   let lessonLastAttempt = 0;
   let lessonPrefetch = null;
+  let tutorActionsPayload = null;
+  let pendingTutorActionsPayload = null;
+  let tutorActionsSyncFailed = false;
   // A abertura só termina após sincronizar uma resposta válida da API.
   let initialLessonSyncPending = true;
 
@@ -5679,20 +5852,24 @@ details[open]::details-content {
     const storageNote = limited
       ? " O navegador não permitiu salvar uma cópia permanente neste dispositivo."
       : "";
-    label.textContent = (pendingLesson ? "Há uma versão mais recente desta aula. " : "") + message + storageNote;
+    const tutorNote = !IS_DONATION_VIEW ? "" : !tutorActionsPayload
+      ? " Os botões da Tutoria ainda não estão disponíveis. Tentaremos carregá-los novamente."
+      : tutorActionsSyncFailed ? " Não foi possível verificar os botões da Tutoria. Mantidos os botões salvos deste cargo." : "";
+    label.textContent = (pendingLesson ? "Há uma versão mais recente desta aula. " : "") + message + tutorNote + storageNote;
     button.hidden = !pendingLesson;
     status.hidden = !label.textContent.trim();
     sendHeight(true);
   }
 
-  function renderLessonPayload(payload, preserveView = false) {
+  function renderLessonPayload(payload, preserveView = false, tutorPayload = tutorActionsPayload) {
     const firstRender = !displayedLesson;
-    const keepPostingPage = preserveView && !postingPage.hidden &&
-      Boolean(postingPageContent.innerHTML.trim());
     const valid = validateLessonPayload(payload, ACTIVE_COURSE.key);
-    const tree = rowsToTree(apiRowsToSheetRows(valid.rows));
+    const sourceTree = rowsToTree(apiRowsToSheetRows(valid.rows));
+    const actionNodes = IS_DONATION_VIEW ? tutorActionNodes(tutorPayload) : collectHeroActions(sourceTree);
+    const tree = IS_DONATION_VIEW ? [...withoutLessonActions(sourceTree), ...actionNodes] : sourceTree;
     const formButtonNode = findFormButtonNode(tree);
-    const actionNodes = collectHeroActions(tree);
+    const keepPostingPage = preserveView && Boolean(formButtonNode) && !postingPage.hidden &&
+      Boolean(postingPageContent.innerHTML.trim());
     // Só altera a página depois de preparar todo o conteúdo da aula.
     const rendered = renderNodes(tree);
     const actions = renderButtonGroup(actionNodes, true);
@@ -5709,6 +5886,7 @@ details[open]::details-content {
     postingPage.hidden = !keepPostingPage;
     lessonContent.hidden = keepPostingPage;
     displayedLesson = valid;
+    if (IS_DONATION_VIEW) tutorActionsPayload = tutorPayload;
     if (firstRender) animateCourseArrival();
     applyCopyState();
     bindDetails();
@@ -5756,23 +5934,35 @@ details[open]::details-content {
     lessonLastAttempt = Date.now();
     lessonRefresh = (async () => {
       try {
-        const payload = await requestLessonApi();
-        if (!displayedLesson) renderLessonPayload(payload);
+        const [payload, tutorResult] = await Promise.all([
+          requestLessonApi(),
+          IS_DONATION_VIEW ? requestLessonApi("TUT").then(payload => {
+            return { payload: saveLessonCache(payload, "TUT").payload, failed: false };
+          }).catch(() => ({ payload: readLessonCache("TUT")?.payload || tutorActionsPayload, failed: true }))
+          : Promise.resolve(null)
+        ]);
+        const nextTutorPayload = tutorResult?.payload || null;
+        tutorActionsSyncFailed = Boolean(tutorResult?.failed);
+        if (!displayedLesson) renderLessonPayload(payload, false, nextTutorPayload);
         const record = saveLessonCache(payload, ACTIVE_COURSE.key);
-        if (lessonFingerprint(payload) !== lessonFingerprint(displayedLesson)) {
+        if (lessonFingerprint(payload) !== lessonFingerprint(displayedLesson) ||
+            (IS_DONATION_VIEW && tutorActionFingerprint(nextTutorPayload) !== tutorActionFingerprint(tutorActionsPayload))) {
           if (initialLessonSyncPending) {
-            renderLessonPayload(payload, true);
+            renderLessonPayload(payload, true, nextTutorPayload);
             pendingLesson = null;
+            pendingTutorActionsPayload = null;
           } else {
             pendingLesson = record;
+            pendingTutorActionsPayload = nextTutorPayload;
           }
         } else {
           pendingLesson = null;
+          pendingTutorActionsPayload = null;
         }
         initialLessonSyncPending = false;
-        lessonFailures = 0;
+        lessonFailures = tutorActionsSyncFailed ? lessonFailures + 1 : 0;
         setLessonStatus();
-        // Prepara também os atalhos SUP, SEG e PRO para uma futura falha da API.
+        // Prepara os demais scripts para uma futura falha da API.
         void prefetchOtherLessons();
       } catch (error) {
         lessonFailures += 1;
@@ -5789,6 +5979,7 @@ details[open]::details-content {
   }
 
   function loadLesson() {
+    if (IS_DONATION_VIEW && !tutorActionsPayload) tutorActionsPayload = readLessonCache("TUT")?.payload || null;
     if (!displayedLesson) {
       const cached = readLessonCache(ACTIVE_COURSE.key);
       if (cached) {
@@ -5808,8 +5999,9 @@ details[open]::details-content {
       return;
     }
     try {
-      renderLessonPayload(pendingLesson.payload);
+      renderLessonPayload(pendingLesson.payload, false, pendingTutorActionsPayload);
       pendingLesson = null;
+      pendingTutorActionsPayload = null;
       setLessonStatus("Aula atualizada.");
     } catch (error) {
       setLessonStatus("Não foi possível aplicar a atualização. A versão atual foi mantida.");
